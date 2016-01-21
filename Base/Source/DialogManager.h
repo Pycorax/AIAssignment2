@@ -24,14 +24,14 @@ enum MESSAGE_POSITION_TYPE
 	NUM_MESSAGE_POSITION
 };
 
-struct Message
+struct Dialog
 {
 	string m_messageTitle;						// The title of the message. Will be displayed above the message body
 	string m_message;							// The message body
 	MESSAGE_POSITION_TYPE m_posType;			// Determine the position of the message. The edge that the message will be aligned to.
 	double m_timeToShow;						// Determines the time that the message should be shown
 
-	Message(string messageTitle = "", string message = "", MESSAGE_POSITION_TYPE posType = MP_BOT_LEFT, double timer = 5.0)
+	Dialog(string messageTitle = "", string message = "", MESSAGE_POSITION_TYPE posType = MP_BOT_LEFT, double timer = 5.0)
 	{
 		Set(messageTitle, message, posType);
 	}
@@ -45,7 +45,7 @@ struct Message
 	}
 };
 
-class MessageManager
+class DialogManager
 {
 private:	// Variables
 	// Static Constants
@@ -63,7 +63,7 @@ private:	// Variables
 	Vector2 m_margin;					// The distance away from the corner of the screen stated by MESSAGE_POSITION_TYPE that the message should be rendered
 
 	// Message List
-	queue<Message> m_messages;			// The queue of messages to send
+	queue<Dialog> m_messages;			// The queue of messages to send
 
 	// Message Timer
 	double m_timer;						// Timer for the messages
@@ -72,8 +72,8 @@ private:	// Variables
 	bool m_newMessage;					// Indicates whether the current messge is a new message
 
 public:		// Functions
-	MessageManager();
-	~MessageManager();
+	DialogManager();
+	~DialogManager();
 
 	void Init(Mesh * _messageBackground, Mesh* _textMesh, Mesh* _titleMesh, Vector2 messageScale, Vector2 margin = Vector2::ZERO_VECTOR);
 	void Update(double dt);
@@ -85,7 +85,7 @@ public:		// Functions
 	void SetMessageBGScale(Vector2 scale);
 
 	void AddMessages(string filePath);
-	void AddMessage(Message msg);
+	void AddMessage(Dialog msg);
 	void ClearMessages(void);
 
 	/*

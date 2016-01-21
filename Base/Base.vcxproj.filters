@@ -177,9 +177,6 @@
     <ClCompile Include="Source\Pathway.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\MessageManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Menu.cpp">
       <Filter>Source Files\Menu</Filter>
     </ClCompile>
@@ -277,6 +274,9 @@
       <Filter>Source Files\States\Car</Filter>
     </ClCompile>
     <ClCompile Include="Source\Character.cpp">
+      <Filter>Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DialogManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -383,9 +383,6 @@
     <ClInclude Include="Source\Direction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\MessageManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Source\MenuManager.h">
       <Filter>Header Files\Menu</Filter>
     </ClInclude>
@@ -490,6 +487,9 @@
     </ClInclude>
     <ClInclude Include="Source\Character.h">
       <Filter>Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DialogManager.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

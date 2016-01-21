@@ -1,23 +1,23 @@
-#include "MessageManager.h"
+#include "DialogManager.h"
 #include "SONIO.h"
 
 
-const Vector2 MessageManager::TITLE_POS_OFFSET(50.0f, 55.0f);
-const Vector2 MessageManager::TEXT_POS_OFFSET(50.0f, 90.0f);
-const string MessageManager::NO_MESSAGE_TIMER_TITLE("NO_MESSAGE");
+const Vector2 DialogManager::TITLE_POS_OFFSET(50.0f, 55.0f);
+const Vector2 DialogManager::TEXT_POS_OFFSET(50.0f, 90.0f);
+const string DialogManager::NO_MESSAGE_TIMER_TITLE("NO_MESSAGE");
 
-MessageManager::MessageManager()
+DialogManager::DialogManager()
 	: m_newMessage(true)
 	, m_timer(0.0)
 {
 }
 
 
-MessageManager::~MessageManager()
+DialogManager::~DialogManager()
 {
 }
 
-void MessageManager::Init(Mesh * _messageBackground, Mesh* _textMesh, Mesh* _titleMesh, Vector2 messageScale, Vector2 margin)
+void DialogManager::Init(Mesh * _messageBackground, Mesh* _textMesh, Mesh* _titleMesh, Vector2 messageScale, Vector2 margin)
 {
 	// Init the MessageBG
 	m__messageBG = new GameObject2D;
@@ -36,11 +36,11 @@ void MessageManager::Init(Mesh * _messageBackground, Mesh* _textMesh, Mesh* _tit
 	m_margin = margin;
 }
 
-void MessageManager::Update(double dt)
+void DialogManager::Update(double dt)
 {
 	if (m_messages.size() > 0)
 	{
-		Message message = m_messages.front();
+		Dialog message = m_messages.front();
 
 		// Only update the timer if there is still a message
 		m_timer += dt;
@@ -55,7 +55,7 @@ void MessageManager::Update(double dt)
 	}
 }
 
-void MessageManager::Exit()
+void DialogManager::Exit()
 {
 	// Delete the TextObject resources
 	while (m_messageTextList.size() > 0)
@@ -91,12 +91,12 @@ void MessageManager::Exit()
 	}
 }
 
-void MessageManager::SetMessageBGScale(Vector2 scale)
+void DialogManager::SetMessageBGScale(Vector2 scale)
 {
 	m__messageBG->SetScale(scale);
 }
 
-void MessageManager::AddMessages(string filePath)
+void DialogManager::AddMessages(string filePath)
 {
 	const string ROOT_NAME = "MessageContainer";
 	const string MESSAGE_POS_NAME[NUM_MESSAGE_POSITION] =
@@ -117,7 +117,7 @@ void MessageManager::AddMessages(string filePath)
 			Branch msg = *msgIter;
 
 			// Create a message and set the name of that message to the name of this branch
-			Message message(msg.name);
+			Dialog message(msg.name);
 
 			// For each attribute/ message property
 			for (vector<Attribute>::iterator attribIter = msg.attributes.begin(); attribIter != msg.attributes.end(); ++attribIter)
@@ -150,12 +150,12 @@ void MessageManager::AddMessages(string filePath)
 	}
 }
 
-void MessageManager::AddMessage(Message msg)
+void DialogManager::AddMessage(Dialog msg)
 {
 	m_messages.push(msg);
 }
 
-void MessageManager::ClearMessages(void)
+void DialogManager::ClearMessages(void)
 {
 	while (m_messages.size() > 0)
 	{
@@ -163,17 +163,17 @@ void MessageManager::ClearMessages(void)
 	}
 }
 
-Vector2 MessageManager::GetMessageBGScale(void)
+Vector2 DialogManager::GetMessageBGScale(void)
 {
 	return m__messageBG->GetTransform().Scale;
 }
 
-vector<GameObject2D*> MessageManager::GetMessageObjects(int viewWidth, int viewHeight)
+vector<GameObject2D*> DialogManager::GetMessageObjects(int viewWidth, int viewHeight)
 {
 	static vector<GameObject2D*> goList;			// The list of gameobjects to render regarding this message
 
 	// Retrieve a message
-	Message message;
+	Dialog message;
 
 	if (m_messages.size() > 0)
 	{
@@ -299,7 +299,7 @@ vector<GameObject2D*> MessageManager::GetMessageObjects(int viewWidth, int viewH
 	return goList;
 }
 
-TextObject * MessageManager::fetchTextObject(void)
+TextObject * DialogManager::fetchTextObject(void)
 {
 	// Find an inactive TextObject
 	for (vector<TextObject*>::iterator textObjIter = m_messageTextList.begin(); textObjIter != m_messageTextList.end(); ++textObjIter)
@@ -320,7 +320,7 @@ TextObject * MessageManager::fetchTextObject(void)
 	return m_messageTextList.back();
 }
 
-void MessageManager::deactivateTextObjects(void)
+void DialogManager::deactivateTextObjects(void)
 {
 	for (vector<TextObject*>::iterator textObjIter = m_messageTextList.begin(); textObjIter != m_messageTextList.end(); ++textObjIter)
 	{
