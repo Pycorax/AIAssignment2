@@ -1,6 +1,6 @@
 #include "CChar.h"
 
-Character::Character(void)
+DeprecatedCharacter::DeprecatedCharacter(void)
 	: m_health(0)
 	, m_maxHealth(0)
 	, m_animMesh(NULL)
@@ -10,11 +10,11 @@ Character::Character(void)
 {
 }
 
-Character::~Character(void)
+DeprecatedCharacter::~DeprecatedCharacter(void)
 {
 }
 
-void Character::Init(bool active, int health, Vector2 dir, Mesh* mesh,int moveSpeed)
+void DeprecatedCharacter::Init(bool active, int health, Vector2 dir, Mesh* mesh,int moveSpeed)
 {
 	this->m_active							= active;
 	this->m__mesh							= mesh;
@@ -25,76 +25,76 @@ void Character::Init(bool active, int health, Vector2 dir, Mesh* mesh,int moveSp
 	this->m_moveSpeed						= moveSpeed;
 }
 
-void Character::Update()
+void DeprecatedCharacter::Update()
 {
 }
 
-void Character::SetHealth(int health)
+void DeprecatedCharacter::SetHealth(int health)
 {
 	this->m_health = health;
 }
-void Character::SetMaxHealth(int health)
+void DeprecatedCharacter::SetMaxHealth(int health)
 {
 	this->m_maxHealth = health;
 }
 
-void Character::AddToHealth(int health_plus)
+void DeprecatedCharacter::AddToHealth(int health_plus)
 {
 	this->m_health += health_plus;
 }
 
-void Character::SetLookDir(Vector2 dir)
+void DeprecatedCharacter::SetLookDir(Vector2 dir)
 {
 	this->m_lookDir = dir;
 }
-void Character::SetMoveSpeed(int moveSpeed)
+void DeprecatedCharacter::SetMoveSpeed(int moveSpeed)
 {
 	this->m_moveSpeed = moveSpeed;
 }
 
-void Character::SetAnimMesh(Mesh* mesh)
+void DeprecatedCharacter::SetAnimMesh(Mesh* mesh)
 {
 	this->m_animMesh = mesh;
 }
-void Character::SetActive(bool active)
+void DeprecatedCharacter::SetActive(bool active)
 {
 	this->m_active = active;
 }
 
 // === Get functions ===
-int Character::GetHealth(void)const
+int DeprecatedCharacter::GetHealth(void)const
 {
 	return this->m_health;
 }
-int Character::GetMaxHealth(void)const
+int DeprecatedCharacter::GetMaxHealth(void)const
 {
 	return this->m_maxHealth;
 }
 
-Vector2 Character::GetLookDir(void)const
+Vector2 DeprecatedCharacter::GetLookDir(void)const
 {
 	return this->m_lookDir;
 }
-int Character::GetMoveSpeed(void) const
+int DeprecatedCharacter::GetMoveSpeed(void) const
 {
 	return this->m_moveSpeed;
 }
 
-Mesh* Character::GetAnimMesh(void)const
+Mesh* DeprecatedCharacter::GetAnimMesh(void)const
 {
 	return this->m_animMesh;
 }
-bool Character::GetActive(void) const
+bool DeprecatedCharacter::GetActive(void) const
 {
 	return this->m_active;
 }
 
-void Character::updateScreenPos(Vector2 pos)
+void DeprecatedCharacter::updateScreenPos(Vector2 pos)
 {
 	m_transforms.Translation = pos;
 }
 
-void Character::SpottedTarget(Vector2 pos)
+void DeprecatedCharacter::SpottedTarget(Vector2 pos)
 {
 	
 }

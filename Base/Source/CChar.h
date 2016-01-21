@@ -5,7 +5,7 @@
 #include "Vector2.h"
 #include "GameObject2D.h"
 
-class Character : public GameObject2D
+class DeprecatedCharacter : public GameObject2D
 {
 protected:
 	int m_health;
@@ -23,8 +23,8 @@ protected:
 	int m_moveSpeed;
 
 public:
-	Character(void);
-	~Character(void);
+	DeprecatedCharacter(void);
+	~DeprecatedCharacter(void);
 
 	virtual void Init(bool active, int health, Vector2 dir, Mesh* mesh, int m_moveSpeed);
 	virtual void Update(void);

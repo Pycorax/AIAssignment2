@@ -88,6 +88,9 @@
     <Filter Include="Source Files\States\Car">
       <UniqueIdentifier>{bc32e246-6a8e-4d14-84ae-cf177f6a4679}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Characters">
+      <UniqueIdentifier>{13889be8-f8c5-4352-b558-73c3e1568b1a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp">
@@ -272,6 +275,9 @@
     </ClCompile>
     <ClCompile Include="Source\DrivingState.cpp">
       <Filter>Source Files\States\Car</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Character.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -481,6 +487,9 @@
     </ClInclude>
     <ClInclude Include="Source\DrivingState.h">
       <Filter>Header Files\States\NPCCar</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Character.h">
+      <Filter>Characters</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
