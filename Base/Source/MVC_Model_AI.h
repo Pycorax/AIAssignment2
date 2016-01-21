@@ -5,30 +5,20 @@
 #include "MVC_Model.h"
 
 // Other Includes
-#include "Guard.h"
-#include "SpyNPC.h"
-#include "Car.h"
+#include "TextObject.h"
 
 class MVC_Model_AI : public MVC_Model
 {
 private:
 	enum E_ENV_OBJECT
 	{
-		EO_ROAD,
-		EO_BUILDING_LEFT,
-		EO_BUILDING_MID,
-		EO_BUILDING_RIGHT,
-		EO_ROAD_STRIP_1,
-		EO_ROAD_STRIP_2,
-		EO_ROAD_STRIP_3,
+		EO_TEST,
 		EO_TOTAL
 	};
 
 	enum E_TEXT_OBJECT
 	{
-		TO_SPY_STATE,
-		TO_GUARD_STATE,
-		TO_BOMB_COUNT,
+		TO_TEST,
 		TO_TOTAL
 	};
 
@@ -39,24 +29,7 @@ private:
 	// Environment Objects
 	GameObject2D* m_envObjects[EO_TOTAL];
 
-	// Target
-	GameObject2D* m_bombSite;
 
-	// Guards
-	static const int S_MAX_GUARDS;
-	vector<Guard*> m_guardList;
-	vector<Waypoint*> m_spawnPoints;
-	vector<Waypoint*> m_waypointList;
-	Waypoint* m_worldMap;
-	bool m_showWaypoints;
-	float m_toggleWaypointTimer;
-	static const float S_TIME_TILL_TOGGLE_WAYPOINT;
-
-	// Spy
-	SpyNPC m_spy;
-
-	// Car
-	NPCCar m_car;
 
 public:
 	MVC_Model_AI(string configSONFile);
@@ -66,9 +39,6 @@ public:
 	void Update(double dt);
 	void Exit(void);
 	void Reset(void);
-
-	void InitGuards(void); // Init guards
-	void InitWaypointMap(void); // Init waypoint map
 
 private:
 	void initText(void);
