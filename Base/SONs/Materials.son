@@ -1,0 +1,7 @@
+# Materials.son #
+#################
+# A SON File that specifies the Materials to load into the game
+# All Materials must be contained in a branch named MaterialContainer
+{
+	[Name] MaterialContainer
+}

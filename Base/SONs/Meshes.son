@@ -1,0 +1,260 @@
+# Meshes.son #
+##############
+# A SON File that specifies the Meshes to load into the game
+# All Meshes must be contained in a branch named MeshContainer
+# Different Meshes will require different attributes, see below for details
+# Mesh [FileName] must have no spaces
+{
+	[Name] MeshContainer
+	# Criticals DO NOT TOUCH
+	{
+		[Name] DefaultFont
+		[Type] Font
+		[Texture] DejaVuSansMono
+	}
+
+
+	# Terrain
+	# This is a special type of Mesh. Only 1 can exist. If multiple are defined, only the first will be processed.
+	#{
+	#	[Name] Terrain
+	#	[Type] Terrain
+	#	[Texture] Moss
+	#}
+
+	{
+		[Name] Road
+		[Type] Quad
+		[Color] 0.0f, 0.0f, 0.0f
+		[Length] 1.0f
+	}
+	
+	{
+		[Name] RoadStrip
+		[Type] Quad
+		[Color] 1.0f, 1.0f, 1.0f
+		[Length] 1.0f
+	}
+
+	{
+		[Name] Building
+		[Type] Quad
+		[Color] 0.419f, 0.419f, 0.419f
+		[Length] 1.0f
+		[Texture] Building
+	}
+
+	{
+		[Name] BombSite
+		[Type] 2D
+		[Color] 1.0f, 1.0f, 1.0f
+		[Width] 1.0f
+		[Height] 1.0f
+		[Texture] TILE_SETBOMBAREA
+	}
+	
+	{
+		[Name] Waypoint
+		[Type] 2D
+		[Color] 1.0f, 1.0f, 1.0f
+		[Width] 1.0f
+		[Height] 1.0f
+		[Texture] Waypoint
+	}
+
+	{
+		[Name] WorldPoint
+		[Type] 2D
+		[Color] 1.0f, 1.0f, 1.0f
+		[Width] 1.0f
+		[Height] 1.0f
+		[Texture] LightOverlay
+	}
+
+	{
+		[Name] Player
+		[Type] 2D
+		[Color] 1.0f, 1.0f, 1.0f
+		[Width] 1.0f
+		[Height] 1.0f
+		[Texture] PlayerBall
+	}
+
+	{
+		[Name] Shadow
+		[Type] 2D
+		[Color] 1.0f, 1.0f, 1.0f
+		[Width] 1.0f
+		[Height] 1.0f
+		[Texture] ShadowBall
+	}
+	
+	{
+		[Name] View
+		[Type] 2D
+		[Color] 1.0f, 1.0f, 1.0f
+		[Width] 1.0f
+		[Height] 1.0f
+		[Texture] ViewCircle
+	}
+	
+	{
+		[Name] Car
+		[Type] 2D
+		[Color] 1.0f, 1.0f, 1.0f
+		[Width] 1.0f
+		[Height] 1.0f
+		[Texture] Car
+	}
+
+	# Tiles
+	{
+		[Name] TILE_FLOOR
+		[Type] 2D
+		[Color] 1.0f, 1.0f, 1.0f
+		[Width] 1.0f
+		[Height] 1.0f
+		[Texture] TILE_FLOOR
+	}
+
+	# -- KBMouse
+	{
+		[Name] KBMouse_W_Key
+		[Type] 2D
+		[Color] 1.0f, 1.0f, 1.0f
+		[Width] 1.0f
+		[Height] 1.0f
+		[Texture] KBMouse_W_Key
+	}
+	{
+		[Name] KBMouse_A_Key
+		[Type] 2D
+		[Color] 1.0f, 1.0f, 1.0f
+		[Width] 1.0f
+		[Height] 1.0f
+		[Texture] KBMouse_A_Key
+	}
+	{
+		[Name] KBMouse_S_Key
+		[Type] 2D
+		[Color] 1.0f, 1.0f, 1.0f
+		[Width] 1.0f
+		[Height] 1.0f
+		[Texture] KBMouse_S_Key
+	}
+	{
+		[Name] KBMouse_D_Key
+		[Type] 2D
+		[Color] 1.0f, 1.0f, 1.0f
+		[Width] 1.0f
+		[Height] 1.0f
+		[Texture] KBMouse_D_Key
+	}
+	{
+		[Name] KBMouse_F_Key
+		[Type] 2D
+		[Color] 1.0f, 1.0f, 1.0f
+		[Width] 1.0f
+		[Height] 1.0f
+		[Texture] KBMouse_F_Key
+	}
+	{
+		[Name] KBMouse_J_Key
+		[Type] 2D
+		[Color] 1.0f, 1.0f, 1.0f
+		[Width] 1.0f
+		[Height] 1.0f
+		[Texture] KBMouse_J_Key
+	}
+	{
+		[Name] KBMouse_K_Key
+		[Type] 2D
+		[Color] 1.0f, 1.0f, 1.0f
+		[Width] 1.0f
+		[Height] 1.0f
+		[Texture] KBMouse_K_Key
+	}
+	{
+		[Name] KBMouse_Space_Key
+		[Type] 2D
+		[Color] 1.0f, 1.0f, 1.0f
+		[Width] 1.0f
+		[Height] 1.0f
+		[Texture] KBMouse_Space_Key
+	}
+#	{
+#		[Name] Quad
+#		[Type] Quad
+#		[Color] 1.0f, 1.0f, 1.0f
+#		[Length] 1.0f
+#		[Texture] Brick
+#		[Material] Grass
+#	}
+#	{
+#		[Name] Ring
+#		[Type] Ring
+#		[Color] 1.0f, 1.0f, 1.0f
+#		[InnerRadius] 0.5f
+#		[OuterRadius] 1.0f
+#	}
+#	{
+#		[Name] Cone
+#		[Type] Cone
+#		[Color] 1.0f, 1.0f, 1.0f
+#		[Radius] 1.0f
+#		[Height] 1.0f
+#	}
+#	{
+#		[Name] Sphere
+#		[Type] Sphere
+#		[Color] 1.0f, 1.0f, 1.0f
+#		[Stacks] 12
+#		[Slices] 12
+#		[Radius] 1.0f
+#	}
+#	{
+#		[Name] OBJ
+#		[Type] OBJ
+#		[FilePath] OBJ//chair.obj
+#	}
+#	{
+#		[Name] SkyPlane
+#		[Type] SkyPlane
+#		[Color] 1.0f, 1.0f, 1.0f
+#		[Slices] 12
+#	}
+}
+
+#############################################
+# Required Attributes for Each Type of Mesh #
+#############################################
+#		All:
+#			 - [Name]
+#			 - [Color](Except OBJ & Text)
+#			 - [Texture]
+#			 - [Material]
+# Axes, Quad, Cube:
+#			 - [Length]
+#	   Ring: [InnerRadius][OuterRadius]
+#	 Sphere: [Slices][Stacks][Radius]
+#	   Cone: [Slices][Radius][Height]
+#		OBJ: [FilePath]
+#  SkyPlane: [Slices][PlanetRadius][AtmosphereRadius][HorizontalTile][VerticalTile]
+#############################################
+# List of All Tags (For Reference)
+#############################################
+#[Name]
+#[Color]
+#[Length]
+#[Height]
+#[Radius]
+#[InnerRadius]
+#[OuterRadius]
+#[Slices]
+#[Stacks]
+#[PlanetRadius]
+#[AtmosphereRadius]
+#[HorizontalTile]
+#[VerticalTile]
+#[FilePath]
+#[Texture]

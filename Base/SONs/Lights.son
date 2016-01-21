@@ -1,0 +1,7 @@
+# Lights.son #
+#################
+# A SON File that specifies the Lights to load into the game
+# All Materials must be contained in a branch named LightContainer
+{
+	[Name] LightContainer
+}

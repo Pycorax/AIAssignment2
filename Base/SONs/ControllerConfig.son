@@ -1,0 +1,14 @@
+# ControllerConfig.son #
+###################
+# A SON File that specifies the properties of a MVC_Controller class
+# All properties are to be stored in a "ControllerConfigContainer"
+{
+	[Name] ControllerConfigContainer
+
+	# Window
+	[WindowTitle] "DM2242 Artificial Intelligence - Assignment 1"
+
+	# Refresh Rates
+	[ViewRefreshRate] 60
+	[InputRefreshRate] 60
+}

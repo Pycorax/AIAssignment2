@@ -1,0 +1,13 @@
+# ViewConfig.son #
+###################
+# A SON File that specifies the properties of a MVC_View class
+# All properties are to be stored in a "ViewConfigContainer"
+{
+	[Name] ViewConfigContainer
+
+	# Shaders
+	[GPassVertexShaderFile] Shader//GPass.vertexshader
+	[GPassFragmentShaderFile] Shader//GPass.fragmentshader
+	[MainPassVertexShaderFile] Shader//Shadow.vertexshader
+	[MainPassFragmentShaderFile] Shader//Shadow.fragmentshader
+}

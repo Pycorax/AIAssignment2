@@ -1,0 +1,8 @@
+# Sounds.son #
+#################
+# A SON File that specifies the Sounds to load into the game
+# All Sounds must be contained in a branch named SoundContainer
+{
+	[Name] SoundContainer
+	
+}

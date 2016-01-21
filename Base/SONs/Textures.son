@@ -1,0 +1,141 @@
+# Colours.son #
+#################
+# A SON File that specifies the Textures to load into the game
+# All Textures must be contained in a branch named TextureContainer
+{
+	[Name] TextureContainer
+
+	# # Criticals DO NOT TOUCH
+	{
+		[Name] DejaVuSansMono
+		[FilePath] Image//DejaVuSansMono.tga
+	}
+	
+	{
+		[Name] ShadowBall
+		[FilePath] Image//ShadowBall.tga
+	}
+	
+	{
+		[Name] PlayerBall
+		[FilePath] Image//player_ball.tga
+	}
+	
+	{
+		[Name] ViewCircle
+		[FilePath] Image//AI//view_circle.tga
+	}
+	
+	{
+		[Name] Car
+		[FilePath] Image//AI//car.tga
+	}
+	
+	#   PLAYER TEXTURE
+	{
+		[Name] Player_ANIMATION
+		[FilePath] Image//Spectre//Spectre.tga
+	} 
+	
+	{
+		[Name] TILE_BOMB
+		[FilePath] Image//Lab_Tiles//Bomb.tga
+	}
+
+	{
+		[Name] TILE_SETBOMBAREA
+		[FilePath] Image//Lab_Tiles//Bomb_Area.tga
+	}
+	
+	{
+		[Name] Building
+		[FilePath] Image//AI//building.tga
+	}
+	
+	{
+		[Name] Waypoint
+		[FilePath] Image//Lab_Tiles//Waypoint.tga
+	}
+	
+	# HUD
+	
+	{
+		[Name] F_Key
+		[FilePath] Image//HUD//f_key.tga
+	}
+	
+	{
+		[Name] K_Key
+		[FilePath] Image//HUD//k_key.tga
+	}
+
+	{
+		[Name] Defuse_Bomb
+		[FilePath] Image//HUD//Defuse_Bomb.tga
+	}
+
+	{
+		[Name] Plant_Bomb
+		[FilePath] Image//HUD//Plant_Bomb.tga
+	}
+	
+	# Keys
+	# -- XInput
+	{
+		[Name] XInput_A_Key
+		[FilePath] Image//HUD//Buttons//XInput//a_xbox_key.tga
+	}
+	{
+		[Name] XInput_B_Key
+		[FilePath] Image//HUD//Buttons//XInput//b_xbox_key.tga
+	}
+	{
+		[Name] XInput_X_Key
+		[FilePath] Image//HUD//Buttons//XInput//x_xbox_key.tga
+	}
+	{
+		[Name] XInput_Y_Key
+		[FilePath] Image//HUD//Buttons//XInput//y_xbox_key.tga
+	}
+	{
+		[Name] XInput_LS_Key
+		[FilePath] Image//HUD//Buttons//XInput//ls_xbox_key.tga
+	}
+	{
+		[Name] XInput_RS_Key
+		[FilePath] Image//HUD//Buttons//XInput//rs_xbox_key.tga
+	}
+	# -- KBMouse
+	{
+		[Name] KBMouse_W_Key
+		[FilePath] Image//HUD//Buttons//KB_Mouse//w_key.tga
+	}
+	{
+		[Name] KBMouse_A_Key
+		[FilePath] Image//HUD//Buttons//KB_Mouse//a_key.tga
+	}
+	{
+		[Name] KBMouse_S_Key
+		[FilePath] Image//HUD//Buttons//KB_Mouse//s_key.tga
+	}
+	{
+		[Name] KBMouse_D_Key
+		[FilePath] Image//HUD//Buttons//KB_Mouse//d_key.tga
+	}
+	{
+		[Name] KBMouse_F_Key
+		[FilePath] Image//HUD//Buttons//KB_Mouse//f_key.tga
+	}
+	{
+		[Name] KBMouse_J_Key
+		[FilePath] Image//HUD//Buttons//KB_Mouse//j_key.tga
+	}
+	{
+		[Name] KBMouse_K_Key
+		[FilePath] Image//HUD//Buttons//KB_Mouse//k_key.tga
+	}
+	{
+		[Name] KBMouse_Space_Key
+		[FilePath] Image//HUD//Buttons//KB_Mouse//space_key.tga
+	}
+}
