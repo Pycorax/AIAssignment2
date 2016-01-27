@@ -1,21 +1,33 @@
-#ifndef _MESSAGE_BOARD_H_
-#define _MESSAGE_BOARD_H_
+#ifndef MESSAGE_BOARD_H
+#define MESSAGE_BOARD_H
 
-#include "..\MessageBoard\Message.h"
+// STL Includes
+#include <queue>
+
+// Other Includes
+#include "..\MessageBoard\MessagePacket.h"
 #include "..\MessageBoard\MessageListener.h"
+
+// Using Directives
+using std::queue;
 
 class MessageBoard
 {
+private:
+	vector<Message> m_historyList;
+	queue<Message> m_globalMessages;
+
+	vector<MessageListener*> m_registrants; // Characters must sign up to receive message
+
 public:
 	MessageBoard();
 	~MessageBoard();
 
-private:
-	vector<Message*> m_historyList;
-	vector<Message*> m_globalList;
+	// Init
+	void RegisterUser(MessageListener* listener);		// Use this function to register a character into the MessageBoard's mailing list.
 
-	vector<MessageListener*> m_characterList; // Characters must sign up to receive message
-	
+	// Messaging
+	bool SendMessage(MessagePacket msg);
 };
 
 #endif

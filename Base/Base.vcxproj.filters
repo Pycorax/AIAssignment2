@@ -416,6 +416,9 @@
     <ClInclude Include="Source\StartTurnState.h">
       <Filter>Characters\States</Filter>
     </ClInclude>
+    <ClInclude Include="Source\MessageBoard\MessagePacket.h">
+      <Filter>MessageBoard</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\Text.fragmentshader">

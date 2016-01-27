@@ -1,10 +1,14 @@
 #ifndef _MESSAGE_H_
 #define _MESSAGE_H_
 
+// STL Includes
 #include <vector>
-#include "..\Character.h"
 
+// Using Directives
 using std::vector;
+
+// Forward Declarations
+class MessageListener;
 
 class Message
 {
@@ -20,14 +24,15 @@ public:
 		NUM_MESSAGE,
 	};
 
-	Message();
+	Message(MessageListener* sender = nullptr, MESSAGE_TYPE type = NUM_MESSAGE);
 	~Message();
+
+	MessageListener* GetSender(void) const;
+	Message::MESSAGE_TYPE GetMessage(void) const;
 
 private:
 	// Senders and receivers
-	Character* m_sender;
-	vector<Character*> m_receiver; // NULL if message is global
-
+	MessageListener* m_sender;
 	MESSAGE_TYPE m_type;
 };
 
