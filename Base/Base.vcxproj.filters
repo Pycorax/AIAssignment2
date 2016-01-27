@@ -91,6 +91,9 @@
     <Filter Include="Characters">
       <UniqueIdentifier>{13889be8-f8c5-4352-b558-73c3e1568b1a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MessageBoard">
+      <UniqueIdentifier>{449e1a07-20f6-468e-9360-56b624733e2e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp">
@@ -278,6 +281,12 @@
     </ClCompile>
     <ClCompile Include="Source\DialogManager.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MessageBoard\Message.cpp">
+      <Filter>MessageBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MessageBoard\MessageBoard.cpp">
+      <Filter>MessageBoard</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -490,6 +499,12 @@
     </ClInclude>
     <ClInclude Include="Source\DialogManager.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MessageBoard\Message.h">
+      <Filter>MessageBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MessageBoard\MessageBoard.h">
+      <Filter>MessageBoard</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

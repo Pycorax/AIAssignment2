@@ -27,6 +27,8 @@
     <ClCompile Include="Source\Guard.cpp" />
     <ClCompile Include="Source\HuntingEnemyState.cpp" />
     <ClCompile Include="Source\KnockOutState.cpp" />
+    <ClCompile Include="Source\MessageBoard\Message.cpp" />
+    <ClCompile Include="Source\MessageBoard\MessageBoard.cpp" />
     <ClCompile Include="Source\MoveTargetState.cpp" />
     <ClCompile Include="Source\MVC_Model_AI.cpp" />
     <ClCompile Include="Source\GameObject2D.cpp" />
@@ -93,6 +95,8 @@
     <ClInclude Include="Source\HuntingEnemyState.h" />
     <ClInclude Include="Source\InputDevice.h" />
     <ClInclude Include="Source\KnockOutState.h" />
+    <ClInclude Include="Source\MessageBoard\Message.h" />
+    <ClInclude Include="Source\MessageBoard\MessageBoard.h" />
     <ClInclude Include="Source\MoveTargetState.h" />
     <ClInclude Include="Source\MVC_Model_AI.h" />
     <ClInclude Include="Source\Fog.h" />
