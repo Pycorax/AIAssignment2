@@ -1,14 +1,14 @@
-#ifndef _ATTACK_STATE_H_
-#define _ATTACK_STATE_H_
+#ifndef _DEFEND_STATE_H_
+#define _DEFEND_STATE_H_
 
 #include "FSMState.h"
 #include "GameCharacter.h"
 
-class AttackState : public FSMState
+class DefendState : public FSMState
 {
 public:
-	AttackState();
-	virtual ~AttackState();
+	DefendState();
+	virtual ~DefendState();
 
 	virtual void Init(NPC* FSMOwner);
 	virtual void Init(FSMState* stateOwner);

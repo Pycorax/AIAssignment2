@@ -1,4 +1,4 @@
-#include "SlackState.h"
+#include "AttackedState.h"
 
 AttackedState::AttackedState() : FSMState()
 {
@@ -13,6 +13,15 @@ void AttackedState::Init(NPC * FSMOwner)
 {
 	FSMState::Init(FSMOwner);
 
+	// Get the actual NPC-type pointer
+	GameCharacter* c = dynamic_cast<GameCharacter*>(m_FSMOwner);
+
+	// Check if the NPC is legit
+	if (!c)
+	{
+		return;
+	}
+
 	// Set up the child state
 }
 
@@ -22,10 +31,10 @@ void AttackedState::Init(FSMState * stateOwner)
 	FSMState::Init(stateOwner);
 
 	// Get the actual NPC-type pointer
-	Guard* npc = dynamic_cast<Guard*>(m_FSMOwner);
+	GameCharacter* c = dynamic_cast<GameCharacter*>(m_FSMOwner);
 
 	// Check if the NPC is legit
-	if (!npc)
+	if (!c)
 	{
 		return;
 	}
@@ -34,6 +43,15 @@ void AttackedState::Init(FSMState * stateOwner)
 void AttackedState::Update(double dt)
 {
 	FSMState::Update(dt);
+
+	// Get the actual NPC-type pointer
+	GameCharacter* c = dynamic_cast<GameCharacter*>(m_FSMOwner);
+
+	// Check if the NPC is legit
+	if (!c)
+	{
+		return;
+	}
 }
 
 void AttackedState::Exit(void)

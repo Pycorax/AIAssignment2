@@ -1,15 +1,15 @@
-#include "AttackState.h"
+#include "DefendState.h"
 
-AttackState::AttackState() : FSMState()
+DefendState::DefendState() : FSMState()
 {
 }
 
 
-AttackState::~AttackState()
+DefendState::~DefendState()
 {
 }
 
-void AttackState::Init(NPC * FSMOwner)
+void DefendState::Init(NPC * FSMOwner)
 {
 	FSMState::Init(FSMOwner);
 
@@ -25,7 +25,7 @@ void AttackState::Init(NPC * FSMOwner)
 	// Set up the child state
 }
 
-void AttackState::Init(FSMState * stateOwner)
+void DefendState::Init(FSMState * stateOwner)
 {
 	// Attach the handle to the state owner
 	FSMState::Init(stateOwner);
@@ -40,7 +40,7 @@ void AttackState::Init(FSMState * stateOwner)
 	}
 }
 
-void AttackState::Update(double dt)
+void DefendState::Update(double dt)
 {
 	FSMState::Update(dt);
 
@@ -53,15 +53,11 @@ void AttackState::Update(double dt)
 		return;
 	}
 
-	if (c->GetOpponentTeam().size() > 0) // Someone is in opponent team
-	{
-		int random = Math::RandIntMinMax(0, c->GetOpponentTeam().size() - 1); // Random an enemy to attack
-		c->GetOpponentTeam()[random]->Injure(c->GetAttack());
-	}
+	c->Defend(); // Set character to defensive mode
 
 	c->EndTurn(); // After attacking, end the character's turn
 }
 
-void AttackState::Exit(void)
+void DefendState::Exit(void)
 {
 }

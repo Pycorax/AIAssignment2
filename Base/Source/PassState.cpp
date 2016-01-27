@@ -1,15 +1,15 @@
-#include "AttackState.h"
+#include "PassState.h"
 
-AttackState::AttackState() : FSMState()
+PassState::PassState() : FSMState()
 {
 }
 
 
-AttackState::~AttackState()
+PassState::~PassState()
 {
 }
 
-void AttackState::Init(NPC * FSMOwner)
+void PassState::Init(NPC * FSMOwner)
 {
 	FSMState::Init(FSMOwner);
 
@@ -25,7 +25,7 @@ void AttackState::Init(NPC * FSMOwner)
 	// Set up the child state
 }
 
-void AttackState::Init(FSMState * stateOwner)
+void PassState::Init(FSMState * stateOwner)
 {
 	// Attach the handle to the state owner
 	FSMState::Init(stateOwner);
@@ -38,9 +38,13 @@ void AttackState::Init(FSMState * stateOwner)
 	{
 		return;
 	}
+
+	// Do nothing because character pass its turn
+
+	c->EndTurn(); // After attacking, end the character's turn
 }
 
-void AttackState::Update(double dt)
+void PassState::Update(double dt)
 {
 	FSMState::Update(dt);
 
@@ -52,16 +56,8 @@ void AttackState::Update(double dt)
 	{
 		return;
 	}
-
-	if (c->GetOpponentTeam().size() > 0) // Someone is in opponent team
-	{
-		int random = Math::RandIntMinMax(0, c->GetOpponentTeam().size() - 1); // Random an enemy to attack
-		c->GetOpponentTeam()[random]->Injure(c->GetAttack());
-	}
-
-	c->EndTurn(); // After attacking, end the character's turn
 }
 
-void AttackState::Exit(void)
+void PassState::Exit(void)
 {
 }

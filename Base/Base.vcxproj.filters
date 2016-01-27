@@ -67,32 +67,20 @@
     <Filter Include="Source Files\HUD">
       <UniqueIdentifier>{5db677ca-5f32-46a3-b8ef-6642f7efa39e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\States">
-      <UniqueIdentifier>{3198a4c5-f917-487a-9e5f-5d71353ef050}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\States">
-      <UniqueIdentifier>{370ac58b-06dc-424e-8c13-0d2ba95a2601}</UniqueIdentifier>
-    </Filter>
     <Filter Include="States">
       <UniqueIdentifier>{f8ac9d8a-3e6a-4013-b202-ca97a3021913}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\States\NPCSpy">
-      <UniqueIdentifier>{7633f748-13d7-4752-bb7c-c84957b51e81}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\States\NPCSpy">
-      <UniqueIdentifier>{d0009159-07aa-48e5-920e-43dac91765f0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\States\NPCCar">
-      <UniqueIdentifier>{3976e732-ded5-4f5b-9b69-4c84e099ed66}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\States\Car">
-      <UniqueIdentifier>{bc32e246-6a8e-4d14-84ae-cf177f6a4679}</UniqueIdentifier>
     </Filter>
     <Filter Include="Characters">
       <UniqueIdentifier>{13889be8-f8c5-4352-b558-73c3e1568b1a}</UniqueIdentifier>
     </Filter>
     <Filter Include="MessageBoard">
       <UniqueIdentifier>{449e1a07-20f6-468e-9360-56b624733e2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Enemy">
+      <UniqueIdentifier>{f85e4880-11e3-428e-921c-48f727f4c05d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Characters\States">
+      <UniqueIdentifier>{4eb5c287-15e2-477f-8ccd-9bf3f63a2376}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -210,71 +198,8 @@
     <ClCompile Include="Source\NPC.cpp">
       <Filter>Source Files\AI</Filter>
     </ClCompile>
-    <ClCompile Include="Source\SpyNPC.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Waypoint.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Guard.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\PatrolState.cpp">
-      <Filter>Source Files\States</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\SlackState.cpp">
-      <Filter>Source Files\States</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\AttackedState.cpp">
-      <Filter>States</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\RespawnState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\BombState.cpp">
-      <Filter>Source Files\States\NPCSpy</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HuntingEnemyState.cpp">
-      <Filter>Source Files\States\NPCSpy</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\MoveTargetState.cpp">
-      <Filter>Source Files\States\NPCSpy</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\RunTargetState.cpp">
-      <Filter>Source Files\States\NPCSpy</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\SneakTargetState.cpp">
-      <Filter>Source Files\States\NPCSpy</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ToTargetState.cpp">
-      <Filter>Source Files\States\NPCSpy</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\RunEnemyState.cpp">
-      <Filter>Source Files\States\NPCSpy</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\StumbleState.cpp">
-      <Filter>Source Files\States\NPCSpy</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\RetreatState.cpp">
-      <Filter>Source Files\States</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\WakeUpState.cpp">
-      <Filter>Source Files\States</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\AttackState.cpp">
-      <Filter>States</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\KnockOutState.cpp">
-      <Filter>Source Files\States</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\RunToSpawnState.cpp">
-      <Filter>Source Files\States\NPCSpy</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Car.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\DrivingState.cpp">
-      <Filter>Source Files\States\Car</Filter>
     </ClCompile>
     <ClCompile Include="Source\Character.cpp">
       <Filter>Characters</Filter>
@@ -290,6 +215,27 @@
     </ClCompile>
     <ClCompile Include="Source\MessageBoard\MessageListener.cpp">
       <Filter>MessageBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Enemy.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ActionState.cpp">
+      <Filter>Characters\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\AttackState.cpp">
+      <Filter>Characters\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DefendState.cpp">
+      <Filter>Characters\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PassState.cpp">
+      <Filter>Characters\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameCharacter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\StartTurnState.cpp">
+      <Filter>Characters\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -428,74 +374,8 @@
     <ClInclude Include="Source\FSMState.h">
       <Filter>Header Files\AI</Filter>
     </ClInclude>
-    <ClInclude Include="Source\SpyNPC.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Waypoint.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Guard.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\PatrolState.h">
-      <Filter>Header Files\States</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\SlackState.h">
-      <Filter>Header Files\States</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\AttackedState.h">
-      <Filter>States</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\RespawnState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\BombState.h">
-      <Filter>Header Files\States\NPCSpy</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HuntingEnemyState.h">
-      <Filter>Header Files\States\NPCSpy</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\MoveTargetState.h">
-      <Filter>Header Files\States\NPCSpy</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\RunTargetState.h">
-      <Filter>Header Files\States\NPCSpy</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ToTargetState.h">
-      <Filter>Header Files\States\NPCSpy</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\SneakTargetState.h">
-      <Filter>Header Files\States\NPCSpy</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\RunEnemyState.h">
-      <Filter>Header Files\States\NPCSpy</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\StumbleState.h">
-      <Filter>Header Files\States\NPCSpy</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\RetreatState.h">
-      <Filter>Header Files\States</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\KnockOutState.h">
-      <Filter>Header Files\States</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\WakeUpState.h">
-      <Filter>Header Files\States</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Raycast.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\AttackState.h">
-      <Filter>States</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\RunToSpawnState.h">
-      <Filter>Header Files\States\NPCSpy</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Car.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\DrivingState.h">
-      <Filter>Header Files\States\NPCCar</Filter>
     </ClInclude>
     <ClInclude Include="Source\Character.h">
       <Filter>Characters</Filter>
@@ -511,6 +391,30 @@
     </ClInclude>
     <ClInclude Include="Source\MessageBoard\MessageListener.h">
       <Filter>MessageBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Enemy.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Raycast.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ActionState.h">
+      <Filter>Characters\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AttackState.h">
+      <Filter>Characters\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DefendState.h">
+      <Filter>Characters\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PassState.h">
+      <Filter>Characters\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GameCharacter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\StartTurnState.h">
+      <Filter>Characters\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

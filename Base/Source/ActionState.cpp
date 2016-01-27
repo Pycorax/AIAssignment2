@@ -1,15 +1,16 @@
-#include "AttackState.h"
+#include "ActionState.h"
+#include "StartTurnState.h"
 
-AttackState::AttackState() : FSMState()
+ActionState::ActionState() : FSMState()
 {
 }
 
 
-AttackState::~AttackState()
+ActionState::~ActionState()
 {
 }
 
-void AttackState::Init(NPC * FSMOwner)
+void ActionState::Init(NPC * FSMOwner)
 {
 	FSMState::Init(FSMOwner);
 
@@ -23,9 +24,10 @@ void AttackState::Init(NPC * FSMOwner)
 	}
 
 	// Set up the child state
+	setCurrentState(new StartTurnState());
 }
 
-void AttackState::Init(FSMState * stateOwner)
+void ActionState::Init(FSMState * stateOwner)
 {
 	// Attach the handle to the state owner
 	FSMState::Init(stateOwner);
@@ -40,7 +42,7 @@ void AttackState::Init(FSMState * stateOwner)
 	}
 }
 
-void AttackState::Update(double dt)
+void ActionState::Update(double dt)
 {
 	FSMState::Update(dt);
 
@@ -53,15 +55,13 @@ void AttackState::Update(double dt)
 		return;
 	}
 
-	if (c->GetOpponentTeam().size() > 0) // Someone is in opponent team
+	// End turn once action is over
+	if (c->GetEndTurn())
 	{
-		int random = Math::RandIntMinMax(0, c->GetOpponentTeam().size() - 1); // Random an enemy to attack
-		c->GetOpponentTeam()[random]->Injure(c->GetAttack());
+		//changeState(new WaitForTurn());
 	}
-
-	c->EndTurn(); // After attacking, end the character's turn
 }
 
-void AttackState::Exit(void)
+void ActionState::Exit(void)
 {
 }
