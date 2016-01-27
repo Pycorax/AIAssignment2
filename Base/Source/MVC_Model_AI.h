@@ -6,6 +6,7 @@
 
 // Other Includes
 #include "TextObject.h"
+#include "GameCharacter.h"
 
 class MVC_Model_AI : public MVC_Model
 {
@@ -29,7 +30,7 @@ private:
 	// Environment Objects
 	GameObject2D* m_envObjects[EO_TOTAL];
 
-
+	GameCharacter* testChar;
 
 public:
 	MVC_Model_AI(string configSONFile);
