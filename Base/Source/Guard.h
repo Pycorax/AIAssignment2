@@ -5,12 +5,6 @@
 #include "GameObject2D.h"
 #include "Collider2D.h"
 #include "Waypoint.h"
-#include "PatrolState.h"
-#include "SlackState.h"
-#include "AttackedState.h"
-#include "KnockOutState.h"
-#include "WakeUpState.h"
-#include "AttackState.h"
 
 #include <stack>
 using std::stack;

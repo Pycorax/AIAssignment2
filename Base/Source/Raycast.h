@@ -5,7 +5,7 @@
 
 namespace Raycast
 {
-	bool lineLine(Vector2 a1, Vector2 a2, Vector2 b1, Vector2 b2)
+	/*bool lineLine(Vector2 a1, Vector2 a2, Vector2 b1, Vector2 b2)
 	{
 		// Store the values for fast access and easy
 		// equations-to-code conversion
@@ -38,7 +38,7 @@ namespace Raycast
 		/*E is the starting point of the ray,
 		L is the end point of the ray,
 		C is the center of sphere you're testing against
-		r is the radius of that sphere*/
+		r is the radius of that sphere
 
 		Vector3 E = caster->GetTransform().Translation; // Start point of ray
 		Vector3 L = E + (caster->GetLookDir() * caster->GetView()->GetTransform().Scale.x * 0.5f); // End point of ray
@@ -59,7 +59,7 @@ namespace Raycast
 		if (discriminant < 0)
 		{
 			// no intersection
-			hit ;
+			hit;
 		}
 		else
 		{
@@ -141,7 +141,7 @@ namespace Raycast
 		}
 
 		return hit;
-	}
+	}*/
 }
 
 #endif
