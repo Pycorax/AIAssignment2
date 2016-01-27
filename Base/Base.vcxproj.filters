@@ -288,6 +288,9 @@
     <ClCompile Include="Source\MessageBoard\MessageBoard.cpp">
       <Filter>MessageBoard</Filter>
     </ClCompile>
+    <ClCompile Include="Source\MessageBoard\MessageListener.cpp">
+      <Filter>MessageBoard</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Utility.h">
@@ -504,6 +507,9 @@
       <Filter>MessageBoard</Filter>
     </ClInclude>
     <ClInclude Include="Source\MessageBoard\MessageBoard.h">
+      <Filter>MessageBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MessageBoard\MessageListener.h">
       <Filter>MessageBoard</Filter>
     </ClInclude>
   </ItemGroup>
