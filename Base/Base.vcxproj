@@ -22,6 +22,8 @@
     <ClCompile Include="Source\DefendState.cpp" />
     <ClCompile Include="Source\DepthFBO.cpp" />
     <ClCompile Include="Source\Enemy.cpp" />
+    <ClCompile Include="Source\EnemyActionState.cpp" />
+    <ClCompile Include="Source\EnemyAttackActionState.cpp" />
     <ClCompile Include="Source\FSMState.cpp" />
     <ClCompile Include="Source\GameCharacter.cpp" />
     <ClCompile Include="Source\MessageBoard\Message.cpp" />
@@ -76,6 +78,8 @@
     <ClInclude Include="Source\DepthFBO.h" />
     <ClInclude Include="Source\Direction.h" />
     <ClInclude Include="Source\Enemy.h" />
+    <ClInclude Include="Source\EnemyActionState.h" />
+    <ClInclude Include="Source\EnemyAttackActionState.h" />
     <ClInclude Include="Source\FSMState.h" />
     <ClInclude Include="Source\GameCharacter.h" />
     <ClInclude Include="Source\InputDevice.h" />

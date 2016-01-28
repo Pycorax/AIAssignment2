@@ -1,5 +1,5 @@
-#ifndef MESSAGE_MANAGER_H
-#define MESSAGE_MANAGER_H
+#ifndef DIALOG_MANAGER_H
+#define DIALOG_MANAGER_H
 
 // STL Includes
 #include <queue>

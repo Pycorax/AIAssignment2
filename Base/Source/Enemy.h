@@ -5,12 +5,19 @@
 
 class Enemy : public Character
 {
+	/*
+	*		State Classes Friend Declarations
+	* States should be able to access this class's properties
+	*/
+	friend class EnemyActionState;
+	friend class EnemyAttackActionState;
+
 public:
 	Enemy();
 	~Enemy();
 
 protected:
-
+	void Attack
 };
 
 #endif
