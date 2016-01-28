@@ -16,15 +16,17 @@ class MessageBoard;
 class MessageListener
 {
 private:
+	string m_name;
 	MessageBoard* m_messageBoard;		// Pointer to the message board that it is registered to
 	queue<Message> m_messageList;
 
 public:
-	MessageListener();
+	MessageListener(string name = "");
 	~MessageListener();
 
 	void Init(MessageBoard* mb);
 	void AddMessage(Message message);
+	string GetName(void) const;
 
 protected:
 	// Call this function when you want to check for and react to messages

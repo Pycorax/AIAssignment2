@@ -3,7 +3,8 @@
 #include "MessagePacket.h"
 #include "MessageBoard.h"
 
-MessageListener::MessageListener()
+MessageListener::MessageListener(string name)
+	: m_name(name)
 {
 }
 
@@ -20,6 +21,11 @@ void MessageListener::Init(MessageBoard * mb)
 void MessageListener::AddMessage(Message message)
 {
 	m_messageList.push(message);
+}
+
+string MessageListener::GetName(void) const
+{
+	return m_name;
 }
 
 void MessageListener::HandleMessage()

@@ -50,3 +50,15 @@ bool MessageBoard::SendMessage(MessagePacket msg)
 
 	return false;
 }
+
+Message MessageBoard::PeekGlobalMessage(void) const
+{
+	if (m_globalMessages.size() > 0)
+	{
+		return m_globalMessages.back();
+	}
+	else
+	{
+		return Message();
+	}
+}

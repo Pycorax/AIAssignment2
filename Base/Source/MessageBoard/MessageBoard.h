@@ -28,6 +28,9 @@ public:
 
 	// Messaging
 	bool SendMessage(MessagePacket msg);
+
+	// Peeking
+	Message PeekGlobalMessage(void) const;
 };
 
 #endif

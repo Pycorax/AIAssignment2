@@ -19,6 +19,11 @@ void MVC_Model_AI::Init(void)
 	
 	initEnvironment();
 	initText();
+
+	MessagePacket msgPacket;
+	msgPacket.message = Message(nullptr, Message::MSG_REQUEST_SUPPORT);
+
+	m_messageBoard.SendMessage(msgPacket);
 }
 
 void MVC_Model_AI::Update(double dt)
@@ -34,6 +39,7 @@ void MVC_Model_AI::Update(double dt)
 	// Update and render the text
 	ostringstream oss;
 	m_textObjects[TO_TEST]->SetText("Test");
+	m_textObjects[TO_MESSAGE_BOARD]->SetText(m_messageBoard.PeekGlobalMessage().ToString());
 
 	// Push all the text into the render queue
 	for (size_t i = 0; i < TO_TOTAL; ++i)
@@ -67,6 +73,8 @@ void MVC_Model_AI::initText(void)
 		m_textObjects[i]->SetPos(Vector2(0.0f, i * 3.0f));
 		m_textObjects[i]->SetScale(Vector2(3.0f));
 	}
+
+	//m_textObjects[TO_MESSAGE_BOARD]->SetPos(Vector2());
 }
 
 void MVC_Model_AI::initEnvironment(void)

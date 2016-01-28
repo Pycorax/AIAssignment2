@@ -3,9 +3,11 @@
 
 // STL Includes
 #include <vector>
+#include <string>
 
 // Using Directives
 using std::vector;
+using std::string;
 
 // Forward Declarations
 class MessageListener;
@@ -24,11 +26,15 @@ public:
 		NUM_MESSAGE,
 	};
 
+	static const string MESSAGE_TEXT[NUM_MESSAGE];
+
 	Message(MessageListener* sender = nullptr, MESSAGE_TYPE type = NUM_MESSAGE);
 	~Message();
 
 	MessageListener* GetSender(void) const;
 	Message::MESSAGE_TYPE GetMessage(void) const;
+
+	string ToString(void) const;
 
 private:
 	// Senders and receivers

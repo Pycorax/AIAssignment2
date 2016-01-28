@@ -7,6 +7,7 @@
 // Other Includes
 #include "TextObject.h"
 #include "GameCharacter.h"
+#include "MessageBoard\MessageBoard.h"
 
 class MVC_Model_AI : public MVC_Model
 {
@@ -20,6 +21,7 @@ private:
 	enum E_TEXT_OBJECT
 	{
 		TO_TEST,
+		TO_MESSAGE_BOARD,
 		TO_TOTAL
 	};
 
@@ -30,6 +32,10 @@ private:
 	// Environment Objects
 	GameObject2D* m_envObjects[EO_TOTAL];
 
+	// MessageBoard
+	MessageBoard m_messageBoard;
+
+	// Characters
 	GameCharacter* testChar;
 
 public:
