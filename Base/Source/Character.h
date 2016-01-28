@@ -28,6 +28,9 @@ public:
 	Character(int maxHealth = 1, int attack = 1);
 	virtual ~Character();
 
+	virtual void Init(int maxHealth, int attack, Mesh* mesh);
+	virtual void Update(double dt);
+
 	int GetMaxHealth(void) const;
 	int GetHealth(void) const;
 	int GetAttack(void) const;

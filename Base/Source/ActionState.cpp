@@ -29,9 +29,6 @@ void ActionState::Init(NPC * FSMOwner)
 
 void ActionState::Init(FSMState * stateOwner)
 {
-	// Attach the handle to the state owner
-	FSMState::Init(stateOwner);
-
 	// Get the actual Character-type pointer
 	GameCharacter* c = dynamic_cast<GameCharacter*>(m_FSMOwner);
 
@@ -40,11 +37,13 @@ void ActionState::Init(FSMState * stateOwner)
 	{
 		return;
 	}
+
+	// Attach the handle to the state owner
+	FSMState::Init(stateOwner);
 }
 
 void ActionState::Update(double dt)
 {
-	FSMState::Update(dt);
 
 	// Get the actual Character-type pointer
 	GameCharacter* c = dynamic_cast<GameCharacter*>(m_FSMOwner);
@@ -54,6 +53,13 @@ void ActionState::Update(double dt)
 	{
 		return;
 	}
+
+	if (c->GetEndTurn())
+	{
+		return;
+	}
+
+	FSMState::Update(dt);
 
 	// End turn once action is over
 	if (c->GetEndTurn())
