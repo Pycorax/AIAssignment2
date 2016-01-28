@@ -60,11 +60,11 @@ public:
 	virtual string GetStateName(void);
 
 protected:
-	// Function to change the state. Automatically slates the current state for Exit() and deletion in the new state's Init().
+	// Function to change the state of the parent. Automatically slates this state for Exit() and deletion in the new state's Init().
 	void changeState(FSMState* state);
 	// Function to check if the current state is a nested state or a base NPC state.
 	bool isNestedState(void) const;
-	// Use this function to set the current state. Automatically calls the state's Init() and destroys the previous state.
+	// Use this function to set the current child state. Automatically calls the state's Init() and destroys the previous child state.
 	void setCurrentState(FSMState* state);
 };
 

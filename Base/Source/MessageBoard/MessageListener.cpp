@@ -12,6 +12,11 @@ MessageListener::~MessageListener()
 {
 }
 
+void MessageListener::Init(MessageBoard * mb)
+{
+	m_messageBoard = mb;
+}
+
 void MessageListener::AddMessage(Message message)
 {
 	m_messageList.push(message);
@@ -53,14 +58,14 @@ void MessageListener::sendMessage(Message::MESSAGE_TYPE type, vector<MessageList
 	m_messageBoard->SendMessage(msg);
 }
 
-Message::MESSAGE_TYPE MessageListener::peekTopMessage()
+Message MessageListener::peekTopMessage()
 {
 	if (m_messageList.size() == 0)
 	{
-		return Message::NUM_MESSAGE;
+		return Message();
 	}
 	else
 	{
-		return m_messageList.back().GetMessage();
+		return m_messageList.back();
 	}
 }
