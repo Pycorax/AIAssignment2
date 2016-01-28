@@ -24,11 +24,28 @@ void MVC_Model_AI::Init(void)
 	msgPacket.message = Message(nullptr, Message::MSG_REQUEST_SUPPORT);
 
 	m_messageBoard.SendMessage(msgPacket);
+
+	m_turnTimer = 0.f;
+	m_maxTimer = 2.f;
+	m_testChar = new GameCharacter();
+	m_testChar->Init(GameCharacter::GC_RANGER, 10, 10, nullptr);
+	m_testChar->InitProbability(50, 30, 15, 5);
 }
 
 void MVC_Model_AI::Update(double dt)
 {
 	MVC_Model::Update(dt);
+
+	if (m_turnTimer < m_maxTimer)
+	{
+		m_turnTimer += dt;
+	}
+	else
+	{
+		m_testChar->StartTurn();
+		m_turnTimer = 0.f;
+	}
+	m_testChar->Update(dt);
 
 	// Draw the environment
 	for (size_t i = 0; i < EO_TOTAL; ++i)

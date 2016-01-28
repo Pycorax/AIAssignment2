@@ -35,6 +35,10 @@ public:
 	GameCharacter();
 	virtual ~GameCharacter();
 
+	virtual void Init(GAME_CHARACTER_TYPE type, int maxHealth, int attack, Mesh* mesh);
+	void InitProbability(short attProb, short defProb, short specProb, short passProb);
+	virtual void Update(double dt);
+
 	void SetGuarder(Character* guarder);
 	Character* GetGuarder();
 

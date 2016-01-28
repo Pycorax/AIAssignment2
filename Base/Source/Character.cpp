@@ -16,6 +16,18 @@ Character::~Character()
 {
 }
 
+void Character::Init(int maxHealth, int attack, Mesh * mesh)
+{
+	m_maxHealth = maxHealth;
+	m_attack = attack;
+	GameObject2D::Init(mesh, Transform());
+}
+
+void Character::Update(double dt)
+{
+	NPC::Update(dt);
+}
+
 int Character::GetMaxHealth(void) const
 {
 	return m_maxHealth;
@@ -43,6 +55,7 @@ vector<Character*>& Character::GetOpponentTeam()
 
 void Character::StartTurn()
 {
+	std::cout << "Start turn" << std::endl;
 	m_endTurn = false;
 	setCurrentState(new ActionState());
 }
@@ -85,6 +98,7 @@ void Character::Heal(int health)
 
 void Character::EndTurn()
 {
+	std::cout << "End turn" << std::endl;
 	m_endTurn = true;
 }
 

@@ -13,6 +13,25 @@ GameCharacter::~GameCharacter()
 {
 }
 
+void GameCharacter::Init(GAME_CHARACTER_TYPE type, int maxHealth, int attack, Mesh * mesh)
+{
+	m_type = type;
+	Character::Init(maxHealth, attack, mesh);
+}
+
+void GameCharacter::InitProbability(short attProb, short defProb, short specProb, short passProb)
+{
+	m_attackProbability = attProb;
+	m_defendProbability = defProb;
+	m_specialProbability = specProb;
+	m_passProbability = passProb;
+}
+
+void GameCharacter::Update(double dt)
+{
+	Character::Update(dt);
+}
+
 void GameCharacter::SetGuarder(Character * guarder)
 {
 	m_guarder = guarder;

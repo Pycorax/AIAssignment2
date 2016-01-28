@@ -36,7 +36,9 @@ private:
 	MessageBoard m_messageBoard;
 
 	// Characters
-	GameCharacter* testChar;
+	GameCharacter* m_testChar;
+	float m_turnTimer;
+	float m_maxTimer;
 
 public:
 	MVC_Model_AI(string configSONFile);
