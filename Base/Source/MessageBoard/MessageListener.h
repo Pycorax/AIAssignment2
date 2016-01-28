@@ -23,6 +23,7 @@ public:
 	MessageListener();
 	~MessageListener();
 
+	void Init(MessageBoard* mb);
 	void AddMessage(Message message);
 
 protected:
@@ -34,7 +35,7 @@ protected:
 	void sendMessage(Message::MESSAGE_TYPE type, vector<MessageListener*> recepients);
 
 	// Peeking at Messages
-	Message::MESSAGE_TYPE peekTopMessage();
+	Message peekTopMessage();
 
 private:
 	// Override this function to define what happens when a message is received

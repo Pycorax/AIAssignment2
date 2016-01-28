@@ -15,6 +15,10 @@ void MessageBoard::RegisterUser(MessageListener * listener)
 {
 	if (listener)
 	{
+		// Provide it with a pointer to this so that it can send messages
+		listener->Init(this);
+
+		// Add this into the registration list
 		m_registrants.push_back(listener);
 	}
 }
