@@ -1,8 +1,10 @@
 #include "ActionState.h"
-#include "StartTurnState.h"
+#include "GameCharacter.h"
 
-ActionState::ActionState() : FSMState()
+ActionState::ActionState(FSMState* StartTurnState) : FSMState()
 {
+	// Set up the child state
+	setCurrentState(StartTurnState);
 }
 
 
@@ -23,8 +25,7 @@ void ActionState::Init(NPC * FSMOwner)
 		return;
 	}
 
-	// Set up the child state
-	setCurrentState(new StartTurnState());
+	
 }
 
 void ActionState::Init(FSMState * stateOwner)

@@ -7,7 +7,7 @@
 class ActionState : public FSMState
 {
 public:
-	ActionState();
+	ActionState(FSMState* StartTurnState);
 	virtual ~ActionState();
 
 	virtual void Init(NPC* FSMOwner);
