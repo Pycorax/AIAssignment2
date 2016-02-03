@@ -3,6 +3,53 @@
 
 #include "Character.h"
 
+struct Probabilities
+{
+	// State probability (Out of 100)
+	short m_attackProbability;
+	short m_defendProbability;
+	short m_specialProbability;
+	short m_passProbability;
+
+	// Default values
+	short m_defaultAttackProbability;
+	short m_defaultDefendProbability;
+	short m_defaultSpecialProbability;
+	short m_defaultPassProbability;
+
+	void Init(short attProb, short defProb, short specProb, short passProb)
+	{
+		m_attackProbability = m_defaultAttackProbability = attProb;
+		m_defendProbability = m_defaultDefendProbability = defProb;
+		m_specialProbability = m_defaultSpecialProbability = specProb;
+		m_passProbability = m_defaultPassProbability = passProb;
+	}
+
+	void Set(short attProb, short defProb, short specProb, short passProb)
+	{
+		m_attackProbability = attProb;
+		m_defendProbability = defProb;
+		m_specialProbability = specProb;
+		m_passProbability = passProb;
+	}
+
+	void SetDefault()
+	{
+		m_attackProbability = m_defaultAttackProbability;
+		m_defendProbability = m_defaultDefendProbability;
+		m_specialProbability = m_defaultSpecialProbability;
+		m_passProbability = m_defaultPassProbability;
+	}
+
+	void Reset()
+	{
+		m_attackProbability = 0;
+		m_defendProbability = 0;
+		m_specialProbability = 0;
+		m_passProbability = 0;
+	}
+};
+
 class GameCharacter : public Character
 {
 	friend class StartTurnState;
@@ -29,11 +76,7 @@ protected:
 	GAME_CHARACTER_TYPE m_type;
 	Character* m_nextTarget; // Plan next target when processing message
 
-	// State probability (Out of 100)
-	short m_attackProbability;
-	short m_defendProbability;
-	short m_specialProbability;
-	short m_passProbability;
+	Probabilities probabilities;
 
 public:
 	GameCharacter();
@@ -44,7 +87,7 @@ public:
 	virtual void Update(double dt);
 
 	virtual void StartTurn();
-	virtual void EndStart();
+	virtual void EndTurn();
 
 	virtual void Injure(int damage);
 	virtual void Stun(int turnDuration);

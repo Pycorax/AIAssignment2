@@ -11,6 +11,7 @@ GameCharacter::GameCharacter()
 	, m_defending(false)
 	, m_nextTarget(nullptr)
 {
+	probabilities.Reset();
 }
 
 
@@ -27,10 +28,7 @@ void GameCharacter::Init(GAME_CHARACTER_TYPE type, int maxHealth, int attack, Me
 
 void GameCharacter::InitProbability(short attProb, short defProb, short specProb, short passProb)
 {
-	m_attackProbability = attProb;
-	m_defendProbability = defProb;
-	m_specialProbability = specProb;
-	m_passProbability = passProb;
+	probabilities.Set(attProb, defProb, specProb, passProb);
 }
 
 void GameCharacter::Update(double dt)
@@ -45,9 +43,10 @@ void GameCharacter::StartTurn()
 	m_guarder = nullptr;
 }
 
-void GameCharacter::EndStart()
+void GameCharacter::EndTurn()
 {
 	Character::EndTurn();
+	probabilities.SetDefault();
 }
 
 void GameCharacter::Injure(int damage)
@@ -155,22 +154,22 @@ Character * GameCharacter::GetNextTarget()
 
 short GameCharacter::GetAttackProbability()
 {
-	return m_attackProbability;
+	return probabilities.m_attackProbability;
 }
 
 short GameCharacter::GetDefendProbability()
 {
-	return m_defendProbability;
+	return probabilities.m_defaultDefendProbability;
 }
 
 short GameCharacter::GetSpecialProbability()
 {
-	return m_specialProbability;
+	return probabilities.m_specialProbability;
 }
 
 short GameCharacter::GetPassProbability()
 {
-	return m_passProbability;
+	return probabilities.m_passProbability;
 }
 
 void GameCharacter::handleMessage(Message msg)
