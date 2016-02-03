@@ -28,6 +28,14 @@ void DeadState::Init(FSMState * stateOwner)
 void DeadState::Update(double dt)
 {
 	FSMState::Update(dt);
+
+	// Get the actual Character-type pointer
+	Character* c = dynamic_cast<Character*>(m_FSMOwner);
+
+	if (!c->GetEndTurn())
+	{
+		c->EndTurn();
+	}
 }
 
 void DeadState::Exit(void)
