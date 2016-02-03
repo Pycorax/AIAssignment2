@@ -1,9 +1,5 @@
 #include "MVC_Model_AI.h"
 #include "Raycast.h"
-#include <sstream>
-
-// Using Directives
-using std::ostringstream;
 
 // Static Constants
 const Vector3 MVC_Model_AI::CHAR_SCALE = Vector3(50.0f, 50.0f, 50.0f);
@@ -26,40 +22,13 @@ void MVC_Model_AI::Init(void)
 	initPlayers();
 	initEnemies();
 	assignTeams();
-
-	m_turnTimer = 0.f;
-	m_maxTimer = 2.f;
-
-	// Initialize Ranger
-	m_testChar = new CharacterBundle(new GameCharacter(), m_defaultFont, Vector2());
-	GameCharacter* gc = dynamic_cast<GameCharacter*>(m_testChar->character);
-	gc->Init(GameCharacter::GC_RANGER, 10, 10, GetMeshResource("Character"));
-	gc->InitProbability(50, 30, 15, 5);
-	gc->SetPos(Vector2(100, 300));
-	gc->SetScale(CHAR_SCALE);
-
-	// Initialize Ranger Text
-	m_textObjects[TO_CHAR_TYPE]->SetPos(Vector2(0.0f, 12.0f));
-	m_textObjects[TO_CHAR_HEALTH]->SetPos(Vector2(0.0f, 9.0f));
-	m_textObjects[TO_CHAR_STATE]->SetPos(Vector2(0.0f, 6.0f));
-	m_textObjects[TO_CHAR_SUBSTATE]->SetPos(Vector2(0.0f, 3.0f));
 }
 
 void MVC_Model_AI::Update(double dt)
 {
 	MVC_Model::Update(dt);
 
-	if (m_turnTimer < m_maxTimer)
-	{
-		m_turnTimer += dt;
-	}
-	else
-	{
-		m_testChar->character->StartTurn();
-		m_turnTimer = 0.f;
-	}
-
-	m_testChar->Update(dt);
+	
 
 	// Draw the environment
 	for (size_t i = 0; i < EO_TOTAL; ++i)
@@ -67,16 +36,20 @@ void MVC_Model_AI::Update(double dt)
 		m_renderList2D.push(m_envObjects[i]);
 	}
 
-	ostringstream oss;
-	// Render the test char
-	pushCharBundleRender(m_testChar);
-	
+	// Update and render all the characters
+	for (auto c : m_charList)
+	{
+		c->Update(dt);
+		pushCharBundleRender(c);
+	}
+
+	for (auto c : m_enemyList)
+	{
+		c->Update(dt);
+		pushCharBundleRender(c);
+	}
 
 	// Update and render the text
-	m_textObjects[TO_TEST]->SetText("Test");
-	oss << m_fps;
-	m_textObjects[TO_FPS]->SetText(oss.str());
-	oss.str("");
 	m_textObjects[TO_MESSAGE_BOARD]->SetText(m_messageBoard.PeekGlobalMessage().ToString());
 
 	// Push all the text into the render queue
@@ -98,7 +71,7 @@ void MVC_Model_AI::Exit(void)
 
 	while (m_charList.size() > 0)
 	{
-		GameCharacter* gc = m_charList.back();
+		CharacterBundle* gc = m_charList.back();
 		if (gc)
 		{
 			delete gc;
@@ -108,7 +81,7 @@ void MVC_Model_AI::Exit(void)
 
 	while (m_enemyList.size() > 0)
 	{
-		Enemy* e = m_enemyList.back();
+		CharacterBundle* e = m_enemyList.back();
 		if (e)
 		{
 			delete e;
@@ -128,7 +101,7 @@ void MVC_Model_AI::initText(void)
 	for (size_t i = 0; i < TO_TOTAL; ++i)
 	{
 		m_textObjects[i] = new TextObject(m_defaultFont, "", Color(0.0f, 0.0f, 0.0f));
-		m_textObjects[i]->SetPos(Vector2(0.0f, 60 - (i * 3.0f)));
+		m_textObjects[i]->SetPos(Vector2(0.0f, 69 - (i * 3.0f)));
 		m_textObjects[i]->SetScale(Vector2(3.0f));
 	}
 
@@ -138,59 +111,68 @@ void MVC_Model_AI::initText(void)
 void MVC_Model_AI::initEnvironment(void)
 {
 	m_envObjects[EO_TEST] = new GameObject2D;
-	m_envObjects[EO_TEST]->Init(GetMeshResource("Road"), Transform(Vector3(m_viewWidth * 0.5f, m_viewHeight * 0.8f), Vector3(), Vector3(m_viewWidth * 2, 125.0f)));
+	m_envObjects[EO_TEST]->Init(nullptr, Transform(Vector3(m_viewWidth * 0.5f, m_viewHeight * 0.8f), Vector3(), Vector3(m_viewWidth * 2, 125.0f)));
 }
 
 void MVC_Model_AI::initPlayers(void)
 {
 	// Healer
 	GameCharacter* gc = new GameCharacter();
-	gc->Init(GameCharacter::GC_HEALER, Math::RandIntMinMax(50, 70), 10, nullptr);
+	gc->Init(GameCharacter::GC_HEALER, Math::RandIntMinMax(50, 70), 10, GetMeshResource("Character"));
 	gc->InitProbability(70, 20, 0, 10);
-	// TODO: Set pos and scale
-	m_charList.push_back(gc);
+	gc->SetPos(Vector2(100, 500));
+	gc->SetScale(CHAR_SCALE);
+	m_charList.push_back(new CharacterBundle(gc, m_defaultFont, Vector2()));
 
 	// Warrior
 	gc = new GameCharacter();
-	gc->Init(GameCharacter::GC_WARRIOR, Math::RandIntMinMax(50, 70), 10, nullptr);
+	gc->Init(GameCharacter::GC_WARRIOR, Math::RandIntMinMax(50, 70), 10, GetMeshResource("Character"));
 	gc->InitProbability(50, 20, 20, 10);
-	// TODO: Set pos and scale
-	m_charList.push_back(gc);
+	gc->InitProbability(50, 30, 15, 5);
+	gc->SetPos(Vector2(100, 400));
+	gc->SetScale(CHAR_SCALE);
+	m_charList.push_back(new CharacterBundle(gc, m_defaultFont, Vector2(30)));
 
 	// Tank
 	gc = new GameCharacter();
-	gc->Init(GameCharacter::GC_TANK, Math::RandIntMinMax(50, 70), 10, nullptr);
+	gc->Init(GameCharacter::GC_TANK, Math::RandIntMinMax(50, 70), 10, GetMeshResource("Character"));
 	gc->InitProbability(70, 20, 0, 10);
-	// TODO: Set pos and scale
-	m_charList.push_back(gc);
+	gc->InitProbability(50, 30, 15, 5);
+	gc->SetPos(Vector2(100, 300));
+	gc->SetScale(CHAR_SCALE);
+	m_charList.push_back(new CharacterBundle(gc, m_defaultFont, Vector2(60)));
 
 	// Ranger
 	gc = new GameCharacter();
-	gc->Init(GameCharacter::GC_RANGER, Math::RandIntMinMax(50, 70), 10, nullptr);
+	gc->Init(GameCharacter::GC_RANGER, Math::RandIntMinMax(50, 70), 10, GetMeshResource("Character"));
 	gc->InitProbability(45, 20, 25, 10);
-	// TODO: Set pos and scale
-	m_charList.push_back(gc);
+	gc->InitProbability(50, 30, 15, 5);
+	gc->SetPos(Vector2(100, 200));
+	gc->SetScale(CHAR_SCALE);
+	m_charList.push_back(new CharacterBundle(gc, m_defaultFont, Vector2(90)));
 }
 
 void MVC_Model_AI::initEnemies(void)
 {
 	Enemy* e = new Enemy();
-	e->Init(Math::RandIntMinMax(100, 150), Math::RandIntMinMax(20, 30), nullptr);
-	m_enemyList.push_back(e);
+	e->Init(Math::RandIntMinMax(100, 150), Math::RandIntMinMax(20, 30), GetMeshResource("Character"));
+	e->SetPos(Vector2(1180, 200));
+	e->SetScale(CHAR_SCALE);
+	m_enemyList.push_back(new CharacterBundle(e, m_defaultFont, Vector2(90, 50)));
 }
 
 void MVC_Model_AI::assignTeams(void)
 {
 	// Game characters
-	for (vector<GameCharacter*>::iterator it = m_charList.begin(); it != m_charList.end(); ++it)
+	for (auto it = m_charList.begin(); it != m_charList.end(); ++it)
 	{
-		GameCharacter* gc = *it;
+		GameCharacter* gc = dynamic_cast<GameCharacter*>((*it)->character);
 		if (gc)
 		{
 			// Assign game character's team
-			for (vector<GameCharacter*>::iterator it2 = m_charList.begin(); it2 != m_charList.end(); ++it2)
+			for (auto it2 = m_charList.begin(); it2 != m_charList.end(); ++it2)
 			{
-				GameCharacter* gc2 = *it2;
+				GameCharacter* gc2 = dynamic_cast<GameCharacter*>((*it2)->character);
 				if (gc2)
 				{
 					gc->AddToTeam(gc2);
@@ -198,9 +180,9 @@ void MVC_Model_AI::assignTeams(void)
 			}
 
 			// Assign game character's opponent team
-			for (vector<Enemy*>::iterator it2 = m_enemyList.begin(); it2 != m_enemyList.end(); ++it2)
+			for (auto it2 = m_enemyList.begin(); it2 != m_enemyList.end(); ++it2)
 			{
-				Enemy* e = *it2;
+				Enemy* e = dynamic_cast<Enemy*>((*it2)->character);
 				if (e)
 				{
 					gc->AddToOpponentTeam(e);
@@ -210,15 +192,15 @@ void MVC_Model_AI::assignTeams(void)
 	}
 
 	// Enemies
-	for (vector<Enemy*>::iterator it = m_enemyList.begin(); it != m_enemyList.end(); ++it)
+	for (auto it = m_enemyList.begin(); it != m_enemyList.end(); ++it)
 	{
-		Enemy* e = *it;
+		Enemy* e = dynamic_cast<Enemy*>((*it)->character);
 		if (e)
 		{
 			// Assign enemy's team
-			for (vector<Enemy*>::iterator it2 = m_enemyList.begin(); it2 != m_enemyList.end(); ++it2)
+			for (auto it2 = m_enemyList.begin(); it2 != m_enemyList.end(); ++it2)
 			{
-				Enemy* e2 = *it2;
+				Enemy* e2 = dynamic_cast<Enemy*>((*it2)->character);
 				if (e2)
 				{
 					e->AddToTeam(e2);
@@ -226,9 +208,9 @@ void MVC_Model_AI::assignTeams(void)
 			}
 
 			// Assign enemy's opponent team
-			for (vector<GameCharacter*>::iterator it2 = m_charList.begin(); it2 != m_charList.end(); ++it2)
+			for (auto it2 = m_charList.begin(); it2 != m_charList.end(); ++it2)
 			{
-				GameCharacter* gc = *it2;
+				GameCharacter* gc = dynamic_cast<GameCharacter*>((*it2)->character);
 				if (gc)
 				{
 					e->AddToOpponentTeam(gc);

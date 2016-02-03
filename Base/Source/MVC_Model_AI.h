@@ -22,12 +22,6 @@ private:
 
 	enum E_TEXT_OBJECT
 	{
-		TO_TEST,
-		TO_CHAR_HEALTH,
-		TO_CHAR_STATE,
-		TO_CHAR_SUBSTATE,
-		TO_CHAR_TYPE,
-		TO_FPS,
 		TO_MESSAGE_BOARD,
 		TO_TOTAL
 	};
@@ -46,12 +40,8 @@ private:
 	MessageBoard m_messageBoard;
 
 	// Characters
-	CharacterBundle* m_testChar;
-	float m_turnTimer;
-	float m_maxTimer;
-
-	vector<GameCharacter*> m_charList;
-	vector<Enemy*> m_enemyList;
+	vector<CharacterBundle*> m_charList;
+	vector<CharacterBundle*> m_enemyList;
 
 public:
 	MVC_Model_AI(string configSONFile);
