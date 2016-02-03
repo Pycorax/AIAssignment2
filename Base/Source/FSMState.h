@@ -35,6 +35,9 @@ State class designed for use with NPC Finite State Machine class.
 /******************************************************************************/
 class FSMState
 {
+public:
+	static const float S_MAX_STATE_TIME;
+
 private:
 	// For Nested States
 	FSMState* m_stateParent;
@@ -45,6 +48,8 @@ protected:
 	string m_stateName;
 	// Pointer to the NPC being controlled by this state. Use this to control the NPC.
 	NPC* m_FSMOwner;
+	
+	float m_stateTimer;
 
 public:
 	FSMState();

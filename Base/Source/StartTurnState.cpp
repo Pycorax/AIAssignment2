@@ -49,6 +49,17 @@ void StartTurnState::Init(FSMState * stateOwner)
 
 void StartTurnState::Update(double dt)
 {
+	// Pause state update for a duration
+	if (m_stateTimer < S_MAX_STATE_TIME)
+	{
+		m_stateTimer += dt;
+		return;
+	}
+	else
+	{
+		m_stateTimer = 0.f;
+	}
+
 	FSMState::Update(dt);
 
 	// Get the actual NPC-type pointer

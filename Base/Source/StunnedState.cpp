@@ -39,6 +39,26 @@ void StunnedState::Init(FSMState * stateOwner)
 	// Get the actual NPC-type pointer
 	GameCharacter* c = dynamic_cast<GameCharacter*>(m_FSMOwner);
 	Enemy* e = dynamic_cast<Enemy*>(m_FSMOwner);
+}
+
+void StunnedState::Update(double dt)
+{
+	// Pause state update for a duration
+	if (m_stateTimer < S_MAX_STATE_TIME)
+	{
+		m_stateTimer += dt;
+		return;
+	}
+	else
+	{
+		m_stateTimer = 0.f;
+	}
+
+	FSMState::Update(dt);
+
+	// Get the actual NPC-type pointer
+	GameCharacter* c = dynamic_cast<GameCharacter*>(m_FSMOwner);
+	Enemy* e = dynamic_cast<Enemy*>(m_FSMOwner);
 
 	if (c)
 	{
@@ -71,21 +91,6 @@ void StunnedState::Init(FSMState * stateOwner)
 	else
 	{
 		// Both NPC does not exist
-		return;
-	}
-}
-
-void StunnedState::Update(double dt)
-{
-	FSMState::Update(dt);
-
-	// Get the actual NPC-type pointer
-	GameCharacter* c = dynamic_cast<GameCharacter*>(m_FSMOwner);
-	Enemy* e = dynamic_cast<Enemy*>(m_FSMOwner);
-
-	// Check if the NPC is legit
-	if (!c)
-	{
 		return;
 	}
 }

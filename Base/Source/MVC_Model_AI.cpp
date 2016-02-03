@@ -34,17 +34,22 @@ void MVC_Model_AI::Update(double dt)
 		m_renderList2D.push(m_envObjects[i]);
 	}
 
+	/*static bool playerTurn = true;
+	int playerEndCount = 0;
+
+	*/
+
 	// Update and render all the characters
 	for (auto c : m_charList)
 	{
-		c->character->StartTurn();
+		//c->character->StartTurn();
 		c->Update(dt);
 		pushCharBundleRender(c);
 	}
 
 	for (auto c : m_enemyList)
 	{
-		c->character->StartTurn();
+		//c->character->StartTurn();
 		c->Update(dt);
 		pushCharBundleRender(c);
 	}
@@ -124,6 +129,7 @@ void MVC_Model_AI::initPlayers(void)
 	gc->SetPos(Vector2(100, 200));
 	gc->SetScale(CHAR_SCALE);
 	m_charList.push_back(new CharacterBundle(gc, m_defaultFont, Vector2(90)));
+	gc->StartTurn();
 
 	// Healer
 	gc = new GameCharacter();
@@ -132,6 +138,7 @@ void MVC_Model_AI::initPlayers(void)
 	gc->SetPos(Vector2(100, 500));
 	gc->SetScale(CHAR_SCALE);
 	m_charList.push_back(new CharacterBundle(gc, m_defaultFont, Vector2()));
+	gc->StartTurn();
 
 	// Warrior
 	gc = new GameCharacter();
@@ -141,6 +148,7 @@ void MVC_Model_AI::initPlayers(void)
 	gc->SetPos(Vector2(100, 400));
 	gc->SetScale(CHAR_SCALE);
 	m_charList.push_back(new CharacterBundle(gc, m_defaultFont, Vector2(30)));
+	gc->StartTurn();
 
 	// Tank
 	gc = new GameCharacter();
@@ -150,6 +158,7 @@ void MVC_Model_AI::initPlayers(void)
 	gc->SetPos(Vector2(100, 300));
 	gc->SetScale(CHAR_SCALE);
 	m_charList.push_back(new CharacterBundle(gc, m_defaultFont, Vector2(60)));
+	gc->StartTurn();
 }
 
 void MVC_Model_AI::initEnemies(void)

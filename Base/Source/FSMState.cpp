@@ -2,12 +2,15 @@
 
 #include <Windows.h>
 
+const float FSMState::S_MAX_STATE_TIME = 1.f;
+
 FSMState::FSMState()
 	: m_FSMOwner(nullptr)
 	, m_stateParent(nullptr)
 	, m_currentState(nullptr)
 	, m_previousState(nullptr)
 	, m_stateName("Unnamed")
+	, m_stateTimer(0.f)
 {
 }
 
@@ -122,7 +125,7 @@ void FSMState::changeState(FSMState * state)
 		m_FSMOwner->m_currentState = state;
 		m_FSMOwner->m_currentState->Init(m_FSMOwner);
 	}
-	Sleep(1000);
+	//Sleep(1000);
 }
 
 bool FSMState::isNestedState(void) const
@@ -142,5 +145,5 @@ void FSMState::setCurrentState(FSMState * startState)
 	m_currentState = startState;
 	m_currentState->Init(this);
 
-	Sleep(1000);
+	//Sleep(1000);
 }
