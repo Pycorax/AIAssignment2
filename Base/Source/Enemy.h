@@ -42,6 +42,11 @@ public:
 protected:
 	bool canUseSpecialAttack();
 	int getStunAttackDuration();
+
+	/*
+	* Message Listener Interface Abstract Functions
+	*/
+	virtual void handleMessage(Message msg);
 };
 
 #endif

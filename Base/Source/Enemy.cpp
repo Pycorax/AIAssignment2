@@ -61,3 +61,7 @@ int Enemy::getStunAttackDuration()
 {
 	return m_stunAttackDuration;
 }
+
+void Enemy::handleMessage(Message msg)
+{
+}
