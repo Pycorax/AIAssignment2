@@ -37,6 +37,11 @@ short Character::GetStunnedTurns()
 	return m_stunnedTurns;
 }
 
+void Character::SetWaitType(WaitState::WAIT_TYPE type)
+{
+	m_waitType = type;
+}
+
 int Character::GetMaxHealth(void) const
 {
 	return m_maxHealth;
@@ -66,6 +71,9 @@ void Character::StartTurn()
 {
 	//std::cout << "Start turn" << std::endl;
 	m_endTurn = false;
+
+	// Reset the waiting type
+	m_waitType = WaitState::WT_NORMAL;
 }
 
 void Character::Injure(int damage)

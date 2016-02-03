@@ -1,10 +1,10 @@
 #include "WaitState.h"
-#include "GameCharacter.h"
 
-WaitState::WaitState(FSMState* waitState)
+#include "GameCharacter.h"
+#include "ActionState.h"
+
+WaitState::WaitState()
 {
-	// Set up the child state
-	setCurrentState(waitState);
 }
 
 
@@ -25,9 +25,10 @@ void WaitState::Init(FSMState * stateOwner)
 
 void WaitState::Update(double dt)
 {
+	FSMState::Update(dt);
 
 	// Get the actual Character-type pointer
-	GameCharacter* c = dynamic_cast<GameCharacter*>(m_FSMOwner);
+	Character* c = dynamic_cast<Character*>(m_FSMOwner);
 
 	// Check if the NPC is legit
 	if (!c)
@@ -35,17 +36,16 @@ void WaitState::Update(double dt)
 		return;
 	}
 
-	if (c->GetEndTurn())
+	// It is our turn? Let's go
+	if (!c->GetEndTurn())
 	{
-		return;
-	}
+		// Determine whether this is an enemy or a normal character
+		GameCharacter* gc = dynamic_cast<GameCharacter*>(m_FSMOwner);
 
-	FSMState::Update(dt);
-
-	// End turn once action is over
-	if (c->GetEndTurn())
-	{
-		
+		if (gc)
+		{
+			changeState(new ActionState());
+		}
 	}
 }
 

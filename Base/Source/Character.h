@@ -1,11 +1,18 @@
 #ifndef _CHARACTER_H_
 #define _CHARACTER_H_
 
-#include <vector>
+// Inheritance Includes
 #include "NPC.h"
 #include "GameObject2D.h"
 #include "MessageBoard\MessageListener.h"
 
+// STL Includes
+#include <vector>
+
+// Other Includes
+#include "WaitState.h"
+
+// Using Directives
 using std::vector;
 
 class Character : public GameObject2D, public NPC, public MessageListener
@@ -26,6 +33,8 @@ protected:
 	bool m_endTurn;
 	short m_stunnedTurns;
 
+	WaitState::WAIT_TYPE m_waitType;
+
 public:
 	Character(int maxHealth = 1, int attack = 1);
 	virtual ~Character();
@@ -33,9 +42,14 @@ public:
 	virtual void Init(int maxHealth, int attack, Mesh* mesh);
 	virtual void Update(double dt);
 
+	// Stun
 	void Stun(int numOfTurns);
 	short GetStunnedTurns();
 
+	// Wait State
+	void SetWaitType(WaitState::WAIT_TYPE type);
+
+	// Getters
 	int GetMaxHealth(void) const;
 	int GetHealth(void) const;
 	int GetAttack(void) const;

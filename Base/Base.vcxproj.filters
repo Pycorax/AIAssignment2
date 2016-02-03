@@ -246,12 +246,6 @@
     <ClCompile Include="Source\EnemyAttackActionState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\WaitState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\WaitForTurnState.cpp">
-      <Filter>Characters\States</Filter>
-    </ClCompile>
     <ClCompile Include="Source\StunnedState.cpp">
       <Filter>Characters\States</Filter>
     </ClCompile>
@@ -266,6 +260,9 @@
     </ClCompile>
     <ClCompile Include="Source\EnemySpecialState.cpp">
       <Filter>Characters\States\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\WaitState.cpp">
+      <Filter>Characters\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -455,12 +452,6 @@
     <ClInclude Include="Source\EnemyAttackActionState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\WaitState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\WaitForTurnState.h">
-      <Filter>Characters\States</Filter>
-    </ClInclude>
     <ClInclude Include="Source\StunnedState.h">
       <Filter>Characters\States</Filter>
     </ClInclude>
@@ -475,6 +466,9 @@
     </ClInclude>
     <ClInclude Include="Source\EnemySpecialState.h">
       <Filter>Characters\States\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\WaitState.h">
+      <Filter>Characters\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

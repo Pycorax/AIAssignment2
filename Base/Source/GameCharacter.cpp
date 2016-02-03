@@ -37,7 +37,7 @@ void GameCharacter::Update(double dt)
 void GameCharacter::StartTurn()
 {
 	Character::StartTurn();
-	setCurrentState(new ActionState(new StartTurnState()));
+	//setCurrentState(new ActionState(new StartTurnState()));
 }
 
 void GameCharacter::Injure(int damage)

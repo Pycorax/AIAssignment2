@@ -68,7 +68,6 @@
     <ClCompile Include="Source\UIButton.cpp" />
     <ClCompile Include="Source\Utility.cpp" />
     <ClCompile Include="Source\MVC_View.cpp" />
-    <ClCompile Include="Source\WaitForTurnState.cpp" />
     <ClCompile Include="Source\WaitState.cpp" />
     <ClCompile Include="Source\Waypoint.cpp" />
   </ItemGroup>
@@ -138,7 +137,6 @@
     <ClInclude Include="Source\Utility.h" />
     <ClInclude Include="Source\Vertex.h" />
     <ClInclude Include="Source\MVC_View.h" />
-    <ClInclude Include="Source\WaitForTurnState.h" />
     <ClInclude Include="Source\WaitState.h" />
     <ClInclude Include="Source\Waypoint.h" />
   </ItemGroup>

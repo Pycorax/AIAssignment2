@@ -5,7 +5,14 @@
 class WaitState : public FSMState
 {
 public:
-	WaitState(FSMState* waitState);
+	enum WAIT_TYPE
+	{
+		WT_NORMAL,
+		WT_VULN,
+		WT_DEFEND
+	};
+
+	WaitState();
 	~WaitState();
 
 	virtual void Init(NPC* FSMOwner);

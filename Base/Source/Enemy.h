@@ -13,6 +13,7 @@ class Enemy : public Character
 	friend class EnemyActionState;
 	friend class EnemyAttackActionState;
 	friend class StunAttackState;
+	friend class WaitState;
 
 protected:
 	// State probability (Out of 100)
@@ -29,6 +30,8 @@ protected:
 public:
 	Enemy();
 	~Enemy();
+
+	virtual void Init(int maxHealth, int attack, Mesh* mesh);
 
 	virtual void StartTurn();
 

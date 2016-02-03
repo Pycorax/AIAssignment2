@@ -1,11 +1,13 @@
 #include "ActionState.h"
-#include "GameCharacter.h"
 
-ActionState::ActionState(FSMState* StartTurnState) : FSMState()
+#include "GameCharacter.h"
+#include "Enemy.h"
+#include "StartTurnState.h"
+#include "EnemyStartTurnState.h"
+
+ActionState::ActionState() : FSMState()
 {
-	m_stateName = "Action state";
-	// Set up the child state
-	setCurrentState(StartTurnState);
+	m_stateName = "Action State";
 }
 
 
@@ -19,11 +21,16 @@ void ActionState::Init(NPC * FSMOwner)
 
 	// Get the actual Character-type pointer
 	GameCharacter* c = dynamic_cast<GameCharacter*>(m_FSMOwner);
+	Enemy* e = dynamic_cast<Enemy*>(m_FSMOwner);
 
 	// Check if the NPC is legit
-	if (!c)
+	if (c)
 	{
-		return;
+		setCurrentState(new StartTurnState());
+	}
+	else if (e)
+	{
+		setCurrentState(new EnemyStartTurnState());
 	}
 }
 
