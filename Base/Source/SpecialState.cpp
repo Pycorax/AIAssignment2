@@ -72,7 +72,7 @@ void SpecialState::Update(double dt)
 				GameCharacter* gc = dynamic_cast<GameCharacter*>(m_target);
 				if (gc)
 				{
-					gc->SetGuarder(c);
+					gc->Guard(c);
 				}
 			}
 			break;
