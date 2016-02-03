@@ -91,10 +91,7 @@ void Character::StartTurn()
 	// Check if stun
 	if (IsStunned())
 	{
-		if (IsStunned())
-		{
-			EndTurn();
-		}
+		EndTurn();
 	}
 }
 
@@ -139,7 +136,7 @@ void Character::EndTurn()
 	//std::cout << "End turn" << std::endl;
 	m_endTurn = true;
 
-	if (IsStunned)
+	if (IsStunned())
 	{
 		ProcessStun();
 	}

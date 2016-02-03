@@ -1,6 +1,9 @@
 #include "WaitState.h"
 
 #include "GameCharacter.h"
+#include "Enemy.h"
+
+// States include
 #include "ActionState.h"
 
 WaitState::WaitState()
@@ -30,23 +33,39 @@ void WaitState::Update(double dt)
 
 	// Get the actual Character-type pointer
 	Character* c = dynamic_cast<Character*>(m_FSMOwner);
-
-	// Check if the NPC is legit
-	if (!c)
-	{
-		return;
-	}
+	Enemy* e = dynamic_cast<Enemy*>(m_FSMOwner);
 
 	// It is our turn? Let's go
-	if (!c->GetEndTurn())
+	if (c)
 	{
-		// Determine whether this is an enemy or a normal character
-		GameCharacter* gc = dynamic_cast<GameCharacter*>(m_FSMOwner);
-
-		if (gc)
+		if (!c->GetEndTurn())
 		{
-			changeState(new ActionState());
+			// Determine whether this is an enemy or a normal character
+			GameCharacter* gc = dynamic_cast<GameCharacter*>(m_FSMOwner);
+
+			if (gc)
+			{
+				changeState(new ActionState());
+			}
 		}
+	}
+	else if (e)
+	{
+		if (!e->GetEndTurn())
+		{
+			// Determine whether this is an enemy or a normal character
+			GameCharacter* gc = dynamic_cast<GameCharacter*>(m_FSMOwner);
+
+			if (gc)
+			{
+				changeState(new ActionState());
+			}
+		}
+	}
+	else
+	{
+		// Both NPC does not exist
+		return;
 	}
 }
 

@@ -1,4 +1,6 @@
 #include "GameCharacter.h"
+
+// State includes
 #include "ActionState.h"
 #include "StartTurnState.h"
 
@@ -38,6 +40,8 @@ void GameCharacter::Update(double dt)
 void GameCharacter::StartTurn()
 {
 	Character::StartTurn();
+	m_defending = false;
+	m_guarder = nullptr;
 }
 
 void GameCharacter::Injure(int damage)
@@ -68,7 +72,7 @@ void GameCharacter::Stun(int turnDuration)
 	}
 	else
 	{
-		m_guarder->Character::Stun(turnDuration);
+		Character::Stun(turnDuration);
 	}
 }
 

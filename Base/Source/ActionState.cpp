@@ -2,6 +2,8 @@
 
 #include "GameCharacter.h"
 #include "Enemy.h"
+
+// State includes
 #include "StartTurnState.h"
 #include "EnemyStartTurnState.h"
 #include "StunnedState.h"

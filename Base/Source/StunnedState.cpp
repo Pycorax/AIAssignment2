@@ -2,6 +2,9 @@
 #include "GameCharacter.h"
 #include "Enemy.h"
 
+// State includes
+#include "ActionState.h"
+
 StunnedState::StunnedState() : FSMState()
 {
 	m_stateName = "Stunned state";

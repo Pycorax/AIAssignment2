@@ -30,7 +30,9 @@ void MVC_Model_AI::Init(void)
 	m_testChar = new GameCharacter();
 	m_testChar->Init(GameCharacter::GC_RANGER, 10, 10, nullptr);
 	m_testChar->InitProbability(50, 30, 15, 5);
-	m_testState = new TextObject(GetMeshResource(""))
+	m_testState = new TextObject(GetMeshResource("DefaultFont"), "", Color(1, 0, 0));
+	m_testState->SetPos(Vector3(0, 6, 0));
+	m_testState->SetScale(Vector3(3,3,3));
 }
 
 void MVC_Model_AI::Update(double dt)
@@ -47,7 +49,9 @@ void MVC_Model_AI::Update(double dt)
 		m_turnTimer = 0.f;
 	}
 	m_testChar->Update(dt);
-	std::cout << m_testChar->GetStateName() << std::endl;
+	m_testState->SetText(m_testChar->GetStateName());
+	m_renderList2D.push(m_testState);
+	//std::cout << m_testChar->GetStateName() << std::endl;
 
 	// Draw the environment
 	for (size_t i = 0; i < EO_TOTAL; ++i)

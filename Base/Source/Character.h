@@ -11,8 +11,9 @@
 
 // Other Includes
 #include "WaitState.h"
-#include "StunnedState.h"
-#include "ActionState.h"
+
+class StunnedState;
+class ActionState;
 
 // Using Directives
 using std::vector;
@@ -48,7 +49,7 @@ public:
 	virtual void Update(double dt);
 
 	// Stun
-	void Stun(int numOfTurns);
+	virtual void Stun(int turnDuration);
 	short GetStunnedTurns();
 	bool IsStunned();
 	void ProcessStun(); // Reduce a count in stun turns
