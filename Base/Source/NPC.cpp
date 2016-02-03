@@ -43,6 +43,16 @@ string NPC::GetStateName(void)
 	return m_currentState->GetStateName();
 }
 
+string NPC::GetThisStateName(void)
+{
+	return m_currentState->GetThisStateName();
+}
+
+string NPC::GetChildStateName(void)
+{
+	return m_currentState->GetChildStateName();
+}
+
 void NPC::setCurrentState(FSMState * startState)
 {
 	if (m_currentState)

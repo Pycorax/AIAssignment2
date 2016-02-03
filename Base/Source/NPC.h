@@ -55,6 +55,8 @@ public:
 	virtual void Update(double dt);
 	virtual void Exit(void);
 	virtual string GetStateName(void);
+	virtual string GetThisStateName(void);
+	virtual string GetChildStateName(void);
 
 protected:
 	// Use this function to set the current state. Automatically calls the state's Init() and destroys the previous state.

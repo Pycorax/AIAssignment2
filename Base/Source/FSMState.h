@@ -57,7 +57,9 @@ public:
 	virtual void Update(double dt);
 	virtual void Exit(void);
 	// Function to get the name of this state
-	virtual string GetStateName(void);
+	virtual string GetStateName(void);						// Current State - Child State
+	virtual string GetThisStateName(void);					// Current State
+	virtual string GetChildStateName(void);					// Child State
 
 protected:
 	// Function to change the state of the parent. Automatically slates this state for Exit() and deletion in the new state's Init().

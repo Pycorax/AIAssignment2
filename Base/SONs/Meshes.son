@@ -40,7 +40,7 @@
 		[Name] Character
 		[Type] Quad
 		[Color] 1.0f, 0.0f, 0.0f
-		[Length] 0.0f
+		[Length] 1.0f
 	}
 	
 #	{

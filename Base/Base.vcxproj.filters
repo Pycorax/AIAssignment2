@@ -461,6 +461,9 @@
     <ClInclude Include="Source\DeadState.h">
       <Filter>Characters\States</Filter>
     </ClInclude>
+    <ClInclude Include="Source\CharacterBundle.h">
+      <Filter>Characters</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\Text.fragmentshader">

@@ -78,6 +78,7 @@
     <ClInclude Include="Source\Camera3.h" />
     <ClInclude Include="Source\CChar.h" />
     <ClInclude Include="Source\Character.h" />
+    <ClInclude Include="Source\CharacterBundle.h" />
     <ClInclude Include="Source\Collider2D.h" />
     <ClInclude Include="Source\DeadState.h" />
     <ClInclude Include="Source\DefendState.h" />
