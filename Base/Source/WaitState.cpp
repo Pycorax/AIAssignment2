@@ -6,6 +6,7 @@
 // States include
 #include "ActionState.h"
 #include "DeadState.h"
+#include "StunnedState.h"
 
 WaitState::WaitState()
 {
@@ -35,14 +36,24 @@ void WaitState::Update(double dt)
 	// Get the actual Character-type pointer
 	Character* c = dynamic_cast<Character*>(m_FSMOwner);
 
+	// Invalid pointer
+	if (!c)
+	{
+		return;
+	}
+
 	// It is our turn? Let's go
 	if (!c->IsAlive())
 	{
-		// DGo to dead state
+		// Go to dead state
 		changeState(new DeadState());
 
 	}
-	else if (c && !c->GetEndTurn())
+	else if (c->GetStunnedTurns() > 0)
+	{
+		changeState(new StunnedState());
+	}
+	else if (!c->GetEndTurn())
 	{
 		changeState(new ActionState());
 	}
