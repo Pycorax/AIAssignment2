@@ -34,7 +34,7 @@ void MessageListener::HandleMessage()
 	if (m_messageList.size() > 0)
 	{
 		// Handle the message
-		handleMessage(m_messageList.back());
+		handleMessage(m_messageList.front());
 
 		// Remove the message
 		m_messageList.pop();
