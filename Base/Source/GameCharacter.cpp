@@ -60,6 +60,18 @@ void GameCharacter::Injure(int damage)
 	}
 }
 
+void GameCharacter::Stun(int turnDuration)
+{
+	if (m_guarder)
+	{
+		m_guarder->Character::Stun(turnDuration);
+	}
+	else
+	{
+		m_guarder->Character::Stun(turnDuration);
+	}
+}
+
 void GameCharacter::SetGuarder(Character * guarder)
 {
 	m_guarder = guarder;

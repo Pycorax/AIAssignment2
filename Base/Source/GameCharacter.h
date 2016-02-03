@@ -44,6 +44,7 @@ public:
 	virtual void StartTurn();
 
 	virtual void Injure(int damage);
+	virtual void Stun(int turnDuration);
 
 	void SetGuarder(Character* guarder);
 	Character* GetGuarder();
