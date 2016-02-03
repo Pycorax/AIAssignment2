@@ -64,7 +64,10 @@ struct CharacterBundle
 	{
 		// Update the Character
 		character->Update(dt);
+	}
 
+	void UpdateText()
+	{
 		// Update the Text
 		ostringstream oss;
 

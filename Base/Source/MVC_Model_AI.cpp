@@ -34,18 +34,29 @@ void MVC_Model_AI::Update(double dt)
 		m_renderList2D.push(m_envObjects[i]);
 	}
 
-	// Update and render all the characters
+	// Update all the characters
 	for (auto c : m_charList)
 	{
 		c->character->StartTurn();
 		c->Update(dt);
-		pushCharBundleRender(c);
 	}
 
 	for (auto c : m_enemyList)
 	{
 		c->character->StartTurn();
 		c->Update(dt);
+	}
+
+	// Render all the characters
+	for (auto c : m_charList)
+	{
+		c->UpdateText();
+		pushCharBundleRender(c);
+	}
+
+	for (auto c : m_enemyList)
+	{
+		c->UpdateText();
 		pushCharBundleRender(c);
 	}
 
