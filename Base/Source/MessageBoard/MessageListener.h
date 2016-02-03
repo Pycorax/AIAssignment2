@@ -2,13 +2,13 @@
 #define MESSAGE_LISTENER_H
 
 // STL Includes
-#include <queue>
+#include <vector>
 
 // Other Includes
 #include "Message.h"
 
 // Using Directives
-using std::queue;
+using std::vector;
 
 // Forward Declarations
 class MessageBoard;
@@ -18,7 +18,7 @@ class MessageListener
 private:
 	string m_name;
 	MessageBoard* m_messageBoard;		// Pointer to the message board that it is registered to
-	queue<Message> m_messageList;
+	vector<Message> m_messageList;
 
 public:
 	MessageListener(string name = "");
@@ -38,6 +38,7 @@ protected:
 
 	// Peeking at Messages
 	Message peekTopMessage();
+	Message* containsMessage(Message::MESSAGE_TYPE type);
 
 private:
 	// Override this function to define what happens when a message is received

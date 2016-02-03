@@ -21,7 +21,7 @@ void MessageListener::Init(MessageBoard * mb)
 
 void MessageListener::AddMessage(Message message)
 {
-	m_messageList.push(message);
+	m_messageList.push_back(message);
 }
 
 string MessageListener::GetName(void) const
@@ -37,7 +37,7 @@ void MessageListener::HandleMessage()
 		handleMessage(m_messageList.front());
 
 		// Remove the message
-		m_messageList.pop();
+		m_messageList.erase(m_messageList.begin());
 	}
 }
 
@@ -74,5 +74,16 @@ Message MessageListener::peekTopMessage()
 	else
 	{
 		return m_messageList.back();
+	}
+}
+
+Message * MessageListener::containsMessage(Message::MESSAGE_TYPE type)
+{
+	for (auto& m : m_messageList)
+	{
+		if (m.GetMessage() == type)
+		{
+			return &m;
+		}
 	}
 }

@@ -78,9 +78,6 @@ protected:
 
 	Probabilities probabilities;
 
-	// Replacement
-	Message::MESSAGE_TYPE m_lastReplaceMessage;			// Determines if player is able to replace someone this turn
-
 public:
 	GameCharacter();
 	virtual ~GameCharacter();

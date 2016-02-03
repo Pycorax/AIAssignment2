@@ -10,7 +10,6 @@ GameCharacter::GameCharacter()
 	: m_guarder(nullptr)
 	, m_defending(false)
 	, m_nextTarget(nullptr)
-	, m_lastReplaceMessage(Message::NUM_MESSAGE)
 {
 	probabilities.Reset();
 }
@@ -49,9 +48,6 @@ void GameCharacter::EndTurn()
 	Character::EndTurn();
 	probabilities.SetDefault();
 	m_bonusAttack = 0;
-
-	// Reset the Replace Messages
-	m_lastReplaceMessage = Message::NUM_MESSAGE;
 }
 
 void GameCharacter::Injure(int damage)
@@ -258,22 +254,25 @@ void GameCharacter::handleMessage(Message msg)
 		break;
 	case Message::MSG_DEATH:
 		{
-			GameCharacter* dead = dynamic_cast<GameCharacter*>(sender);
-			if (dead->GetType() == GC_HEALER && m_lastReplaceMessage != GC_HEALER)
+			if (m_type == GC_RANGER || m_type == GC_WARRIOR)
 			{
-				// Replace the dead
-				replaceDead(dead);
+				GameCharacter* dead = dynamic_cast<GameCharacter*>(sender);
+				if (dead->GetType() == GC_HEALER && !containsMessage(Message::MSG_REPLACE_HEALER))
+				{
+					// Replace the dead
+					replaceDead(dead);
 
-				// Inform that he is replacing
-				sendMessage(Message::MSG_REPLACE_HEALER);
-			}
-			else if (dead->GetType() == GC_TANK && m_lastReplaceMessage != GC_TANK)
-			{
-				// Replace the dead
-				replaceDead(dead);
+					// Inform that he is replacing
+					sendMessage(Message::MSG_REPLACE_HEALER);
+				}
+				else if (dead->GetType() == GC_TANK && !containsMessage(Message::MSG_REPLACE_TANK))
+				{
+					// Replace the dead
+					replaceDead(dead);
 
-				// Inform that he is replacing
-				sendMessage(Message::MSG_REPLACE_TANK);
+					// Inform that he is replacing
+					sendMessage(Message::MSG_REPLACE_TANK);
+				}
 			}
 		}
 		break;
@@ -284,14 +283,8 @@ void GameCharacter::handleMessage(Message msg)
 		break;
 
 	case Message::MSG_REPLACE_HEALER:
-		{
-			m_lastReplaceMessage = Message::MSG_REPLACE_HEALER;
-		}
 		break;
 	case Message::MSG_REPLACE_TANK:
-		{
-			m_lastReplaceMessage = Message::MSG_REPLACE_TANK;
-		}
 		break;
 	}
 }
