@@ -28,7 +28,7 @@ void GameCharacter::Init(GAME_CHARACTER_TYPE type, int maxHealth, int attack, Me
 
 void GameCharacter::InitProbability(short attProb, short defProb, short specProb, short passProb)
 {
-	probabilities.Set(attProb, defProb, specProb, passProb);
+	probabilities.Init(attProb, defProb, specProb, passProb);
 }
 
 void GameCharacter::Update(double dt)
