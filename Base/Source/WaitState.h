@@ -9,7 +9,8 @@ public:
 	{
 		WT_NORMAL,
 		WT_VULN,
-		WT_DEFEND
+		WT_DEFEND,
+		WT_BIDE
 	};
 
 	WaitState();
