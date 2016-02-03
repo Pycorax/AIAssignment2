@@ -9,10 +9,11 @@ class GameCharacter : public Character
 	friend class AttackState;
 	friend class DefendState;
 	friend class PassState;
+	friend class SpecialState;
 	friend class DeadState;
 
 public:
-	static const float S_GUARD_DAMAGE_REDUCTION; // In percentage over 100
+	static const float S_GUARD_DAMAGE_REDUCTION; // In percentage from 0.f - 1.f
 	enum GAME_CHARACTER_TYPE
 	{
 		GC_WARRIOR,
@@ -26,6 +27,7 @@ protected:
 	Character* m_guarder; // Pointer to character that is guarding this game character
 	bool m_defending; // Defend
 	GAME_CHARACTER_TYPE m_type;
+	Character* m_nextTarget; // Plan next target when processing message
 
 	// State probability (Out of 100)
 	short m_attackProbability;
@@ -42,11 +44,14 @@ public:
 	virtual void Update(double dt);
 
 	virtual void StartTurn();
+	virtual void EndStart();
 
 	virtual void Injure(int damage);
 	virtual void Stun(int turnDuration);
 
-	void SetGuarder(Character* guarder);
+	void RequestSupport();
+
+	void Guard(Character* guarder);
 	Character* GetGuarder();
 
 	void Defend();
@@ -54,6 +59,9 @@ public:
 
 	void SetType(GAME_CHARACTER_TYPE type);
 	GAME_CHARACTER_TYPE GetType();
+
+	void SetNextTarget(Character* target);
+	Character* GetNextTarget();
 
 	short GetAttackProbability();
 	short GetDefendProbability();

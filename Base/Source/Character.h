@@ -28,6 +28,9 @@ class Character : public GameObject2D, public NPC, public MessageListener
 	friend class StunnedState;
 	friend class WaitState;
 
+public:
+	static const float S_CRITICAL_HEALTH; // Percentage of health to be counted as critical (0.f - 1.f)
+
 protected:
 	int m_maxHealth;
 	int m_health;
@@ -66,12 +69,14 @@ public:
 	vector<Character*>& GetTeam();
 	vector<Character*>& GetOpponentTeam();
 
+	bool GetEndTurn();
+
 	virtual void StartTurn();
+	virtual void EndTurn();
+
 	virtual void Injure(int damage);
 	void Heal(int health);
 
-	void EndTurn();
-	bool GetEndTurn();
 };
 
 #endif

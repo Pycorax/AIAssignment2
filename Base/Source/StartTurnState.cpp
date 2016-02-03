@@ -4,6 +4,7 @@
 #include "AttackState.h"
 #include "DefendState.h"
 #include "PassState.h"
+#include "SpecialState.h"
 
 StartTurnState::StartTurnState() : FSMState()
 {
@@ -69,6 +70,9 @@ void StartTurnState::Update(double dt)
 	short maxRand = attProb + defProb + specProb + passProb;
 	short random = Math::RandIntMinMax(1, maxRand);
 
+
+	Character* target = c->GetNextTarget();
+
 	// Find out which action is chosen
 	if (random <= attProb)
 	{
@@ -83,6 +87,26 @@ void StartTurnState::Update(double dt)
 	else if (random > attProb + defProb && random <= attProb + defProb + specProb)
 	{
 		// TODO: Set to special state
+		switch (c->GetType())
+		{
+		case GameCharacter::GC_HEALER:
+			{
+			}
+			break;
+		case GameCharacter::GC_RANGER:
+			{
+			}
+			break;
+		case GameCharacter::GC_TANK:
+			{
+			}
+			break;
+		case GameCharacter::GC_WARRIOR:
+			{
+			}
+			break;
+		}
+		changeState(new SpecialState(target));
 	}
 	else
 	{

@@ -1,5 +1,7 @@
 #include "Character.h"
 
+const float Character::S_CRITICAL_HEALTH = 0.3;
+
 Character::Character(int maxHealth, int attack)
 	: m_maxHealth(maxHealth)
 	, m_health(maxHealth)

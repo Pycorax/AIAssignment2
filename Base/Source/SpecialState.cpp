@@ -2,6 +2,7 @@
 
 SpecialState::SpecialState(Character* target) : FSMState(), m_target(target)
 {
+	m_stateName = "Special state";
 }
 
 
@@ -72,7 +73,7 @@ void SpecialState::Update(double dt)
 				GameCharacter* gc = dynamic_cast<GameCharacter*>(m_target);
 				if (gc)
 				{
-					gc->SetGuarder(c);
+					gc->Guard(c);
 				}
 			}
 			break;
@@ -82,6 +83,8 @@ void SpecialState::Update(double dt)
 			break;
 		}
 	}
+
+	c->EndTurn();
 }
 
 void SpecialState::Exit(void)
