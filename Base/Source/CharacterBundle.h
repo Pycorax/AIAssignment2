@@ -19,6 +19,7 @@ struct CharacterBundle
 		CTD_NAME,
 		CTD_HEALTH,
 		CTD_DAMAGE,
+		CTD_ATTACK_PROBABILITY,
 		CTD_STATE,
 		CTD_SUBSTATE,
 		CTD_TOTAL
@@ -97,6 +98,17 @@ struct CharacterBundle
 		oss << "Dmg: " << character->GetAttack();
 		charDetail[CTD_DAMAGE]->SetText(oss.str());
 		oss.str("");
+		// -- Attack Probability
+		if (gc)
+		{
+			oss << "Atk Prob: " << gc->GetAttackProbability() << "%";
+			charDetail[CTD_ATTACK_PROBABILITY]->SetText(oss.str());
+			oss.str("");
+		}
+		else
+		{
+			charDetail[CTD_ATTACK_PROBABILITY]->SetText("Atk Prob: -");
+		}
 		// -- State
 		charDetail[CTD_STATE]->SetText(character->GetThisStateName());
 		// -- Substate
