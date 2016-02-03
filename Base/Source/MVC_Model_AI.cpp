@@ -23,8 +23,10 @@ void MVC_Model_AI::Init(void)
 	m_turnTimer = 0.f;
 	m_maxTimer = 2.f;
 	m_testChar = new GameCharacter();
-	m_testChar->Init(GameCharacter::GC_RANGER, 10, 10, nullptr);
+	m_testChar->Init(GameCharacter::GC_RANGER, 10, 10, GetMeshResource("Character"));
 	m_testChar->InitProbability(50, 30, 15, 5);
+	m_testChar->SetPos(Vector2(100, 100));
+	m_testChar->SetScale(Vector3(50, 50, 50));
 	m_testState = new TextObject(GetMeshResource("DefaultFont"), "", Color(1, 0, 0));
 	m_testState->SetPos(Vector3(0, 6, 0));
 	m_testState->SetScale(Vector3(3,3,3));
@@ -46,7 +48,6 @@ void MVC_Model_AI::Update(double dt)
 	m_testChar->Update(dt);
 	m_testState->SetText(m_testChar->GetStateName());
 	m_renderList2D.push(m_testState);
-	//std::cout << m_testChar->GetStateName() << std::endl;
 
 	// Draw the environment
 	for (size_t i = 0; i < EO_TOTAL; ++i)
@@ -54,9 +55,15 @@ void MVC_Model_AI::Update(double dt)
 		m_renderList2D.push(m_envObjects[i]);
 	}
 
+	// Render the test char
+	m_renderList2D.push(m_testChar);
+
 	// Update and render the text
 	ostringstream oss;
 	m_textObjects[TO_TEST]->SetText("Test");
+	oss << m_fps;
+	m_textObjects[TO_FPS]->SetText(oss.str());
+	oss.str("");
 	m_textObjects[TO_MESSAGE_BOARD]->SetText(m_messageBoard.PeekGlobalMessage().ToString());
 
 	// Push all the text into the render queue

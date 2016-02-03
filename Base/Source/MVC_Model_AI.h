@@ -21,6 +21,7 @@ private:
 	enum E_TEXT_OBJECT
 	{
 		TO_TEST,
+		TO_FPS,
 		TO_MESSAGE_BOARD,
 		TO_TOTAL
 	};
