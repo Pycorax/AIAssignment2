@@ -10,7 +10,7 @@
 
 WaitState::WaitState()
 {
-	m_stateName = "Wait state";
+	m_stateName = "Wait State";
 }
 
 

@@ -2,7 +2,6 @@
 #define ENEMY_SPECIAL_STATE_H
 
 #include "FSMState.h"
-#include "GameCharacter.h"
 
 class EnemySpecialState : public FSMState
 {

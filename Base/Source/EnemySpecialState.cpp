@@ -1,7 +1,10 @@
 #include "EnemySpecialState.h"
 
+#include "Enemy.h"
+
 EnemySpecialState::EnemySpecialState() : FSMState()
 {
+	m_stateName = "Enemy Special State";
 }
 
 
@@ -27,15 +30,35 @@ void EnemySpecialState::Update(double dt)
 	FSMState::Update(dt);
 
 	// Get the actual NPC-type pointer
-	GameCharacter* c = dynamic_cast<GameCharacter*>(m_FSMOwner);
+	
+	Enemy* e = dynamic_cast<Enemy*>(m_FSMOwner);
 
 	// Check if the NPC is legit
-	if (!c)
+	if (!e)
 	{
 		return;
 	}
 
-	// Determine which character
+	// Increment the biding turns
+	e->m_bideTurns++;
+
+	if (e->m_currentBideTurns >= e->m_bideTurns)
+	{
+		// We've bided enough
+
+		if (e->GetOpponentTeam().size() > 0) // Someone is in opponent team
+		{
+			int random = Math::RandIntMinMax(0, e->GetOpponentTeam().size() - 1); // Random an enemy to attack
+			e->GetOpponentTeam()[random]->Injure(e->m_attack + e->m_bideStoreDamage);
+
+			// Reset bide status
+			e->m_currentBideTurns = 0;
+			e->m_bideStoreDamage = 0;
+		}
+	}
+
+	// End the turn
+	e->EndTurn();
 }
 
 void EnemySpecialState::Exit(void)

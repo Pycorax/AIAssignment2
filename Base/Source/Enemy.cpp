@@ -10,6 +10,8 @@ Enemy::Enemy() : Character()
 	// Attack Power
 	, m_stunAttackDuration(3)
 	, m_bideStoreDamage(0)
+	, m_bideTurns(2)
+	, m_currentBideTurns(0)
 	// Cool Down
 	, m_specCoolDown(0)
 {

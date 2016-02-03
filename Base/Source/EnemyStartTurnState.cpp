@@ -10,7 +10,7 @@
 
 EnemyStartTurnState::EnemyStartTurnState() : FSMState()
 {
-	m_stateName = "Start Turn State";
+	m_stateName = "Enemy Start Turn State";
 }
 
 
@@ -42,29 +42,37 @@ void EnemyStartTurnState::Update(double dt)
 		return;
 	}
 
-	// Probabilities
-	short attProb = c->m_attackProbability;
-	short stunProb = c->m_stunProbability;
-	short specProb = c->m_specialProbability;
-
-	// Random
-	short maxRand = attProb + stunProb + specProb;
-	short random = Math::RandIntMinMax(0, maxRand);
-
-	// Find out which action is chosen
-	if (random <= stunProb)
+	// If we are biding, continue biding instead of choosing another move
+	if (c->m_bideTurns > 0)
 	{
-		changeState(new StunAttackState());
+		changeState(new EnemySpecialState());
 	}
 	else
 	{
-		if (random <= specProb && c->canUseSpecialAttack())
+		// Probabilities
+		short attProb = c->m_attackProbability;
+		short stunProb = c->m_stunProbability;
+		short specProb = c->m_specialProbability;
+
+		// Random
+		short maxRand = attProb + stunProb + specProb;
+		short random = Math::RandIntMinMax(0, maxRand);
+
+		// Find out which action is chosen
+		if (random <= stunProb)
 		{
-			changeState(new EnemySpecialState());
+			changeState(new StunAttackState());
 		}
 		else
 		{
-			changeState(new AttackState());
+			if (random <= specProb && c->canUseSpecialAttack())
+			{
+				changeState(new EnemySpecialState());
+			}
+			else
+			{
+				changeState(new AttackState());
+			}
 		}
 	}
 }

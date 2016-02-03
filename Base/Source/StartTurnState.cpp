@@ -60,6 +60,17 @@ void StartTurnState::Update(double dt)
 		return;
 	}
 
+	// Special conditions that leads to instant choice of special
+	Character* target = c->GetNextTarget();
+	if (target)
+	{
+		if (c->GetType() == GameCharacter::GC_HEALER || c->GetType() == GameCharacter::GC_TANK)
+		{
+			changeState(new SpecialState(target));
+			return;
+		}
+	}
+
 	// Probabilities
 	short attProb = c->GetAttackProbability();
 	short defProb = c->GetDefendProbability();
@@ -69,9 +80,6 @@ void StartTurnState::Update(double dt)
 	// Random
 	short maxRand = attProb + defProb + specProb + passProb;
 	short random = Math::RandIntMinMax(1, maxRand);
-
-
-	Character* target = c->GetNextTarget();
 
 	// Find out which action is chosen
 	if (random <= attProb)
