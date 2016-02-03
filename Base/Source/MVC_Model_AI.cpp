@@ -1,9 +1,5 @@
 #include "MVC_Model_AI.h"
 #include "Raycast.h"
-#include <sstream>
-
-// Using Directives
-using std::ostringstream;
 
 // Static Constants
 const Vector3 MVC_Model_AI::CHAR_SCALE = Vector3(50.0f, 50.0f, 50.0f);
@@ -53,13 +49,7 @@ void MVC_Model_AI::Update(double dt)
 		pushCharBundleRender(c);
 	}
 
-	ostringstream oss;
-
 	// Update and render the text
-	m_textObjects[TO_TEST]->SetText("Test");
-	oss << m_fps;
-	m_textObjects[TO_FPS]->SetText(oss.str());
-	oss.str("");
 	m_textObjects[TO_MESSAGE_BOARD]->SetText(m_messageBoard.PeekGlobalMessage().ToString());
 
 	// Push all the text into the render queue
@@ -111,7 +101,7 @@ void MVC_Model_AI::initText(void)
 	for (size_t i = 0; i < TO_TOTAL; ++i)
 	{
 		m_textObjects[i] = new TextObject(m_defaultFont, "", Color(0.0f, 0.0f, 0.0f));
-		m_textObjects[i]->SetPos(Vector2(0.0f, 60 - (i * 3.0f)));
+		m_textObjects[i]->SetPos(Vector2(0.0f, 69 - (i * 3.0f)));
 		m_textObjects[i]->SetScale(Vector2(3.0f));
 	}
 
@@ -168,7 +158,7 @@ void MVC_Model_AI::initEnemies(void)
 	e->Init(Math::RandIntMinMax(100, 150), Math::RandIntMinMax(20, 30), GetMeshResource("Character"));
 	e->SetPos(Vector2(1180, 200));
 	e->SetScale(CHAR_SCALE);
-	m_enemyList.push_back(new CharacterBundle(e, m_defaultFont, Vector2(85, 50)));
+	m_enemyList.push_back(new CharacterBundle(e, m_defaultFont, Vector2(90, 50)));
 }
 
 void MVC_Model_AI::assignTeams(void)

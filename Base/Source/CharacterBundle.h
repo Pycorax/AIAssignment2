@@ -18,6 +18,7 @@ struct CharacterBundle
 	{
 		CTD_NAME,
 		CTD_HEALTH,
+		CTD_DAMAGE,
 		CTD_STATE,
 		CTD_SUBSTATE,
 		CTD_TOTAL
@@ -88,6 +89,10 @@ struct CharacterBundle
 		// -- HP
 		oss << "HP: " << character->GetHealth() << "/" << character->GetMaxHealth();
 		charDetail[CTD_HEALTH]->SetText(oss.str());
+		oss.str("");
+		// -- Damage
+		oss << "Dmg: " << character->GetAttack();
+		charDetail[CTD_DAMAGE]->SetText(oss.str());
 		oss.str("");
 		// -- State
 		charDetail[CTD_STATE]->SetText(character->GetThisStateName());
