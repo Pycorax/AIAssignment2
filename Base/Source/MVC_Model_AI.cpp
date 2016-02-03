@@ -20,11 +20,6 @@ void MVC_Model_AI::Init(void)
 	initEnvironment();
 	initText();
 
-	MessagePacket msgPacket;
-	msgPacket.message = Message(nullptr, Message::MSG_REQUEST_SUPPORT);
-
-	m_messageBoard.SendMessage(msgPacket);
-
 	m_turnTimer = 0.f;
 	m_maxTimer = 2.f;
 	m_testChar = new GameCharacter();
