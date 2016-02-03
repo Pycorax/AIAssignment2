@@ -176,6 +176,7 @@ void MVC_Model_AI::initEnemies(void)
 {
 	Enemy* e = new Enemy();
 	e->Init(Math::RandIntMinMax(100, 150), Math::RandIntMinMax(20, 30), nullptr);
+	m_enemyList.push_back(e);
 }
 
 void MVC_Model_AI::assignTeams(void)

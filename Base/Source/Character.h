@@ -37,6 +37,7 @@ protected:
 	int m_maxHealth;
 	int m_health;
 	int m_attack;
+	int m_bonusAttack;
 
 	vector<Character*> m_team;
 	vector<Character*> m_opponentTeam;
@@ -66,11 +67,13 @@ public:
 	int GetMaxHealth(void) const;
 	int GetHealth(void) const;
 	int GetAttack(void) const;
+	int GetBonusAttack(void) const;
 	bool IsAlive(void) const;
 
 	void AddToTeam(Character* c);
 	void AddToOpponentTeam(Character* c);
 
+	void SetBonusAttack(int bonusAttack);
 	void SetTeam(vector<Character*>& team);
 	void SetOpponentTeam(vector<Character*>& opponentTeam);
 

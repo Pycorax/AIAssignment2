@@ -6,6 +6,7 @@ Character::Character(int maxHealth, int attack)
 	: m_maxHealth(maxHealth)
 	, m_health(maxHealth)
 	, m_attack(attack)
+	, m_bonusAttack(0)
 	, m_team(NULL)
 	, m_opponentTeam(NULL)
 	, m_endTurn(false)
@@ -69,7 +70,12 @@ int Character::GetHealth(void) const
 
 int Character::GetAttack(void) const
 {
-	return m_attack;
+	return m_attack + m_bonusAttack;
+}
+
+int Character::GetBonusAttack(void) const
+{
+	return m_bonusAttack;
 }
 
 bool Character::IsAlive(void) const
@@ -85,6 +91,11 @@ void Character::AddToTeam(Character * c)
 void Character::AddToOpponentTeam(Character * c)
 {
 	m_opponentTeam.push_back(c);
+}
+
+void Character::SetBonusAttack(int bonusAttack)
+{
+	m_bonusAttack = bonusAttack;
 }
 
 void Character::SetTeam(vector<Character*>& team)

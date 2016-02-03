@@ -83,6 +83,10 @@ void SpecialState::Update(double dt)
 			break;
 		}
 	}
+	else
+	{
+
+	}
 
 	c->SetNextTarget(nullptr);
 	c->EndTurn();

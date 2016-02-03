@@ -47,6 +47,7 @@ void GameCharacter::EndTurn()
 {
 	Character::EndTurn();
 	probabilities.SetDefault();
+	m_bonusAttack = 0;
 }
 
 void GameCharacter::Injure(int damage)
@@ -69,8 +70,11 @@ void GameCharacter::Injure(int damage)
 
 	if (m_health <= m_maxHealth * S_CRITICAL_HEALTH)
 	{
-		// Call for support
-		RequestSupport();
+		if (IsAlive())
+		{
+			// Call for support
+			RequestSupport();
+		}
 	}
 }
 
@@ -225,6 +229,7 @@ void GameCharacter::handleMessage(Message msg)
 		break;
 	case Message::MSG_PRIORITY_ATTACK:
 		{
+			probabilities.m_attackProbability += 20;
 		}
 		break;
 	case Message::MSG_PLAN_TO_STUN:
@@ -243,10 +248,12 @@ void GameCharacter::handleMessage(Message msg)
 		break;
 	case Message::MSG_MARTYRDOM:
 		{
+			m_bonusAttack = m_attack * 0.3f;
 		}
 		break;
 	case Message::MSG_LAST_WORDS:
 		{
+			m_bonusAttack = -(m_attack * 0.3f);
 		}
 		break;
 	}
