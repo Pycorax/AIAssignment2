@@ -57,7 +57,7 @@ void AttackState::Update(double dt)
 	FSMState::Update(dt);
 
 	// Get the actual Character-type pointer
-	GameCharacter* c = dynamic_cast<GameCharacter*>(m_FSMOwner);
+	Character* c = dynamic_cast<Character*>(m_FSMOwner);
 
 	// Check if the NPC is legit
 	if (!c)

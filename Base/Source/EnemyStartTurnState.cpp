@@ -54,7 +54,7 @@ void EnemyStartTurnState::Update(double dt)
 	}
 
 	// If we are biding, continue biding instead of choosing another move
-	if (c->m_bideTurns > 0)
+	if (c->m_currentBideTurns > 0)
 	{
 		changeState(new EnemySpecialState());
 	}

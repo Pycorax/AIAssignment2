@@ -51,7 +51,7 @@ void EnemySpecialState::Update(double dt)
 	}
 
 	// Increment the biding turns
-	e->m_bideTurns++;
+	e->m_currentBideTurns++;
 
 	if (e->m_currentBideTurns >= e->m_bideTurns)
 	{
