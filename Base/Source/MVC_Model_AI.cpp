@@ -230,6 +230,8 @@ void MVC_Model_AI::assignTeams(void)
 				}
 			}
 		}
+	}
+}
 
 void MVC_Model_AI::pushCharBundleRender(CharacterBundle * ch)
 {
