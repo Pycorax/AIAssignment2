@@ -103,6 +103,8 @@ void StartTurnState::Update(double dt)
 			break;
 		case GameCharacter::GC_RANGER:
 			{
+				int random = Math::RandIntMinMax(0, c->GetOpponentTeam().size() - 1); // Random an enemy to attack
+				target = c->GetOpponentTeam()[random];
 			}
 			break;
 		case GameCharacter::GC_TANK:

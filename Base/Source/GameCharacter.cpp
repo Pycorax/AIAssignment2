@@ -229,7 +229,7 @@ void GameCharacter::handleMessage(Message msg)
 		break;
 	case Message::MSG_PRIORITY_ATTACK:
 		{
-			probabilities.m_attackProbability += 20;
+			probabilities.m_attackProbability += 30;
 		}
 		break;
 	case Message::MSG_PLAN_TO_STUN:

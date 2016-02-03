@@ -28,8 +28,6 @@ void MVC_Model_AI::Update(double dt)
 {
 	MVC_Model::Update(dt);
 
-	
-
 	// Draw the environment
 	for (size_t i = 0; i < EO_TOTAL; ++i)
 	{
@@ -39,12 +37,14 @@ void MVC_Model_AI::Update(double dt)
 	// Update and render all the characters
 	for (auto c : m_charList)
 	{
+		c->character->StartTurn();
 		c->Update(dt);
 		pushCharBundleRender(c);
 	}
 
 	for (auto c : m_enemyList)
 	{
+		c->character->StartTurn();
 		c->Update(dt);
 		pushCharBundleRender(c);
 	}
@@ -116,8 +116,17 @@ void MVC_Model_AI::initEnvironment(void)
 
 void MVC_Model_AI::initPlayers(void)
 {
-	// Healer
+	// Ranger
 	GameCharacter* gc = new GameCharacter();
+	gc->Init(GameCharacter::GC_RANGER, Math::RandIntMinMax(50, 70), 10, GetMeshResource("Character"));
+	gc->InitProbability(45, 20, 25, 10);
+	gc->InitProbability(50, 30, 15, 5);
+	gc->SetPos(Vector2(100, 200));
+	gc->SetScale(CHAR_SCALE);
+	m_charList.push_back(new CharacterBundle(gc, m_defaultFont, Vector2(90)));
+
+	// Healer
+	gc = new GameCharacter();
 	gc->Init(GameCharacter::GC_HEALER, Math::RandIntMinMax(50, 70), 10, GetMeshResource("Character"));
 	gc->InitProbability(70, 20, 0, 10);
 	gc->SetPos(Vector2(100, 500));
@@ -141,15 +150,6 @@ void MVC_Model_AI::initPlayers(void)
 	gc->SetPos(Vector2(100, 300));
 	gc->SetScale(CHAR_SCALE);
 	m_charList.push_back(new CharacterBundle(gc, m_defaultFont, Vector2(60)));
-
-	// Ranger
-	gc = new GameCharacter();
-	gc->Init(GameCharacter::GC_RANGER, Math::RandIntMinMax(50, 70), 10, GetMeshResource("Character"));
-	gc->InitProbability(45, 20, 25, 10);
-	gc->InitProbability(50, 30, 15, 5);
-	gc->SetPos(Vector2(100, 200));
-	gc->SetScale(CHAR_SCALE);
-	m_charList.push_back(new CharacterBundle(gc, m_defaultFont, Vector2(90)));
 }
 
 void MVC_Model_AI::initEnemies(void)

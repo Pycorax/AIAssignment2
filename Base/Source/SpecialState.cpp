@@ -66,6 +66,7 @@ void SpecialState::Update(double dt)
 			break;
 		case GameCharacter::GC_RANGER:
 			{
+				c->sendMessage(Message::MSG_PRIORITY_ATTACK);
 			}
 			break;
 		case GameCharacter::GC_TANK:

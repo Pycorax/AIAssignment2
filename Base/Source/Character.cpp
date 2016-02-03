@@ -9,7 +9,7 @@ Character::Character(int maxHealth, int attack)
 	, m_bonusAttack(0)
 	, m_team(NULL)
 	, m_opponentTeam(NULL)
-	, m_endTurn(false)
+	, m_endTurn(true)
 {
 	
 }
@@ -20,7 +20,7 @@ Character::~Character()
 
 void Character::Init(int maxHealth, int attack, Mesh * mesh)
 {
-	m_maxHealth = maxHealth;
+	m_maxHealth = m_health = maxHealth;
 	m_attack = attack;
 	GameObject2D::Init(mesh, Transform());
 }
