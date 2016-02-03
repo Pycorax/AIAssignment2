@@ -48,6 +48,9 @@ void GameCharacter::EndTurn()
 	Character::EndTurn();
 	probabilities.SetDefault();
 	m_bonusAttack = 0;
+
+	// Reset the Replace Messages
+	m_lastReplaceMessage = Message::NUM_MESSAGE;
 }
 
 void GameCharacter::Injure(int damage)
@@ -251,10 +254,53 @@ void GameCharacter::handleMessage(Message msg)
 			m_bonusAttack = m_attack * 0.3f;
 		}
 		break;
+	case Message::MSG_DEATH:
+		{
+			GameCharacter* dead = dynamic_cast<GameCharacter*>(sender);
+			if (dead->GetType() == GC_HEALER && m_lastReplaceMessage != GC_HEALER)
+			{
+				// Replace the dead
+				replaceDead(dead);
+
+				// Inform that he is replacing
+				sendMessage(Message::MSG_REPLACE_HEALER);
+			}
+			else if (dead->GetType() == GC_TANK && m_lastReplaceMessage != GC_TANK)
+			{
+				// Replace the dead
+				replaceDead(dead);
+
+				// Inform that he is replacing
+				sendMessage(Message::MSG_REPLACE_TANK);
+			}
+		}
+		break;
 	case Message::MSG_LAST_WORDS:
 		{
 			m_bonusAttack = -(m_attack * 0.3f);
 		}
 		break;
+
+	case Message::MSG_REPLACE_HEALER:
+		{
+			m_lastReplaceMessage = Message::MSG_REPLACE_HEALER;
+		}
+		break;
+	case Message::MSG_REPLACE_TANK:
+		{
+			m_lastReplaceMessage = Message::MSG_REPLACE_TANK;
+		}
+		break;
+	}
+}
+
+void GameCharacter::replaceDead(GameCharacter * dead)
+{
+	if (dead)
+	{
+		// Set our current type to the other's type
+		m_type = dead->GetType();
+		// Get the dead's mesh
+		m__mesh = dead->GetMesh();
 	}
 }

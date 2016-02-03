@@ -28,6 +28,7 @@ void Character::Init(int maxHealth, int attack, Mesh * mesh)
 void Character::Update(double dt)
 {
 	NPC::Update(dt);
+	HandleMessage();
 }
 
 void Character::Stun(int numOfTurns)

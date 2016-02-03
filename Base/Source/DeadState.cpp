@@ -46,6 +46,7 @@ void DeadState::sharedInit(void)
 	}
 
 	// Send the death message
+	c->sendMessage(Message::MSG_DEATH);
 	// -- Decide if we are going to be a matyr or cry
 	if (Math::RandIntMinMax(0, 1))
 	{
