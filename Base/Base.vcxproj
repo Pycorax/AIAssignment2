@@ -19,6 +19,7 @@
     <ClCompile Include="Source\CChar.cpp" />
     <ClCompile Include="Source\Character.cpp" />
     <ClCompile Include="Source\Collider2D.cpp" />
+    <ClCompile Include="Source\DeadState.cpp" />
     <ClCompile Include="Source\DefendState.cpp" />
     <ClCompile Include="Source\DepthFBO.cpp" />
     <ClCompile Include="Source\Enemy.cpp" />
@@ -80,6 +81,7 @@
     <ClInclude Include="Source\CChar.h" />
     <ClInclude Include="Source\Character.h" />
     <ClInclude Include="Source\Collider2D.h" />
+    <ClInclude Include="Source\DeadState.h" />
     <ClInclude Include="Source\DefendState.h" />
     <ClInclude Include="Source\DepthFBO.h" />
     <ClInclude Include="Source\Direction.h" />

@@ -67,9 +67,6 @@
     <Filter Include="Source Files\HUD">
       <UniqueIdentifier>{5db677ca-5f32-46a3-b8ef-6642f7efa39e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="States">
-      <UniqueIdentifier>{f8ac9d8a-3e6a-4013-b202-ca97a3021913}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Characters">
       <UniqueIdentifier>{13889be8-f8c5-4352-b558-73c3e1568b1a}</UniqueIdentifier>
     </Filter>
@@ -240,12 +237,6 @@
     <ClCompile Include="Source\GameCharacter.cpp">
       <Filter>Characters</Filter>
     </ClCompile>
-    <ClCompile Include="Source\EnemyActionState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\EnemyAttackActionState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\StunnedState.cpp">
       <Filter>Characters\States</Filter>
     </ClCompile>
@@ -262,6 +253,15 @@
       <Filter>Characters\States\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="Source\WaitState.cpp">
+      <Filter>Characters\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\EnemyActionState.cpp">
+      <Filter>Characters\States\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\EnemyAttackActionState.cpp">
+      <Filter>Characters\States\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DeadState.cpp">
       <Filter>Characters\States</Filter>
     </ClCompile>
   </ItemGroup>
@@ -446,12 +446,6 @@
     <ClInclude Include="Source\GameCharacter.h">
       <Filter>Characters</Filter>
     </ClInclude>
-    <ClInclude Include="Source\EnemyActionState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\EnemyAttackActionState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Source\StunnedState.h">
       <Filter>Characters\States</Filter>
     </ClInclude>
@@ -468,6 +462,15 @@
       <Filter>Characters\States\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="Source\WaitState.h">
+      <Filter>Characters\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\EnemyActionState.h">
+      <Filter>Characters\States\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\EnemyAttackActionState.h">
+      <Filter>Characters\States\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DeadState.h">
       <Filter>Characters\States</Filter>
     </ClInclude>
   </ItemGroup>

@@ -61,6 +61,7 @@ public:
 	int GetMaxHealth(void) const;
 	int GetHealth(void) const;
 	int GetAttack(void) const;
+	bool IsAlive(void) const;
 
 	vector<Character*>& GetTeam();
 	vector<Character*>& GetOpponentTeam();

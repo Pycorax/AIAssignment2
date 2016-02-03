@@ -9,6 +9,7 @@ class GameCharacter : public Character
 	friend class AttackState;
 	friend class DefendState;
 	friend class PassState;
+	friend class DeadState;
 
 public:
 	static const float S_GUARD_DAMAGE_REDUCTION; // In percentage over 100
