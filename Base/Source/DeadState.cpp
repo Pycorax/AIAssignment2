@@ -2,7 +2,7 @@
 
 DeadState::DeadState() : FSMState()
 {
-	m_stateName = "Defend state";
+	m_stateName = "Dead state";
 }
 
 

@@ -23,6 +23,8 @@ protected:
 	// Power of Attacks
 	int m_stunAttackDuration;
 	int m_bideStoreDamage;
+	int m_bideTurns;
+	int m_currentBideTurns;
 
 	// Special Attack Cooldown
 	int m_specCoolDown;
