@@ -1,4 +1,6 @@
 #include "StunnedState.h"
+#include "GameCharacter.h"
+#include "Enemy.h"
 
 StunnedState::StunnedState() : FSMState()
 {
@@ -33,10 +35,39 @@ void StunnedState::Init(FSMState * stateOwner)
 
 	// Get the actual NPC-type pointer
 	GameCharacter* c = dynamic_cast<GameCharacter*>(m_FSMOwner);
+	Enemy* e = dynamic_cast<Enemy*>(m_FSMOwner);
 
-	// Check if the NPC is legit
-	if (!c)
+	if (c)
 	{
+		if (!c->IsStunned())
+		{
+			if (c->GetEndTurn())
+			{
+				changeState(new WaitState());
+			}
+			else
+			{
+				changeState(new ActionState());
+			}
+		}
+	}
+	else if (e)
+	{
+		if (!e->IsStunned())
+		{
+			if (e->GetEndTurn())
+			{
+				changeState(new WaitState());
+			}
+			else
+			{
+				changeState(new ActionState());
+			}
+		}
+	}
+	else
+	{
+		// Both NPC does not exist
 		return;
 	}
 }
@@ -47,6 +78,7 @@ void StunnedState::Update(double dt)
 
 	// Get the actual NPC-type pointer
 	GameCharacter* c = dynamic_cast<GameCharacter*>(m_FSMOwner);
+	Enemy* e = dynamic_cast<Enemy*>(m_FSMOwner);
 
 	// Check if the NPC is legit
 	if (!c)

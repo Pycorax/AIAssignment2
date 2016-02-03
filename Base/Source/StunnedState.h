@@ -2,7 +2,6 @@
 #define _ATTACKEDSTATE_H_
 
 #include "FSMState.h"
-#include "GameCharacter.h"
 
 class StunnedState : public FSMState
 {

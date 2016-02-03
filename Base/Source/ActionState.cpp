@@ -4,6 +4,7 @@
 #include "Enemy.h"
 #include "StartTurnState.h"
 #include "EnemyStartTurnState.h"
+#include "StunnedState.h"
 
 ActionState::ActionState() : FSMState()
 {
@@ -54,24 +55,43 @@ void ActionState::Update(double dt)
 
 	// Get the actual Character-type pointer
 	GameCharacter* c = dynamic_cast<GameCharacter*>(m_FSMOwner);
+	Enemy* e = dynamic_cast<Enemy*>(m_FSMOwner);
 
-	// Check if the NPC is legit
-	if (!c)
+	/*if ((c && c->GetEndTurn()) || (e && e->GetEndTurn()))
 	{
 		return;
-	}
-
-	if (c->GetEndTurn())
-	{
-		return;
-	}
+	}*/
 
 	FSMState::Update(dt);
 
-	// End turn once action is over
-	if (c->GetEndTurn())
+	if (c)
 	{
-		//changeState(new WaitForTurn());
+		if (c->IsStunned())
+		{
+			changeState(new StunnedState());
+		}
+		else if (c->GetEndTurn())
+		{
+			changeState(new WaitState());
+		}
+	}
+	else if (e)
+	{
+		if (e->IsStunned())
+		{
+			// Stun state if get stunned
+			changeState(new StunnedState());
+		}
+		else if (e->GetEndTurn())
+		{
+			// End turn once action ended
+			changeState(new WaitState());
+		}
+	}
+	else
+	{
+		// Both NPC does not exist
+		return;
 	}
 }
 

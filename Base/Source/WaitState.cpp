@@ -5,6 +5,7 @@
 
 WaitState::WaitState()
 {
+	m_stateName = "Wait state";
 }
 
 

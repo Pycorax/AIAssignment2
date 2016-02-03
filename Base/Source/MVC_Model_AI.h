@@ -37,6 +37,7 @@ private:
 
 	// Characters
 	GameCharacter* m_testChar;
+	TextObject* m_testState;
 	float m_turnTimer;
 	float m_maxTimer;
 

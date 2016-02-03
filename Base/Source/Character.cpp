@@ -37,6 +37,19 @@ short Character::GetStunnedTurns()
 	return m_stunnedTurns;
 }
 
+bool Character::IsStunned()
+{
+	return m_stunnedTurns > 0;
+}
+
+void Character::ProcessStun()
+{
+	if (m_stunnedTurns > 0)
+	{
+		--m_stunnedTurns;
+	}
+}
+
 void Character::SetWaitType(WaitState::WAIT_TYPE type)
 {
 	m_waitType = type;
@@ -74,6 +87,15 @@ void Character::StartTurn()
 
 	// Reset the waiting type
 	m_waitType = WaitState::WT_NORMAL;
+
+	// Check if stun
+	if (IsStunned())
+	{
+		if (IsStunned())
+		{
+			EndTurn();
+		}
+	}
 }
 
 void Character::Injure(int damage)
@@ -116,6 +138,11 @@ void Character::EndTurn()
 {
 	//std::cout << "End turn" << std::endl;
 	m_endTurn = true;
+
+	if (IsStunned)
+	{
+		ProcessStun();
+	}
 }
 
 bool Character::GetEndTurn()

@@ -19,6 +19,7 @@ void GameCharacter::Init(GAME_CHARACTER_TYPE type, int maxHealth, int attack, Me
 {
 	m_type = type;
 	Character::Init(maxHealth, attack, mesh);
+	setCurrentState(new WaitState());
 }
 
 void GameCharacter::InitProbability(short attProb, short defProb, short specProb, short passProb)
@@ -37,7 +38,6 @@ void GameCharacter::Update(double dt)
 void GameCharacter::StartTurn()
 {
 	Character::StartTurn();
-	//setCurrentState(new ActionState(new StartTurnState()));
 }
 
 void GameCharacter::Injure(int damage)

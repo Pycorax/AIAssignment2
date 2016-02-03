@@ -5,7 +5,6 @@
 
 class GameCharacter : public Character
 {
-	friend class ActionState;
 	friend class StartTurnState;
 	friend class AttackState;
 	friend class DefendState;
@@ -61,7 +60,7 @@ public:
 	short GetPassProbability();
 
 	/*
- 	 * Message Listener Interface Abstract Functions
+	 * Message Listener Interface Abstract Functions
 	 */
 	virtual void handleMessage(Message msg);
 };
