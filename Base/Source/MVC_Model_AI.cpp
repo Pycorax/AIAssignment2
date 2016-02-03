@@ -143,35 +143,39 @@ void MVC_Model_AI::initEnvironment(void)
 
 void MVC_Model_AI::initPlayers(void)
 {
-	GameCharacter* gc = new GameCharacter();
-
 	// Healer
+	GameCharacter* gc = new GameCharacter();
 	gc->Init(GameCharacter::GC_HEALER, Math::RandIntMinMax(50, 70), 10, nullptr);
 	gc->InitProbability(70, 20, 0, 10);
 	// TODO: Set pos and scale
 	m_charList.push_back(gc);
 
 	// Warrior
+	gc = new GameCharacter();
 	gc->Init(GameCharacter::GC_WARRIOR, Math::RandIntMinMax(50, 70), 10, nullptr);
 	gc->InitProbability(50, 20, 20, 10);
 	// TODO: Set pos and scale
 	m_charList.push_back(gc);
 
 	// Tank
+	gc = new GameCharacter();
 	gc->Init(GameCharacter::GC_TANK, Math::RandIntMinMax(50, 70), 10, nullptr);
 	gc->InitProbability(70, 20, 0, 10);
 	// TODO: Set pos and scale
 	m_charList.push_back(gc);
 
 	// Ranger
+	gc = new GameCharacter();
 	gc->Init(GameCharacter::GC_RANGER, Math::RandIntMinMax(50, 70), 10, nullptr);
-	gc->InitProbability(70, 20, 0, 10);
+	gc->InitProbability(45, 20, 25, 10);
 	// TODO: Set pos and scale
 	m_charList.push_back(gc);
 }
 
 void MVC_Model_AI::initEnemies(void)
 {
+	Enemy* e = new Enemy();
+	e->Init(Math::RandIntMinMax(100, 150), Math::RandIntMinMax(20, 30), nullptr);
 }
 
 void MVC_Model_AI::assignTeams(void)
