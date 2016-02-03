@@ -3,13 +3,16 @@
 const float Character::S_CRITICAL_HEALTH = 0.3;
 
 Character::Character(int maxHealth, int attack)
-	: m_maxHealth(maxHealth)
+	: MessageListener()
+	, m_maxHealth(maxHealth)
 	, m_health(maxHealth)
 	, m_attack(attack)
 	, m_bonusAttack(0)
 	, m_team(NULL)
 	, m_opponentTeam(NULL)
 	, m_endTurn(true)
+	, m_hasRan(false)
+	, m_stunnedTurns(0)
 {
 	
 }
@@ -28,6 +31,7 @@ void Character::Init(int maxHealth, int attack, Mesh * mesh)
 void Character::Update(double dt)
 {
 	NPC::Update(dt);
+	HandleMessage();
 }
 
 void Character::Stun(int numOfTurns)
@@ -83,6 +87,11 @@ bool Character::IsAlive(void) const
 	return m_health > 0;
 }
 
+bool Character::HasRan(void) const
+{
+	return m_hasRan;
+}
+
 void Character::AddToTeam(Character * c)
 {
 	m_team.push_back(c);
@@ -108,6 +117,11 @@ void Character::SetOpponentTeam(vector<Character*>& opponentTeam)
 	m_opponentTeam = opponentTeam;
 }
 
+void Character::ResetRan()
+{
+	m_hasRan = false;
+}
+
 vector<Character*>& Character::GetTeam()
 {
 	return m_team;
@@ -122,6 +136,7 @@ void Character::StartTurn()
 {
 	//std::cout << "Start turn" << std::endl;
 	m_endTurn = false;
+	m_hasRan = true;
 
 	// Reset the waiting type
 	m_waitType = WaitState::WT_NORMAL;

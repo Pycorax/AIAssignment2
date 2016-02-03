@@ -43,6 +43,7 @@ protected:
 	vector<Character*> m_opponentTeam;
 
 	bool m_endTurn;
+	bool m_hasRan; // Used in model for individual character start turn
 	short m_stunnedTurns;
 
 	WaitState::WAIT_TYPE m_waitType;
@@ -69,6 +70,7 @@ public:
 	int GetAttack(void) const;
 	int GetBonusAttack(void) const;
 	bool IsAlive(void) const;
+	bool HasRan(void) const;
 
 	void AddToTeam(Character* c);
 	void AddToOpponentTeam(Character* c);
@@ -76,6 +78,8 @@ public:
 	void SetBonusAttack(int bonusAttack);
 	void SetTeam(vector<Character*>& team);
 	void SetOpponentTeam(vector<Character*>& opponentTeam);
+
+	void ResetRan();
 
 	vector<Character*>& GetTeam();
 	vector<Character*>& GetOpponentTeam();

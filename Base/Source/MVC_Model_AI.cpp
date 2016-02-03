@@ -34,23 +34,29 @@ void MVC_Model_AI::Update(double dt)
 		m_renderList2D.push(m_envObjects[i]);
 	}
 
-	/*static bool playerTurn = true;
-	int playerEndCount = 0;
+	startTurns();
 
-	*/
-
-	// Update and render all the characters
+	// Update all the characters
 	for (auto c : m_charList)
 	{
-		//c->character->StartTurn();
 		c->Update(dt);
+	}
+
+	for (auto c : m_enemyList)
+	{
+		c->Update(dt);
+	}
+
+	// Render all the characters
+	for (auto c : m_charList)
+	{
+		c->UpdateText();
 		pushCharBundleRender(c);
 	}
 
 	for (auto c : m_enemyList)
 	{
-		//c->character->StartTurn();
-		c->Update(dt);
+		c->UpdateText();
 		pushCharBundleRender(c);
 	}
 
@@ -128,6 +134,7 @@ void MVC_Model_AI::initPlayers(void)
 	gc->InitProbability(50, 30, 15, 5);
 	gc->SetPos(Vector2(100, 200));
 	gc->SetScale(CHAR_SCALE);
+	m_messageBoard.RegisterUser(gc);
 	m_charList.push_back(new CharacterBundle(gc, m_defaultFont, Vector2(90)));
 	gc->StartTurn();
 
@@ -137,6 +144,7 @@ void MVC_Model_AI::initPlayers(void)
 	gc->InitProbability(70, 20, 0, 10);
 	gc->SetPos(Vector2(100, 500));
 	gc->SetScale(CHAR_SCALE);
+	m_messageBoard.RegisterUser(gc);
 	m_charList.push_back(new CharacterBundle(gc, m_defaultFont, Vector2()));
 	gc->StartTurn();
 
@@ -147,6 +155,7 @@ void MVC_Model_AI::initPlayers(void)
 	gc->InitProbability(50, 30, 15, 5);
 	gc->SetPos(Vector2(100, 400));
 	gc->SetScale(CHAR_SCALE);
+	m_messageBoard.RegisterUser(gc);
 	m_charList.push_back(new CharacterBundle(gc, m_defaultFont, Vector2(30)));
 	gc->StartTurn();
 
@@ -157,6 +166,7 @@ void MVC_Model_AI::initPlayers(void)
 	gc->InitProbability(50, 30, 15, 5);
 	gc->SetPos(Vector2(100, 300));
 	gc->SetScale(CHAR_SCALE);
+	m_messageBoard.RegisterUser(gc);
 	m_charList.push_back(new CharacterBundle(gc, m_defaultFont, Vector2(60)));
 	gc->StartTurn();
 }
@@ -223,6 +233,76 @@ void MVC_Model_AI::assignTeams(void)
 				if (gc)
 				{
 					e->AddToOpponentTeam(gc);
+				}
+			}
+		}
+	}
+}
+
+void MVC_Model_AI::startTurns()
+{
+	static bool playerTurn = true;
+	int count = 0; // Count to check if all characters have finished their turn so next type of character can start
+	static int currentCounter = 0; // "Points" to the current updating character
+	
+	if (playerTurn)
+	{
+		CharacterBundle* c = m_charList[currentCounter];
+		if (!c->character->HasRan()) // Hasn't ran
+		{
+			if (c->character->GetEndTurn()) // Ended turn
+			{
+				// Ended turn but hasn't ran
+				c->character->StartTurn();
+				return;
+			}
+		}
+		else // Ran
+		{
+			if (c->character->GetEndTurn()) // Ended turn
+			{
+				// Ended turn and ran
+				++currentCounter;
+				if (currentCounter >= m_charList.size())
+				{
+					// Next type of character turn (Reset data)
+					playerTurn = false;
+					currentCounter = 0;
+					for (auto c : m_charList)
+					{
+						c->character->ResetRan();
+					}
+				}
+			}
+		}
+	}
+	else
+	{
+		CharacterBundle* e = m_enemyList[currentCounter];
+		if (!e->character->HasRan()) // Hasn't ran
+		{
+			if (e->character->GetEndTurn()) // Ended turn
+			{
+				// Ended turn but hasn't ran
+				e->character->StartTurn();
+				return;
+			}
+		}
+		else // Ran
+		{
+			if (e->character->GetEndTurn()) // Ended turn
+			{
+				// Ended turn and ran
+				++currentCounter;
+				if (currentCounter >= m_enemyList.size())
+				{
+					// Next type of character turn (Reset data)
+					playerTurn = true;
+					currentCounter = 0;
+					for (auto c : m_enemyList)
+					{
+						c->character->ResetRan();
+					}
 				}
 			}
 		}
