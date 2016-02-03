@@ -93,6 +93,21 @@ string FSMState::GetStateName(void)
 	return m_stateName;
 }
 
+string FSMState::GetThisStateName(void)
+{
+	return m_stateName;
+}
+
+string FSMState::GetChildStateName(void)
+{
+	if (m_currentState)
+	{
+		return m_currentState->GetStateName();
+	}
+	
+	return "";
+}
+
 void FSMState::changeState(FSMState * state)
 {
 	if (m_stateParent)		// Is a Child State

@@ -8,6 +8,7 @@
 #include "TextObject.h"
 #include "GameCharacter.h"
 #include "MessageBoard\MessageBoard.h"
+#include "CharacterBundle.h"
 
 class MVC_Model_AI : public MVC_Model
 {
@@ -21,12 +22,19 @@ private:
 	enum E_TEXT_OBJECT
 	{
 		TO_TEST,
+		TO_CHAR_HEALTH,
+		TO_CHAR_STATE,
+		TO_CHAR_SUBSTATE,
+		TO_CHAR_TYPE,
 		TO_FPS,
 		TO_MESSAGE_BOARD,
 		TO_TOTAL
 	};
 
 private:
+	// Static Constants
+	static const Vector3 CHAR_SCALE;
+
 	// Text Output
 	TextObject* m_textObjects[TO_TOTAL];
 
@@ -37,8 +45,7 @@ private:
 	MessageBoard m_messageBoard;
 
 	// Characters
-	GameCharacter* m_testChar;
-	TextObject* m_testState;
+	CharacterBundle* m_testChar;
 	float m_turnTimer;
 	float m_maxTimer;
 
@@ -54,6 +61,9 @@ public:
 private:
 	void initText(void);
 	void initEnvironment(void);
+
+	// Render
+	void pushCharBundleRender(CharacterBundle* ch);
 
 	// Input
 	void processKeyAction(double dt);
