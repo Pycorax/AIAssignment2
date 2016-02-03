@@ -5,6 +5,7 @@
 
 MessageListener::MessageListener(string name)
 	: m_name(name)
+	, m_messageBoard(nullptr)
 {
 }
 

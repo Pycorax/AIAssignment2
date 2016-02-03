@@ -123,6 +123,7 @@ void MVC_Model_AI::initPlayers(void)
 	gc->InitProbability(50, 30, 15, 5);
 	gc->SetPos(Vector2(100, 200));
 	gc->SetScale(CHAR_SCALE);
+	m_messageBoard.RegisterUser(gc);
 	m_charList.push_back(new CharacterBundle(gc, m_defaultFont, Vector2(90)));
 
 	// Healer
@@ -131,6 +132,7 @@ void MVC_Model_AI::initPlayers(void)
 	gc->InitProbability(70, 20, 0, 10);
 	gc->SetPos(Vector2(100, 500));
 	gc->SetScale(CHAR_SCALE);
+	m_messageBoard.RegisterUser(gc);
 	m_charList.push_back(new CharacterBundle(gc, m_defaultFont, Vector2()));
 
 	// Warrior
@@ -140,6 +142,7 @@ void MVC_Model_AI::initPlayers(void)
 	gc->InitProbability(50, 30, 15, 5);
 	gc->SetPos(Vector2(100, 400));
 	gc->SetScale(CHAR_SCALE);
+	m_messageBoard.RegisterUser(gc);
 	m_charList.push_back(new CharacterBundle(gc, m_defaultFont, Vector2(30)));
 
 	// Tank
@@ -149,6 +152,7 @@ void MVC_Model_AI::initPlayers(void)
 	gc->InitProbability(50, 30, 15, 5);
 	gc->SetPos(Vector2(100, 300));
 	gc->SetScale(CHAR_SCALE);
+	m_messageBoard.RegisterUser(gc);
 	m_charList.push_back(new CharacterBundle(gc, m_defaultFont, Vector2(60)));
 }
 

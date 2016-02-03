@@ -122,7 +122,7 @@ void FSMState::changeState(FSMState * state)
 		m_FSMOwner->m_currentState = state;
 		m_FSMOwner->m_currentState->Init(m_FSMOwner);
 	}
-	Sleep(1000);
+	Sleep(100);
 }
 
 bool FSMState::isNestedState(void) const
@@ -142,5 +142,5 @@ void FSMState::setCurrentState(FSMState * startState)
 	m_currentState = startState;
 	m_currentState->Init(this);
 
-	Sleep(1000);
+	Sleep(100);
 }

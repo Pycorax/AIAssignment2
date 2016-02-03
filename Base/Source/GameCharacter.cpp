@@ -10,6 +10,7 @@ GameCharacter::GameCharacter()
 	: m_guarder(nullptr)
 	, m_defending(false)
 	, m_nextTarget(nullptr)
+	, m_lastReplaceMessage(Message::NUM_MESSAGE)
 {
 	probabilities.Reset();
 }

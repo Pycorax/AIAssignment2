@@ -3,13 +3,15 @@
 const float Character::S_CRITICAL_HEALTH = 0.3;
 
 Character::Character(int maxHealth, int attack)
-	: m_maxHealth(maxHealth)
+	: MessageListener()
+	, m_maxHealth(maxHealth)
 	, m_health(maxHealth)
 	, m_attack(attack)
 	, m_bonusAttack(0)
 	, m_team(NULL)
 	, m_opponentTeam(NULL)
 	, m_endTurn(true)
+	, m_stunnedTurns(0)
 {
 	
 }
