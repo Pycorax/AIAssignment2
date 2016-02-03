@@ -109,3 +109,7 @@ short GameCharacter::GetPassProbability()
 {
 	return m_passProbability;
 }
+
+void GameCharacter::handleMessage(Message msg)
+{
+}

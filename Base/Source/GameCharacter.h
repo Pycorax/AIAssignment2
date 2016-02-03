@@ -58,6 +58,11 @@ public:
 	short GetDefendProbability();
 	short GetSpecialProbability();
 	short GetPassProbability();
+
+	/*
+ 	 * Message Listener Interface Abstract Functions
+	 */
+	virtual void handleMessage(Message msg);
 };
 
 #endif
