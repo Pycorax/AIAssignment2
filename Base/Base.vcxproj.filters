@@ -82,6 +82,9 @@
     <Filter Include="Characters\States">
       <UniqueIdentifier>{4eb5c287-15e2-477f-8ccd-9bf3f63a2376}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Characters\States\Enemy">
+      <UniqueIdentifier>{b99de467-a6c6-489c-b59b-795f8823e1ce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp">
@@ -254,6 +257,15 @@
     </ClCompile>
     <ClCompile Include="Source\SpecialState.cpp">
       <Filter>Characters\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\EnemyStartTurnState.cpp">
+      <Filter>Characters\States\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\StunAttackState.cpp">
+      <Filter>Characters\States\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\EnemySpecialState.cpp">
+      <Filter>Characters\States\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -454,6 +466,15 @@
     </ClInclude>
     <ClInclude Include="Source\SpecialState.h">
       <Filter>Characters\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\EnemyStartTurnState.h">
+      <Filter>Characters\States\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\StunAttackState.h">
+      <Filter>Characters\States\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\EnemySpecialState.h">
+      <Filter>Characters\States\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -7,7 +7,7 @@
 
 StartTurnState::StartTurnState() : FSMState()
 {
-	m_stateName = "Start turn state";
+	m_stateName = "Start Turn State";
 }
 
 
@@ -82,7 +82,6 @@ void StartTurnState::Update(double dt)
 	}
 	else if (random > attProb + defProb && random <= attProb + defProb + specProb)
 	{
-		//std::cout << "Special" << std::endl;
 		// TODO: Set to special state
 	}
 	else

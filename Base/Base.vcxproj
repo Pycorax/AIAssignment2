@@ -24,6 +24,8 @@
     <ClCompile Include="Source\Enemy.cpp" />
     <ClCompile Include="Source\EnemyActionState.cpp" />
     <ClCompile Include="Source\EnemyAttackActionState.cpp" />
+    <ClCompile Include="Source\EnemySpecialState.cpp" />
+    <ClCompile Include="Source\EnemyStartTurnState.cpp" />
     <ClCompile Include="Source\FSMState.cpp" />
     <ClCompile Include="Source\GameCharacter.cpp" />
     <ClCompile Include="Source\MessageBoard\Message.cpp" />
@@ -57,6 +59,7 @@
     <ClCompile Include="Source\SpecialState.cpp" />
     <ClCompile Include="Source\SpectreHexGame.cpp" />
     <ClCompile Include="Source\StartTurnState.cpp" />
+    <ClCompile Include="Source\StunAttackState.cpp" />
     <ClCompile Include="Source\StunnedState.cpp" />
     <ClCompile Include="Source\TextObject.cpp" />
     <ClCompile Include="Source\shader.cpp" />
@@ -84,6 +87,8 @@
     <ClInclude Include="Source\Enemy.h" />
     <ClInclude Include="Source\EnemyActionState.h" />
     <ClInclude Include="Source\EnemyAttackActionState.h" />
+    <ClInclude Include="Source\EnemySpecialState.h" />
+    <ClInclude Include="Source\EnemyStartTurnState.h" />
     <ClInclude Include="Source\FSMState.h" />
     <ClInclude Include="Source\GameCharacter.h" />
     <ClInclude Include="Source\InputDevice.h" />
@@ -125,6 +130,7 @@
     <ClInclude Include="Source\shader.hpp" />
     <ClInclude Include="Source\SpriteAnimation.h" />
     <ClInclude Include="Source\StartTurnState.h" />
+    <ClInclude Include="Source\StunAttackState.h" />
     <ClInclude Include="Source\StunnedState.h" />
     <ClInclude Include="Source\TerrainCamera.h" />
     <ClInclude Include="Source\TextObject.h" />
