@@ -91,6 +91,8 @@ void SpecialState::Update(double dt)
 			break;
 		case GameCharacter::GC_WARRIOR:
 			{
+				c->sendMessage(Message::MSG_PLAN_TO_STUN);
+				m_target->Stun(1);
 			}
 			break;
 		}

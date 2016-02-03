@@ -238,6 +238,7 @@ void GameCharacter::handleMessage(Message msg)
 		break;
 	case Message::MSG_PLAN_TO_STUN:
 		{
+			probabilities.m_defendProbability = 0;
 		}
 		break;
 	case Message::MSG_GUARDING_SOMEONE:

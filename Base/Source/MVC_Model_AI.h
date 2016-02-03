@@ -61,6 +61,7 @@ private:
 	void assignTeams(void);
 
 	void startTurns();
+	void spawnEnemy();
 
 	// Render
 	void pushCharBundleRender(CharacterBundle* ch);

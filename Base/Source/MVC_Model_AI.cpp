@@ -35,27 +35,19 @@ void MVC_Model_AI::Update(double dt)
 	}
 
 	startTurns();
+	spawnEnemy();
 
-	// Update all the characters
+	// Update and render all the characters
 	for (auto c : m_charList)
 	{
 		c->Update(dt);
-	}
-
-	for (auto c : m_enemyList)
-	{
-		c->Update(dt);
-	}
-
-	// Render all the characters
-	for (auto c : m_charList)
-	{
 		c->UpdateText();
 		pushCharBundleRender(c);
 	}
 
 	for (auto c : m_enemyList)
 	{
+		c->Update(dt);
 		c->UpdateText();
 		pushCharBundleRender(c);
 	}
@@ -136,7 +128,6 @@ void MVC_Model_AI::initPlayers(void)
 	gc->SetScale(CHAR_SCALE);
 	m_messageBoard.RegisterUser(gc);
 	m_charList.push_back(new CharacterBundle(gc, m_defaultFont, Vector2(90)));
-	gc->StartTurn();
 
 	// Healer
 	gc = new GameCharacter();
@@ -146,7 +137,6 @@ void MVC_Model_AI::initPlayers(void)
 	gc->SetScale(CHAR_SCALE);
 	m_messageBoard.RegisterUser(gc);
 	m_charList.push_back(new CharacterBundle(gc, m_defaultFont, Vector2()));
-	gc->StartTurn();
 
 	// Warrior
 	gc = new GameCharacter();
@@ -157,7 +147,6 @@ void MVC_Model_AI::initPlayers(void)
 	gc->SetScale(CHAR_SCALE);
 	m_messageBoard.RegisterUser(gc);
 	m_charList.push_back(new CharacterBundle(gc, m_defaultFont, Vector2(30)));
-	gc->StartTurn();
 
 	// Tank
 	gc = new GameCharacter();
@@ -168,7 +157,6 @@ void MVC_Model_AI::initPlayers(void)
 	gc->SetScale(CHAR_SCALE);
 	m_messageBoard.RegisterUser(gc);
 	m_charList.push_back(new CharacterBundle(gc, m_defaultFont, Vector2(60)));
-	gc->StartTurn();
 }
 
 void MVC_Model_AI::initEnemies(void)
@@ -305,6 +293,19 @@ void MVC_Model_AI::startTurns()
 					}
 				}
 			}
+		}
+	}
+}
+
+void MVC_Model_AI::spawnEnemy()
+{
+	for (auto e : m_enemyList)
+	{
+		if (!e->character->IsAlive())
+		{
+			e->character->Init(Math::RandIntMinMax(100, 150), Math::RandIntMinMax(20, 30), GetMeshResource("Character"));
+			e->character->SetPos(Vector2(1180, 200));
+			e->character->SetScale(CHAR_SCALE);
 		}
 	}
 }
