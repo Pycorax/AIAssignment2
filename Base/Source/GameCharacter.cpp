@@ -1,6 +1,8 @@
 #include "GameCharacter.h"
+#include "ActionState.h"
+#include "StartTurnState.h"
 
-
+const float GameCharacter::S_GUARD_DAMAGE_REDUCTION = 0.8f; // Out of 1.f
 
 GameCharacter::GameCharacter()
 	: m_guarder(nullptr)
@@ -30,6 +32,32 @@ void GameCharacter::InitProbability(short attProb, short defProb, short specProb
 void GameCharacter::Update(double dt)
 {
 	Character::Update(dt);
+}
+
+void GameCharacter::StartTurn()
+{
+	Character::StartTurn();
+	setCurrentState(new ActionState(new StartTurnState()));
+}
+
+void GameCharacter::Injure(int damage)
+{
+	if (m_guarder)
+	{
+		m_guarder->Character::Injure(damage);
+		return;
+	}
+	else
+	{
+		if (m_defending)
+		{
+			Character::Injure(damage * S_GUARD_DAMAGE_REDUCTION);
+		}
+		else
+		{
+			Character::Injure(damage);
+		}
+	}
 }
 
 void GameCharacter::SetGuarder(Character * guarder)

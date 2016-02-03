@@ -1,5 +1,4 @@
 #include "Character.h"
-#include "ActionState.h"
 
 Character::Character(int maxHealth, int attack)
 	: m_maxHealth(maxHealth)
@@ -57,7 +56,6 @@ void Character::StartTurn()
 {
 	std::cout << "Start turn" << std::endl;
 	m_endTurn = false;
-	setCurrentState(new ActionState());
 }
 
 void Character::Injure(int damage)

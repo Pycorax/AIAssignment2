@@ -17,7 +17,7 @@ public:
 	~Enemy();
 
 protected:
-	void Attack
+	void Attack();
 };
 
 #endif

@@ -38,8 +38,8 @@ public:
 	vector<Character*>& GetTeam();
 	vector<Character*>& GetOpponentTeam();
 
-	void StartTurn();
-	void Injure(int damage);
+	virtual void StartTurn();
+	virtual void Injure(int damage);
 	void Heal(int health);
 
 	void EndTurn();

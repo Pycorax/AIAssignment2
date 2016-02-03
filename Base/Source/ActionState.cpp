@@ -24,8 +24,6 @@ void ActionState::Init(NPC * FSMOwner)
 	{
 		return;
 	}
-
-	
 }
 
 void ActionState::Init(FSMState * stateOwner)

@@ -6,11 +6,13 @@
 class GameCharacter : public Character
 {
 	friend class ActionState;
+	friend class StartTurnState;
 	friend class AttackState;
 	friend class DefendState;
 	friend class PassState;
 
 public:
+	static const float S_GUARD_DAMAGE_REDUCTION; // In percentage over 100
 	enum GAME_CHARACTER_TYPE
 	{
 		GC_WARRIOR,
@@ -38,6 +40,10 @@ public:
 	virtual void Init(GAME_CHARACTER_TYPE type, int maxHealth, int attack, Mesh* mesh);
 	void InitProbability(short attProb, short defProb, short specProb, short passProb);
 	virtual void Update(double dt);
+
+	virtual void StartTurn();
+
+	virtual void Injure(int damage);
 
 	void SetGuarder(Character* guarder);
 	Character* GetGuarder();
