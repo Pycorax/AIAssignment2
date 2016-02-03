@@ -23,8 +23,6 @@
     <ClCompile Include="Source\DefendState.cpp" />
     <ClCompile Include="Source\DepthFBO.cpp" />
     <ClCompile Include="Source\Enemy.cpp" />
-    <ClCompile Include="Source\EnemyActionState.cpp" />
-    <ClCompile Include="Source\EnemyAttackActionState.cpp" />
     <ClCompile Include="Source\EnemySpecialState.cpp" />
     <ClCompile Include="Source\EnemyStartTurnState.cpp" />
     <ClCompile Include="Source\FSMState.cpp" />
@@ -86,8 +84,6 @@
     <ClInclude Include="Source\DepthFBO.h" />
     <ClInclude Include="Source\Direction.h" />
     <ClInclude Include="Source\Enemy.h" />
-    <ClInclude Include="Source\EnemyActionState.h" />
-    <ClInclude Include="Source\EnemyAttackActionState.h" />
     <ClInclude Include="Source\EnemySpecialState.h" />
     <ClInclude Include="Source\EnemyStartTurnState.h" />
     <ClInclude Include="Source\FSMState.h" />
