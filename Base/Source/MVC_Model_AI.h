@@ -7,6 +7,7 @@
 // Other Includes
 #include "TextObject.h"
 #include "GameCharacter.h"
+#include "Enemy.h"
 #include "MessageBoard\MessageBoard.h"
 
 class MVC_Model_AI : public MVC_Model
@@ -41,6 +42,9 @@ private:
 	float m_turnTimer;
 	float m_maxTimer;
 
+	vector<GameCharacter*> m_charList;
+	vector<Enemy*> m_enemyList;
+
 public:
 	MVC_Model_AI(string configSONFile);
 	~MVC_Model_AI();
@@ -53,6 +57,10 @@ public:
 private:
 	void initText(void);
 	void initEnvironment(void);
+
+	void initPlayers(void);
+	void initEnemies(void);
+	void assignTeams(void);
 
 	// Input
 	void processKeyAction(double dt);

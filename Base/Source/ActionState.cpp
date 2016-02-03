@@ -7,6 +7,7 @@
 #include "StartTurnState.h"
 #include "EnemyStartTurnState.h"
 #include "StunnedState.h"
+#include "DeadState.h"
 
 ActionState::ActionState() : FSMState()
 {
@@ -59,15 +60,15 @@ void ActionState::Update(double dt)
 	GameCharacter* c = dynamic_cast<GameCharacter*>(m_FSMOwner);
 	Enemy* e = dynamic_cast<Enemy*>(m_FSMOwner);
 
-	/*if ((c && c->GetEndTurn()) || (e && e->GetEndTurn()))
-	{
-		return;
-	}*/
-
 	FSMState::Update(dt);
 
 	if (c)
 	{
+		if (!c->IsAlive())
+		{
+			changeState(new DeadState());
+			return;
+		}
 		if (c->IsStunned())
 		{
 			changeState(new StunnedState());
@@ -79,6 +80,11 @@ void ActionState::Update(double dt)
 	}
 	else if (e)
 	{
+		if (!e->IsAlive())
+		{
+			changeState(new DeadState());
+			return;
+		}
 		if (e->IsStunned())
 		{
 			// Stun state if get stunned

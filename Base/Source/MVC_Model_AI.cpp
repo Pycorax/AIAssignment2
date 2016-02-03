@@ -19,6 +19,8 @@ void MVC_Model_AI::Init(void)
 	
 	initEnvironment();
 	initText();
+	initPlayers();
+	initEnemies();
 
 	MessagePacket msgPacket;
 	msgPacket.message = Message(nullptr, Message::MSG_REQUEST_SUPPORT);
@@ -104,6 +106,42 @@ void MVC_Model_AI::initEnvironment(void)
 {
 	m_envObjects[EO_TEST] = new GameObject2D;
 	m_envObjects[EO_TEST]->Init(GetMeshResource("Road"), Transform(Vector3(m_viewWidth * 0.5f, m_viewHeight * 0.8f), Vector3(), Vector3(m_viewWidth * 2, 125.0f)));
+}
+
+void MVC_Model_AI::initPlayers(void)
+{
+	GameCharacter* gc = new GameCharacter();
+
+	
+}
+
+void MVC_Model_AI::initEnemies(void)
+{
+}
+
+void MVC_Model_AI::assignTeams(void)
+{
+	// Game characters
+	for (vector<GameCharacter*>::iterator it = m_charList.begin(); it != m_charList.end(); ++it)
+	{
+		GameCharacter* gc = *it;
+		if (gc)
+		{
+			// Assign game character's team
+			for (vector<GameCharacter*>::iterator it2 = m_charList.begin(); it2 != m_charList.end(); ++it2)
+			{
+				GameCharacter* gc2 = *it2;
+				if (gc2)
+				{
+					gc->AddToTeam(gc2);
+				}
+			}
+
+			// Assign game character's opponent team
+		}
+	}
+
+	// Enemies
 }
 
 void MVC_Model_AI::processKeyAction(double dt)

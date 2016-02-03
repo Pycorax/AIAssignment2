@@ -14,6 +14,7 @@
 
 class StunnedState;
 class ActionState;
+class DeadState;
 
 // Using Directives
 using std::vector;
@@ -27,6 +28,7 @@ class Character : public GameObject2D, public NPC, public MessageListener
 	friend class ActionState;
 	friend class StunnedState;
 	friend class WaitState;
+	friend class DeadState;
 
 public:
 	static const float S_CRITICAL_HEALTH; // Percentage of health to be counted as critical (0.f - 1.f)
@@ -65,6 +67,12 @@ public:
 	int GetHealth(void) const;
 	int GetAttack(void) const;
 	bool IsAlive(void) const;
+
+	void AddToTeam(Character* c);
+	void AddToOpponentTeam(Character* c);
+
+	void SetTeam(vector<Character*>& team);
+	void SetOpponentTeam(vector<Character*>& opponentTeam);
 
 	vector<Character*>& GetTeam();
 	vector<Character*>& GetOpponentTeam();

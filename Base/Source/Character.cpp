@@ -77,6 +77,26 @@ bool Character::IsAlive(void) const
 	return m_health > 0;
 }
 
+void Character::AddToTeam(Character * c)
+{
+	m_team.push_back(c);
+}
+
+void Character::AddToOpponentTeam(Character * c)
+{
+	m_opponentTeam.push_back(c);
+}
+
+void Character::SetTeam(vector<Character*>& team)
+{
+	m_team = team;
+}
+
+void Character::SetOpponentTeam(vector<Character*>& opponentTeam)
+{
+	m_opponentTeam = opponentTeam;
+}
+
 vector<Character*>& Character::GetTeam()
 {
 	return m_team;
