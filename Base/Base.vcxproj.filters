@@ -252,6 +252,9 @@
     <ClCompile Include="Source\StunnedState.cpp">
       <Filter>Characters\States</Filter>
     </ClCompile>
+    <ClCompile Include="Source\SpecialState.cpp">
+      <Filter>Characters\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Utility.h">
@@ -447,6 +450,9 @@
       <Filter>Characters\States</Filter>
     </ClInclude>
     <ClInclude Include="Source\StunnedState.h">
+      <Filter>Characters\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SpecialState.h">
       <Filter>Characters\States</Filter>
     </ClInclude>
   </ItemGroup>

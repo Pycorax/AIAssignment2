@@ -27,6 +27,16 @@ void Character::Update(double dt)
 	NPC::Update(dt);
 }
 
+void Character::Stun(int numOfTurns)
+{
+	m_stunnedTurns += numOfTurns;
+}
+
+short Character::GetStunnedTurns()
+{
+	return m_stunnedTurns;
+}
+
 int Character::GetMaxHealth(void) const
 {
 	return m_maxHealth;
@@ -54,7 +64,7 @@ vector<Character*>& Character::GetOpponentTeam()
 
 void Character::StartTurn()
 {
-	std::cout << "Start turn" << std::endl;
+	//std::cout << "Start turn" << std::endl;
 	m_endTurn = false;
 }
 
@@ -96,7 +106,7 @@ void Character::Heal(int health)
 
 void Character::EndTurn()
 {
-	std::cout << "End turn" << std::endl;
+	//std::cout << "End turn" << std::endl;
 	m_endTurn = true;
 }
 

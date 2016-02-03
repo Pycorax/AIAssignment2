@@ -3,6 +3,7 @@
 
 ActionState::ActionState(FSMState* StartTurnState) : FSMState()
 {
+	m_stateName = "Action state";
 	// Set up the child state
 	setCurrentState(StartTurnState);
 }

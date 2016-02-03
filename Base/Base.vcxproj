@@ -54,6 +54,7 @@
     <ClCompile Include="Source\Mesh.cpp" />
     <ClCompile Include="Source\MeshBuilder.cpp" />
     <ClCompile Include="Source\PhysicalObject.cpp" />
+    <ClCompile Include="Source\SpecialState.cpp" />
     <ClCompile Include="Source\SpectreHexGame.cpp" />
     <ClCompile Include="Source\StartTurnState.cpp" />
     <ClCompile Include="Source\StunnedState.cpp" />
@@ -119,6 +120,7 @@
     <ClInclude Include="Source\MeshBuilder.h" />
     <ClInclude Include="Source\PhysicalObject.h" />
     <ClInclude Include="Source\Raycast.h" />
+    <ClInclude Include="Source\SpecialState.h" />
     <ClInclude Include="Source\SpectreHexGame.h" />
     <ClInclude Include="Source\shader.hpp" />
     <ClInclude Include="Source\SpriteAnimation.h" />

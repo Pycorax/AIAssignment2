@@ -2,6 +2,7 @@
 
 WaitForTurnState::WaitForTurnState() : FSMState()
 {
+	m_stateName = "Wait for turn state";
 }
 
 

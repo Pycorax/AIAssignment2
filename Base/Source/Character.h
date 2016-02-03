@@ -4,10 +4,11 @@
 #include <vector>
 #include "NPC.h"
 #include "GameObject2D.h"
+#include "MessageBoard\MessageListener.h"
 
 using std::vector;
 
-class Character : public GameObject2D, public NPC
+class Character : public GameObject2D, public NPC, public MessageListener
 {
 	/*
 	*		State Classes Friend Declarations
@@ -23,6 +24,7 @@ protected:
 	vector<Character*> m_opponentTeam;
 
 	bool m_endTurn;
+	short m_stunnedTurns;
 
 public:
 	Character(int maxHealth = 1, int attack = 1);
@@ -30,6 +32,9 @@ public:
 
 	virtual void Init(int maxHealth, int attack, Mesh* mesh);
 	virtual void Update(double dt);
+
+	void Stun(int numOfTurns);
+	short GetStunnedTurns();
 
 	int GetMaxHealth(void) const;
 	int GetHealth(void) const;

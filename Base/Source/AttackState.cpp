@@ -2,6 +2,7 @@
 
 AttackState::AttackState() : FSMState()
 {
+	m_stateName = "Attack state";
 }
 
 

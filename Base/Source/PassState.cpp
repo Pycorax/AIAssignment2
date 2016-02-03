@@ -2,6 +2,7 @@
 
 PassState::PassState() : FSMState()
 {
+	m_stateName = "Pass state";
 }
 
 

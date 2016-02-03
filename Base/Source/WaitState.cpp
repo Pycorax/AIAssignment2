@@ -1,5 +1,5 @@
 #include "WaitState.h"
-
+#include "GameCharacter.h"
 
 WaitState::WaitState(FSMState* waitState)
 {

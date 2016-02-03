@@ -2,6 +2,7 @@
 
 DefendState::DefendState() : FSMState()
 {
+	m_stateName = "Defend state";
 }
 
 

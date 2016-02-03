@@ -7,6 +7,7 @@
 
 StartTurnState::StartTurnState() : FSMState()
 {
+	m_stateName = "Start turn state";
 }
 
 
@@ -71,22 +72,22 @@ void StartTurnState::Update(double dt)
 	// Find out which action is chosen
 	if (random <= attProb)
 	{
-		std::cout << "Attack" << std::endl;
+		//std::cout << "Attack" << std::endl;
 		changeState(new AttackState());
 	}
 	else if (random > attProb && random <= attProb + defProb)
 	{
-		std::cout << "Defend" << std::endl;
+		//std::cout << "Defend" << std::endl;
 		changeState(new DefendState());
 	}
 	else if (random > attProb + defProb && random <= attProb + defProb + specProb)
 	{
-		std::cout << "Special" << std::endl;
+		//std::cout << "Special" << std::endl;
 		// TODO: Set to special state
 	}
 	else
 	{
-		std::cout << "Pass" << std::endl;
+		//std::cout << "Pass" << std::endl;
 		changeState(new PassState());
 	}
 }

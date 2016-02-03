@@ -2,6 +2,7 @@
 
 StunnedState::StunnedState() : FSMState()
 {
+	m_stateName = "Stunned state";
 }
 
 
