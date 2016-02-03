@@ -2,6 +2,7 @@
 
 SpecialState::SpecialState(Character* target) : FSMState(), m_target(target)
 {
+	m_stateName = "Special state";
 }
 
 
@@ -82,6 +83,8 @@ void SpecialState::Update(double dt)
 			break;
 		}
 	}
+
+	c->EndTurn();
 }
 
 void SpecialState::Exit(void)

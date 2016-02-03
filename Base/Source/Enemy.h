@@ -10,8 +10,7 @@ class Enemy : public Character
 	* States should be able to access this class's properties
 	*/
 	friend class EnemyStartTurnState;
-	friend class EnemyActionState;
-	friend class EnemyAttackActionState;
+	friend class EnemySpecialState;
 	friend class StunAttackState;
 	friend class WaitState;
 
@@ -23,6 +22,7 @@ protected:
 
 	// Power of Attacks
 	int m_stunAttackDuration;
+	int m_bideStoreDamage;
 
 	// Special Attack Cooldown
 	int m_specCoolDown;
@@ -34,6 +34,8 @@ public:
 	virtual void Init(int maxHealth, int attack, Mesh* mesh);
 
 	virtual void StartTurn();
+
+	virtual void Injure(int damage);
 
 protected:
 	bool canUseSpecialAttack();

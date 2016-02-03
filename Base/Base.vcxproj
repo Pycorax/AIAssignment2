@@ -19,11 +19,10 @@
     <ClCompile Include="Source\CChar.cpp" />
     <ClCompile Include="Source\Character.cpp" />
     <ClCompile Include="Source\Collider2D.cpp" />
+    <ClCompile Include="Source\DeadState.cpp" />
     <ClCompile Include="Source\DefendState.cpp" />
     <ClCompile Include="Source\DepthFBO.cpp" />
     <ClCompile Include="Source\Enemy.cpp" />
-    <ClCompile Include="Source\EnemyActionState.cpp" />
-    <ClCompile Include="Source\EnemyAttackActionState.cpp" />
     <ClCompile Include="Source\EnemySpecialState.cpp" />
     <ClCompile Include="Source\EnemyStartTurnState.cpp" />
     <ClCompile Include="Source\FSMState.cpp" />
@@ -80,12 +79,11 @@
     <ClInclude Include="Source\CChar.h" />
     <ClInclude Include="Source\Character.h" />
     <ClInclude Include="Source\Collider2D.h" />
+    <ClInclude Include="Source\DeadState.h" />
     <ClInclude Include="Source\DefendState.h" />
     <ClInclude Include="Source\DepthFBO.h" />
     <ClInclude Include="Source\Direction.h" />
     <ClInclude Include="Source\Enemy.h" />
-    <ClInclude Include="Source\EnemyActionState.h" />
-    <ClInclude Include="Source\EnemyAttackActionState.h" />
     <ClInclude Include="Source\EnemySpecialState.h" />
     <ClInclude Include="Source\EnemyStartTurnState.h" />
     <ClInclude Include="Source\FSMState.h" />

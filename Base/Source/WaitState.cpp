@@ -5,6 +5,8 @@
 
 // States include
 #include "ActionState.h"
+#include "DeadState.h"
+#include "StunnedState.h"
 
 WaitState::WaitState()
 {
@@ -33,34 +35,27 @@ void WaitState::Update(double dt)
 
 	// Get the actual Character-type pointer
 	Character* c = dynamic_cast<Character*>(m_FSMOwner);
-	Enemy* e = dynamic_cast<Enemy*>(m_FSMOwner);
+
+	// Invalid pointer
+	if (!c)
+	{
+		return;
+	}
 
 	// It is our turn? Let's go
-	if (c)
+	if (!c->IsAlive())
 	{
-		if (!c->GetEndTurn())
-		{
-			// Determine whether this is an enemy or a normal character
-			GameCharacter* gc = dynamic_cast<GameCharacter*>(m_FSMOwner);
+		// Go to dead state
+		changeState(new DeadState());
 
-			if (gc)
-			{
-				changeState(new ActionState());
-			}
-		}
 	}
-	else if (e)
+	else if (c->GetStunnedTurns() > 0)
 	{
-		if (!e->GetEndTurn())
-		{
-			// Determine whether this is an enemy or a normal character
-			GameCharacter* gc = dynamic_cast<GameCharacter*>(m_FSMOwner);
-
-			if (gc)
-			{
-				changeState(new ActionState());
-			}
-		}
+		changeState(new StunnedState());
+	}
+	else if (!c->GetEndTurn())
+	{
+		changeState(new ActionState());
 	}
 	else
 	{

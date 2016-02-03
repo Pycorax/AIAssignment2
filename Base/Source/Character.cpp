@@ -72,6 +72,11 @@ int Character::GetAttack(void) const
 	return m_attack;
 }
 
+bool Character::IsAlive(void) const
+{
+	return m_health > 0;
+}
+
 vector<Character*>& Character::GetTeam()
 {
 	return m_team;
