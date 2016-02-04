@@ -303,7 +303,7 @@ void MVC_Model_AI::spawnEnemy()
 	{
 		if (!e->character->IsAlive())
 		{
-			e->character->Init(Math::RandIntMinMax(100, 150), Math::RandIntMinMax(20, 30), GetMeshResource("Character"));
+			e->character->Init(Math::RandIntMinMax(100, 150), Math::RandIntMinMax(20, 30), GetMeshResource("Enemy"));
 			e->character->SetPos(Vector2(1180, 200));
 			e->character->SetScale(CHAR_SCALE);
 		}
