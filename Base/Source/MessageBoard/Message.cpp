@@ -8,8 +8,8 @@ const string Message::MESSAGE_TEXT[NUM_MESSAGE] =
 	"Priority Attack",
 	"Planning to Stun",
 	"Guarding",
-	"Martyrdom"
-	"Last Words"
+	"Martyrdom",
+	"Last Words",
 	"Death",
 	"Healer Replaced",
 	"Tank Replaced",
