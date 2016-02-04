@@ -93,6 +93,7 @@ void SpecialState::Update(double dt)
 			{
 				c->sendMessage(Message::MSG_PLAN_TO_STUN);
 				m_target->Stun(1);
+				c->Stun(1);
 			}
 			break;
 		}
