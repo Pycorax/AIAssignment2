@@ -121,7 +121,7 @@ void MVC_Model_AI::initPlayers(void)
 {
 	// Ranger
 	GameCharacter* gc = new GameCharacter();
-	gc->Init(GameCharacter::GC_RANGER, Math::RandIntMinMax(50, 70), 10, GetMeshResource("Character"));
+	gc->Init(GameCharacter::GC_RANGER, Math::RandIntMinMax(50, 70), 13, GetMeshResource("Character1"));
 	gc->InitProbability(45, 20, 25, 10);
 	gc->InitProbability(50, 30, 15, 5);
 	gc->SetPos(Vector2(100, 200));
@@ -131,7 +131,7 @@ void MVC_Model_AI::initPlayers(void)
 
 	// Healer
 	gc = new GameCharacter();
-	gc->Init(GameCharacter::GC_HEALER, Math::RandIntMinMax(50, 70), 10, GetMeshResource("Character"));
+	gc->Init(GameCharacter::GC_HEALER, Math::RandIntMinMax(50, 70), 5, GetMeshResource("Character2"));
 	gc->InitProbability(70, 20, 0, 10);
 	gc->SetPos(Vector2(100, 500));
 	gc->SetScale(CHAR_SCALE);
@@ -140,7 +140,7 @@ void MVC_Model_AI::initPlayers(void)
 
 	// Warrior
 	gc = new GameCharacter();
-	gc->Init(GameCharacter::GC_WARRIOR, Math::RandIntMinMax(50, 70), 10, GetMeshResource("Character"));
+	gc->Init(GameCharacter::GC_WARRIOR, Math::RandIntMinMax(50, 70), 10, GetMeshResource("Character3"));
 	gc->InitProbability(50, 20, 20, 10);
 	gc->InitProbability(50, 30, 15, 5);
 	gc->SetPos(Vector2(100, 400));
@@ -150,7 +150,7 @@ void MVC_Model_AI::initPlayers(void)
 
 	// Tank
 	gc = new GameCharacter();
-	gc->Init(GameCharacter::GC_TANK, Math::RandIntMinMax(50, 70), 10, GetMeshResource("Character"));
+	gc->Init(GameCharacter::GC_TANK, Math::RandIntMinMax(50, 70), 7, GetMeshResource("Character4"));
 	gc->InitProbability(70, 20, 0, 10);
 	gc->InitProbability(50, 30, 15, 5);
 	gc->SetPos(Vector2(100, 300));
@@ -162,7 +162,7 @@ void MVC_Model_AI::initPlayers(void)
 void MVC_Model_AI::initEnemies(void)
 {
 	Enemy* e = new Enemy();
-	e->Init(Math::RandIntMinMax(100, 150), Math::RandIntMinMax(20, 30), GetMeshResource("Character"));
+	e->Init(Math::RandIntMinMax(100, 150), Math::RandIntMinMax(20, 30), GetMeshResource("Enemy"));
 	e->SetPos(Vector2(1180, 200));
 	e->SetScale(CHAR_SCALE);
 	m_enemyList.push_back(new CharacterBundle(e, m_defaultFont, Vector2(90, 50)));

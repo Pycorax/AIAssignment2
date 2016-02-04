@@ -37,9 +37,37 @@
 	}
 	
 	{
-		[Name] Character
+		[Name] Character1
 		[Type] Quad
 		[Color] 1.0f, 0.0f, 0.0f
+		[Length] 1.0f
+	}
+	
+	{
+		[Name] Character2
+		[Type] Quad
+		[Color] 0.0f, 1.0f, 0.0f
+		[Length] 1.0f
+	}
+	
+	{
+		[Name] Character3
+		[Type] Quad
+		[Color] 0.0f, 0.0f, 1.0f
+		[Length] 1.0f
+	}
+	
+	{
+		[Name] Character4
+		[Type] Quad
+		[Color] 1.0f, 0.0f, 1.0f
+		[Length] 1.0f
+	}
+	
+	{
+		[Name] Enemy
+		[Type] Quad
+		[Color] 1.0f, 1.0f, 1.0f
 		[Length] 1.0f
 	}
 	
