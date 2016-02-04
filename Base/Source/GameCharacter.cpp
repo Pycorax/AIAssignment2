@@ -205,6 +205,10 @@ string GameCharacter::GetName(void) const
 
 void GameCharacter::handleMessage(Message msg)
 {
+	if (!IsAlive())
+	{
+		return;
+	}
 	Character* sender = (Character*)msg.GetSender();
 	switch (msg.GetMessage())
 	{

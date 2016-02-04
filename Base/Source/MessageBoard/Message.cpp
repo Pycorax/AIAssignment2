@@ -13,7 +13,7 @@ const string Message::MESSAGE_TEXT[NUM_MESSAGE] =
 	"Death",
 	"Healer Replaced",
 	"Tank Replaced",
-	"Enemy Healed"
+	"Enemy Healed",
 };
 
 Message::Message(MessageListener* sender, MESSAGE_TYPE type)
