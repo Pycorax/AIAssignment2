@@ -111,9 +111,12 @@ public:
 	short GetSpecialProbability();
 	short GetPassProbability();
 
+	
+
 	/*
 	 * Message Listener Interface Abstract Functions
 	 */
+	virtual string GetName(void) const;
 	virtual void handleMessage(Message msg);
 
 	void replaceDead(GameCharacter* dead);

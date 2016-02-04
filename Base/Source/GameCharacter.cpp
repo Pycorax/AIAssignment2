@@ -176,6 +176,33 @@ short GameCharacter::GetPassProbability()
 	return probabilities.m_passProbability;
 }
 
+string GameCharacter::GetName(void) const
+{
+	switch (m_type)
+	{
+	case GC_HEALER:
+	{
+		return "Healer";
+	}
+	break;
+	case GC_TANK:
+	{
+		return "Tank";
+	}
+	break;
+	case GC_WARRIOR:
+	{
+		return "Warrior";
+	}
+	break;
+	case GC_RANGER:
+	{
+		return "Ranger";
+	}
+	break;
+	}
+}
+
 void GameCharacter::handleMessage(Message msg)
 {
 	Character* sender = (Character*)msg.GetSender();

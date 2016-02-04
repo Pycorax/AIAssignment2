@@ -10,6 +10,10 @@ const string Message::MESSAGE_TEXT[NUM_MESSAGE] =
 	"Guarding",
 	"Martyrdom"
 	"Last Words"
+	"Death",
+	"Healer Replaced",
+	"Tank Replaced",
+	"Enemy Healed"
 };
 
 Message::Message(MessageListener* sender, MESSAGE_TYPE type)
@@ -41,17 +45,24 @@ string Message::ToString() const
 	}
 	else
 	{
-		string str = MESSAGE_TEXT[m_type] + " from ";
+		string str = MESSAGE_TEXT[m_type];
 
 		if (m_sender)
 		{
-			str += m_sender->GetName();
+			str += " from " + m_sender->GetName();
 		}
 		else
 		{
-			str += "Anonymous.";
+			str += " from Anonymous.";
 		}
 
-		return str;
+		if (str.length() > 0)
+		{
+			return str;
+		}
+		else
+		{
+			return "Null Message";
+		}
 	}
 }

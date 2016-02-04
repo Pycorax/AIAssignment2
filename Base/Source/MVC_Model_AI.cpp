@@ -104,7 +104,7 @@ void MVC_Model_AI::initText(void)
 	for (size_t i = 0; i < TO_TOTAL; ++i)
 	{
 		m_textObjects[i] = new TextObject(m_defaultFont, "", Color(0.0f, 0.0f, 0.0f));
-		m_textObjects[i]->SetPos(Vector2(0.0f, 69 - (i * 3.0f)));
+		m_textObjects[i]->SetPos(Vector2(0.0f, 67 - (i * 3.0f)));
 		m_textObjects[i]->SetScale(Vector2(3.0f));
 	}
 
