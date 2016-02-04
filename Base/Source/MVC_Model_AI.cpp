@@ -142,7 +142,6 @@ void MVC_Model_AI::initPlayers(void)
 	gc = new GameCharacter();
 	gc->Init(GameCharacter::GC_WARRIOR, Math::RandIntMinMax(50, 70), 10, GetMeshResource("Character3"));
 	gc->InitProbability(50, 20, 20, 10);
-	gc->InitProbability(50, 30, 15, 5);
 	gc->SetPos(Vector2(100, 400));
 	gc->SetScale(CHAR_SCALE);
 	m_messageBoard.RegisterUser(gc);
@@ -152,7 +151,6 @@ void MVC_Model_AI::initPlayers(void)
 	gc = new GameCharacter();
 	gc->Init(GameCharacter::GC_TANK, Math::RandIntMinMax(50, 70), 7, GetMeshResource("Character4"));
 	gc->InitProbability(70, 20, 0, 10);
-	gc->InitProbability(50, 30, 15, 5);
 	gc->SetPos(Vector2(100, 300));
 	gc->SetScale(CHAR_SCALE);
 	m_messageBoard.RegisterUser(gc);
