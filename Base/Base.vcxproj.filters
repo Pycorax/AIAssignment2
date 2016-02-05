@@ -43,12 +43,6 @@
     <Filter Include="Source Files\MVC">
       <UniqueIdentifier>{34a1e86a-40ba-4c46-a6f9-38ed957db99f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\AI">
-      <UniqueIdentifier>{0064917b-9056-42a7-b053-6337b5fada4d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\AI">
-      <UniqueIdentifier>{b844adde-dd63-4d91-baaa-f72cfea2d2e4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Characters">
       <UniqueIdentifier>{26f303dc-68f3-4c57-a76f-0fa7a5cd7027}</UniqueIdentifier>
     </Filter>
@@ -191,12 +185,6 @@
     </ClCompile>
     <ClCompile Include="Source\MVC_Model_AI.cpp">
       <Filter>Source Files\MVC</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\FSMState.cpp">
-      <Filter>Source Files\AI</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\NPC.cpp">
-      <Filter>Source Files\AI</Filter>
     </ClCompile>
     <ClCompile Include="Source\Waypoint.cpp">
       <Filter>Source Files</Filter>
@@ -388,12 +376,6 @@
     </ClInclude>
     <ClInclude Include="Source\MVC_Model_AI.h">
       <Filter>Header Files\MVC</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\NPC.h">
-      <Filter>Header Files\AI</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\FSMState.h">
-      <Filter>Header Files\AI</Filter>
     </ClInclude>
     <ClInclude Include="Source\Waypoint.h">
       <Filter>Header Files</Filter>
